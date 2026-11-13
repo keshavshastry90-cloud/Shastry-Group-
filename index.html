@@ -347,19 +347,19 @@
       <div class="absolute top-1/4 left-1/4 w-[480px] h-[480px] rounded-full bg-electric/15 blur-[150px] pointer-events-none"></div>
 
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-          <!-- Left Column: Founder Portrait Frame (./founder.png — ONLY <img> ON SITE) -->
-          <div class="lg:col-span-5 reveal-up">
-            <div class="relative rounded-3xl p-2 bg-gradient-to-br from-cyanGlow/40 via-electric/25 to-white/10 shadow-card-depth">
-              <div class="relative rounded-2xl overflow-hidden bg-midnight border border-white/10 aspect-[4/5] flex items-center justify-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <!-- Left Column: Full Uncropped Founder Portrait (./founder.png — ONLY <img> ON SITE) -->
+          <div class="lg:col-span-6 reveal-up">
+            <div class="relative rounded-3xl p-2.5 bg-gradient-to-br from-cyanGlow/40 via-electric/25 to-white/10 shadow-card-depth">
+              <div class="relative rounded-2xl overflow-hidden bg-midnight border border-white/10 w-full">
                 <img
                   src="./founder.png"
                   alt="Keshav Shastry — Founder of Shastry Group"
-                  class="w-full h-full object-cover object-top"
+                  class="block w-full h-auto max-w-full"
                   onerror="this.style.display='none'; document.getElementById('founder-fallback').classList.remove('hidden');"
                 />
                 <!-- Clean Architectural Fallback if founder.png is not yet in repository -->
-                <div id="founder-fallback" class="hidden flex-col items-center justify-center text-center p-8 w-full h-full bg-gradient-to-b from-obsidian to-midnight">
+                <div id="founder-fallback" class="hidden flex-col items-center justify-center text-center p-12 w-full min-h-[380px] bg-gradient-to-b from-obsidian to-midnight">
                   <div class="w-20 h-20 rounded-2xl border border-cyanGlow/40 bg-electric/10 flex items-center justify-center font-cinzel text-2xl font-bold text-cyanGlow mb-4">
                     KS
                   </div>
@@ -369,22 +369,12 @@
                     Place founder.png in repository root
                   </div>
                 </div>
-                <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-midnight via-midnight/60 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-4 left-5 right-5 flex items-center justify-between">
-                  <div>
-                    <div class="font-cinzel font-bold text-base text-white tracking-wider">KESHAV SHASTRY</div>
-                    <div class="font-mono text-[11px] text-cyanGlow uppercase tracking-widest">Founder of Shastry Group</div>
-                  </div>
-                  <span class="px-2.5 py-1 rounded-md bg-midnight/80 border border-white/15 font-mono text-[10px] text-silver">
-                    SHASTRY GROUP
-                  </span>
-                </div>
               </div>
             </div>
           </div>
 
           <!-- Right Column: Founder Vision, Biography, Quote & Signature -->
-          <div class="lg:col-span-7 reveal-up">
+          <div class="lg:col-span-6 reveal-up">
             <div class="inline-flex items-center gap-2 font-mono text-xs tracking-[0.22em] uppercase text-cyanGlow mb-4">
               <span class="w-8 h-[1px] bg-cyanGlow"></span>
               <span>LEADERSHIP &amp; VISION</span>
