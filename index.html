@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHASTRY GROUP — Creating Beyond Imagination</title>
+  <meta name="description" content="Shastry Group is a multidisciplinary creative company founded by Keshav Shastry, transforming ideas into animations, music, books, comics, games, and digital experiences." />
+
+  <!-- Google Fonts: Cinzel, Space Grotesk, Plus Jakarta Sans, JetBrains Mono & Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600;1,700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            midnight: '#05070D',
+            charcoal: '#0D111C',
+            obsidian: '#131926',
+            electric: '#2563EB',
+            cyanGlow: '#38BDF8',
+            silver: '#94A3B8',
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            signature: ['"Cormorant Garamond"', 'serif'],
+          },
+          boxShadow: {
+            'glow-blue': '0 0 40px -10px rgba(37, 99, 235, 0.55)',
+            'glow-cyan': '0 0 35px -8px rgba(56, 189, 248, 0.45)',
+            'card-depth': '0 25px 50px -12px rgba(0, 0, 0, 0.85)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Three.js (Ambient Starfield Canvas) & GSAP + ScrollTrigger CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --bg-midnight: #05070D;
+      --bg-charcoal: #0D111C;
+      --accent-blue: #2563EB;
+      --accent-cyan: #38BDF8;
+      --silver: #94A3B8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-midnight);
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(37, 99, 235, 0.35);
+      color: #ffffff;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #05070D;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #1E293B, #2563EB);
+      border-radius: 9999px;
+    }
+
+    /* Typography & Metallic Gradients */
+    .text-gradient-silver {
+      background: linear-gradient(135deg, #F8FAFC 0%, #CBD5E1 55%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .text-gradient-electric {
+      background: linear-gradient(135deg, #38BDF8 0%, #2563EB 60%, #60A5FA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glassmorphism Surfaces */
+    .glass-panel {
+      background: linear-gradient(145deg, rgba(19, 25, 38, 0.72), rgba(9, 13, 22, 0.88));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.75);
+    }
+
+    .glass-panel-hover {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .glass-panel-hover:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 25px 55px -12px rgba(37, 99, 235, 0.25);
+    }
+
+    /* Ambient Grid Background */
+    .cyber-grid {
+      background-size: 64px 64px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+
+    /* Primary Button (Used strictly for Explore Our Services anchor scroll) */
+    .btn-primary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      background: linear-gradient(135deg, #2563EB 0%, #38BDF8 100%);
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px -8px rgba(37, 99, 235, 0.65);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 38px -6px rgba(56, 189, 248, 0.75);
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(100%);
+    }
+
+    /* Animated Scroll Mouse */
+    @keyframes scrollWheel {
+      0% { transform: translateY(0); opacity: 1; }
+      75% { transform: translateY(10px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 0; }
+    }
+    .animate-scroll-wheel {
+      animation: scrollWheel 2s infinite ease-in-out;
+    }
+
+    /* Tilt Card Perspective */
+    .tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-electric selection:text-white">
+
+  <!-- =====================================================================
+       1. STICKY GLASSMORPHIC NAVIGATION BAR (CUSTOM SG MONOGRAM)
+       ===================================================================== -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/5 bg-midnight/80 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Brand Logo: Custom SG Monogram + Orbital Ring -->
+        <a href="#home" class="flex items-center gap-3.5 group focus:outline-none" aria-label="Shastry Group Home">
+          <div class="relative w-11 h-11 flex items-center justify-center">
+            <svg viewBox="0 0 100 100" class="w-11 h-11 overflow-visible drop-shadow-[0_0_12px_rgba(37,99,235,0.5)] transition-transform duration-500 group-hover:scale-105">
+              <defs>
+                <linearGradient id="sgSilverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#F8FAFC" />
+                  <stop offset="50%" stop-color="#CBD5E1" />
+                  <stop offset="100%" stop-color="#94A3B8" />
+                </linearGradient>
+                <linearGradient id="sgBlueGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#2563EB" />
+                  <stop offset="55%" stop-color="#38BDF8" />
+                  <stop offset="100%" stop-color="#7DD3FC" />
+                </linearGradient>
+              </defs>
+              <path d="M 14 70 C 4 58, 22 36, 52 24 C 78 14, 96 18, 92 30" fill="none" stroke="url(#sgBlueGrad)" stroke-width="4" stroke-linecap="round" opacity="0.85" />
+              <path d="M 50 12 L 80 28 L 80 38 L 50 23 L 28 35 L 28 45 L 80 55 L 80 74 L 50 90 L 20 74 L 20 62 L 50 78 L 70 67 L 70 61 L 20 51 L 20 28 Z" fill="url(#sgSilverGrad)" />
+              <rect x="52" y="48" width="28" height="8" rx="1.5" fill="url(#sgSilverGrad)" />
+              <path d="M 88 32 C 95 45, 74 68, 44 80 C 20 89, 6 84, 12 72" fill="none" stroke="url(#sgBlueGrad)" stroke-width="4.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-cinzel font-bold text-lg sm:text-xl tracking-[0.14em] text-white leading-none">
+              SHASTRY <span class="text-gradient-electric">GROUP</span>
+            </span>
+            <span class="font-mono text-[10px] tracking-[0.22em] text-silver uppercase mt-1">
+              Creating Beyond Imagination
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-8" aria-label="Primary Navigation">
+          <a href="#home" class="nav-link text-sm font-medium text-slate-300 hover:text-cyanGlow transition-colors">Home</a>
+          <a href="#founder" class="nav-link text-sm font-medium text-slate-300 hover:text-cyanGlow transition-colors">Founder</a>
+          <a href="#about" class="nav-link text-sm font-medium text-slate-300 hover:text-cyanGlow transition-colors">About</a>
+          <a href="#services" class="nav-link text-sm font-medium text-slate-300 hover:text-cyanGlow transition-colors">Services</a>
+          <a href="#achievements" class="nav-link text-sm font-medium text-slate-300 hover:text-cyanGlow transition-colors">Achievements</a>
+          <a href="#process" class="nav-link text-sm font-medium text-slate-300 hover:text-cyanGlow transition-colors">Process</a>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="flex items-center lg:hidden">
+          <button id="mobile-menu-btn" type="button" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:text-white hover:border-electric/50 focus:outline-none" aria-label="Toggle Menu" aria-expanded="false">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Responsive Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-charcoal/95 backdrop-blur-2xl border-b border-white/10">
+      <div class="px-6 pt-4 pb-7 space-y-2">
+        <a href="#home" class="mobile-nav-link block py-3 px-4 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-cyanGlow">Home</a>
+        <a href="#founder" class="mobile-nav-link block py-3 px-4 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-cyanGlow">Founder — Keshav Shastry</a>
+        <a href="#about" class="mobile-nav-link block py-3 px-4 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-cyanGlow">About</a>
+        <a href="#services" class="mobile-nav-link block py-3 px-4 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-cyanGlow">Services (6 Divisions)</a>
+        <a href="#achievements" class="mobile-nav-link block py-3 px-4 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-cyanGlow">Achievements</a>
+        <a href="#process" class="mobile-nav-link block py-3 px-4 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-cyanGlow">Process</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================================================================
+         2. HOMEPAGE — FULL-SCREEN HERO EXPERIENCE (NO IMAGES, NO 3D CUBES)
+         =================================================================== -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-midnight">
+      <!-- Subtle Starfield / Cosmic Particle Canvas -->
+      <div id="hero-canvas-container" class="absolute inset-0 z-0"></div>
+
+      <!-- Architectural Light Glows -->
+      <div class="absolute top-1/4 right-1/4 w-[520px] h-[520px] rounded-full bg-electric/15 blur-[150px] pointer-events-none z-0"></div>
+      <div class="absolute bottom-10 left-10 w-[400px] h-[400px] rounded-full bg-cyanGlow/10 blur-[140px] pointer-events-none z-0"></div>
+
+      <!-- Atmospheric Radial Vignettes -->
+      <div class="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-midnight/95 via-midnight/75 to-midnight/45"></div>
+      <div class="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-midnight via-transparent to-midnight/50"></div>
+
+      <!-- Hero Content -->
+      <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 w-full">
+        <div class="max-w-4xl">
+          <div class="hero-reveal inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md mb-7">
+            <span class="w-2 h-2 rounded-full bg-cyanGlow animate-ping"></span>
+            <span class="font-mono text-xs tracking-[0.2em] uppercase text-slate-300">
+              SHASTRY GROUP &bull; MULTIDISCIPLINARY CREATIVE HOUSE
+            </span>
+          </div>
+
+          <h1 class="hero-reveal font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white mb-6">
+            CREATING BEYOND <br />
+            <span class="text-gradient-electric">IMAGINATION.</span>
+          </h1>
+
+          <p class="hero-reveal text-base sm:text-lg lg:text-xl text-slate-300/95 leading-relaxed max-w-2xl mb-9 font-light">
+            From captivating animations and original music to extraordinary stories, immersive games and digital experiences — we transform ideas into reality.
+          </p>
+
+          <div class="hero-reveal flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-12">
+            <a href="#services" class="btn-primary px-8 py-4 text-sm">
+              <span>EXPLORE OUR SERVICES</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Interactive 6-Division Quick Navigation Strip -->
+          <div class="hero-reveal grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 pt-6 border-t border-white/10 max-w-3xl">
+            <a href="#division-animation" class="group px-3.5 py-2.5 rounded-xl bg-white/[0.03] hover:bg-electric/15 border border-white/5 hover:border-electric/40 transition-all">
+              <div class="font-mono text-[10px] text-cyanGlow">01</div>
+              <div class="text-xs font-medium text-slate-200 group-hover:text-white">Animation</div>
+            </a>
+            <a href="#division-music" class="group px-3.5 py-2.5 rounded-xl bg-white/[0.03] hover:bg-electric/15 border border-white/5 hover:border-electric/40 transition-all">
+              <div class="font-mono text-[10px] text-cyanGlow">02</div>
+              <div class="text-xs font-medium text-slate-200 group-hover:text-white">Music</div>
+            </a>
+            <a href="#division-books" class="group px-3.5 py-2.5 rounded-xl bg-white/[0.03] hover:bg-electric/15 border border-white/5 hover:border-electric/40 transition-all">
+              <div class="font-mono text-[10px] text-cyanGlow">03</div>
+              <div class="text-xs font-medium text-slate-200 group-hover:text-white">Books</div>
+            </a>
+            <a href="#division-comics" class="group px-3.5 py-2.5 rounded-xl bg-white/[0.03] hover:bg-electric/15 border border-white/5 hover:border-electric/40 transition-all">
+              <div class="font-mono text-[10px] text-cyanGlow">04</div>
+              <div class="text-xs font-medium text-slate-200 group-hover:text-white">Comics</div>
+            </a>
+            <a href="#division-games" class="group px-3.5 py-2.5 rounded-xl bg-white/[0.03] hover:bg-electric/15 border border-white/5 hover:border-electric/40 transition-all">
+              <div class="font-mono text-[10px] text-cyanGlow">05</div>
+              <div class="text-xs font-medium text-slate-200 group-hover:text-white">Games</div>
+            </a>
+            <a href="#division-websites" class="group px-3.5 py-2.5 rounded-xl bg-white/[0.03] hover:bg-electric/15 border border-white/5 hover:border-electric/40 transition-all">
+              <div class="font-mono text-[10px] text-cyanGlow">06</div>
+              <div class="text-xs font-medium text-slate-200 group-hover:text-white">Websites</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sophisticated Scroll Indicator -->
+      <a href="#founder" aria-label="Scroll to Founder Section" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 group">
+        <span class="font-mono text-[10px] tracking-[0.25em] uppercase text-silver group-hover:text-cyanGlow transition-colors">
+          Scroll to Explore
+        </span>
+        <div class="w-6 h-10 rounded-full border border-white/25 group-hover:border-cyanGlow/70 flex justify-center pt-2 transition-colors">
+          <div class="w-1 h-2 rounded-full bg-cyanGlow animate-scroll-wheel"></div>
+        </div>
+      </a>
+    </section>
+
+    <!-- ===================================================================
+         3. FOUNDER — KESHAV SHASTRY (IMMEDIATELY AFTER HERO, ONLY IMAGE)
+         =================================================================== -->
+    <section id="founder" class="relative py-24 lg:py-32 bg-charcoal border-t border-white/5 overflow-hidden">
+      <div class="absolute inset-0 cyber-grid opacity-35 pointer-events-none"></div>
+      <div class="absolute top-1/4 left-1/4 w-[480px] h-[480px] rounded-full bg-electric/15 blur-[150px] pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          <!-- Left Column: Founder Portrait Frame (./founder.png — ONLY <img> ON SITE) -->
+          <div class="lg:col-span-5 reveal-up">
+            <div class="relative rounded-3xl p-2 bg-gradient-to-br from-cyanGlow/40 via-electric/25 to-white/10 shadow-card-depth">
+              <div class="relative rounded-2xl overflow-hidden bg-midnight border border-white/10 aspect-[4/5] flex items-center justify-center">
+                <img
+                  src="./founder.png"
+                  alt="Keshav Shastry — Founder of Shastry Group"
+                  class="w-full h-full object-cover object-top"
+                  onerror="this.style.display='none'; document.getElementById('founder-fallback').classList.remove('hidden');"
+                />
+                <!-- Clean Architectural Fallback if founder.png is not yet in repository -->
+                <div id="founder-fallback" class="hidden flex-col items-center justify-center text-center p-8 w-full h-full bg-gradient-to-b from-obsidian to-midnight">
+                  <div class="w-20 h-20 rounded-2xl border border-cyanGlow/40 bg-electric/10 flex items-center justify-center font-cinzel text-2xl font-bold text-cyanGlow mb-4">
+                    KS
+                  </div>
+                  <div class="font-cinzel text-lg font-bold text-white tracking-wider">KESHAV SHASTRY</div>
+                  <div class="font-mono text-xs text-silver mt-1">Founder of Shastry Group</div>
+                  <div class="font-mono text-[11px] text-cyanGlow/80 mt-4 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                    Place founder.png in repository root
+                  </div>
+                </div>
+                <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-midnight via-midnight/60 to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-4 left-5 right-5 flex items-center justify-between">
+                  <div>
+                    <div class="font-cinzel font-bold text-base text-white tracking-wider">KESHAV SHASTRY</div>
+                    <div class="font-mono text-[11px] text-cyanGlow uppercase tracking-widest">Founder of Shastry Group</div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-md bg-midnight/80 border border-white/15 font-mono text-[10px] text-silver">
+                    SHASTRY GROUP
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Founder Vision, Biography, Quote & Signature -->
+          <div class="lg:col-span-7 reveal-up">
+            <div class="inline-flex items-center gap-2 font-mono text-xs tracking-[0.22em] uppercase text-cyanGlow mb-4">
+              <span class="w-8 h-[1px] bg-cyanGlow"></span>
+              <span>LEADERSHIP &amp; VISION</span>
+            </div>
+
+            <h2 class="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-4">
+              THE VISION BEHIND <span class="text-gradient-electric">SHASTRY GROUP.</span>
+            </h2>
+
+            <div class="mb-6 pb-5 border-b border-white/10">
+              <h3 class="font-cinzel font-bold text-2xl sm:text-3xl text-white tracking-wide">
+                Keshav Shastry
+              </h3>
+              <p class="font-mono text-xs sm:text-sm uppercase tracking-[0.2em] text-cyanGlow mt-1">
+                Founder of Shastry Group.
+              </p>
+            </div>
+
+            <div class="space-y-4 text-slate-300 text-base leading-relaxed font-light mb-8">
+              <p>
+                Keshav Shastry is the founder of Shastry Group, a creative entrepreneur driven by a passion for technology, storytelling, entertainment and innovation.
+              </p>
+              <p>
+                With an interest in exploring different creative disciplines, he established Shastry Group with a vision of bringing multiple forms of creativity together under one organisation.
+              </p>
+              <p>
+                His vision is to build a company where ideas are not restricted to one industry or medium, but can be transformed into animations, music, books, comics, games and digital experiences.
+              </p>
+              <p>
+                He believes that every great creation begins with an idea, and the right combination of imagination, dedication and execution can turn that idea into something extraordinary.
+              </p>
+            </div>
+
+            <!-- Prestigious Founder Quote & Calligraphic Signature -->
+            <div class="glass-panel rounded-2xl p-6 sm:p-8 border-l-4 border-l-cyanGlow">
+              <blockquote class="font-display text-lg sm:text-xl font-medium text-white italic leading-relaxed mb-5">
+                &ldquo;Great ideas should never remain just ideas. They deserve to become something real.&rdquo;
+              </blockquote>
+              <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-4 border-t border-white/10">
+                <div>
+                  <div class="font-signature italic font-bold text-3xl sm:text-4xl text-gradient-silver tracking-wide select-none">
+                    Keshav Shastry
+                  </div>
+                  <div class="w-40 h-[1px] bg-gradient-to-r from-cyanGlow to-transparent mt-1"></div>
+                </div>
+                <div class="font-mono text-xs uppercase tracking-[0.18em] text-silver">
+                  Founder &bull; Shastry Group
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. ABOUT SHASTRY GROUP (TYPOGRAPHIC & ARCHITECTURAL DISCIPLINE BADGES)
+         =================================================================== -->
+    <section id="about" class="relative py-24 lg:py-32 bg-midnight border-t border-white/5 overflow-hidden">
+      <div class="absolute inset-0 cyber-grid opacity-50 pointer-events-none"></div>
+      <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-electric/10 blur-[140px] pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-7 reveal-up">
+            <div class="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-cyanGlow mb-4">
+              <span class="w-8 h-[1px] bg-cyanGlow"></span>
+              <span>ABOUT SHASTRY GROUP</span>
+            </div>
+
+            <h2 class="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-7">
+              MORE THAN CREATION. <br />
+              <span class="text-gradient-silver">A VISION.</span>
+            </h2>
+
+            <div class="space-y-5 text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+              <p>
+                At <strong class="font-semibold text-white">Shastry Group</strong>, we believe that creativity has no boundaries. We are driven by the idea that imagination can become something extraordinary when combined with vision, dedication and innovation.
+              </p>
+              <p>
+                Our work spans multiple creative disciplines, bringing together animation, music, literature, comics, gaming and digital development under one roof.
+              </p>
+              <p>
+                Whether it is creating a captivating visual story, composing original music, developing a novel, building an engaging game or designing a professional website, we approach every project with a commitment to creativity and quality.
+              </p>
+              <p>
+                Our goal is to transform ideas into meaningful experiences that inspire, entertain and make an impact.
+              </p>
+            </div>
+
+            <!-- Philosophy Callout Banner -->
+            <div class="mt-10 p-6 sm:p-8 rounded-2xl glass-panel border-l-4 border-l-electric">
+              <div class="font-mono text-xs uppercase tracking-[0.18em] text-cyanGlow mb-1.5">Our Core Philosophy</div>
+              <p class="font-display text-lg sm:text-2xl font-medium text-white italic">
+                &ldquo;Every great creation begins with an idea. We help transform that idea into reality.&rdquo;
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column: Typographic Discipline Architecture (No Images) -->
+          <div class="lg:col-span-5 reveal-up">
+            <div class="glass-panel rounded-3xl p-7 sm:p-9 border border-white/10">
+              <div class="font-mono text-xs uppercase tracking-[0.2em] text-cyanGlow mb-2">
+                ONE ROOF &bull; SIX DISCIPLINES
+              </div>
+              <h3 class="font-display font-bold text-2xl text-white mb-6">
+                Multidisciplinary Creative Ecosystem
+              </h3>
+              <div class="space-y-3">
+                <a href="#division-animation" class="flex items-center justify-between p-4 rounded-2xl bg-white/[0.03] hover:bg-electric/15 border border-white/10 hover:border-cyanGlow/40 transition-all group">
+                  <div>
+                    <div class="font-mono text-[10px] text-cyanGlow">DISCIPLINE 01</div>
+                    <div class="font-display font-semibold text-white group-hover:text-cyanGlow transition-colors">Animation Creation</div>
+                  </div>
+                  <span class="font-mono text-xs text-silver group-hover:text-white">&rarr;</span>
+                </a>
+                <a href="#division-music" class="flex items-center justify-between p-4 rounded-2xl bg-white/[0.03] hover:bg-electric/15 border border-white/10 hover:border-cyanGlow/40 transition-all group">
+                  <div>
+                    <div class="font-mono text-[10px] text-cyanGlow">DISCIPLINE 02</div>
+                    <div class="font-display font-semibold text-white group-hover:text-cyanGlow transition-colors">Song and Music Creation</div>
+                  </div>
+                  <span class="font-mono text-xs text-silver group-hover:text-white">&rarr;</span>
+                </a>
+                <a href="#division-books" class="flex items-center justify-between p-4 rounded-2xl bg-white/[0.03] hover:bg-electric/15 border border-white/10 hover:border-cyanGlow/40 transition-all group">
+                  <div>
+                    <div class="font-mono text-[10px] text-cyanGlow">DISCIPLINE 03</div>
+                    <div class="font-display font-semibold text-white group-hover:text-cyanGlow transition-colors">Book and Novel Writing</div>
+                  </div>
+                  <span class="font-mono text-xs text-silver group-hover:text-white">&rarr;</span>
+                </a>
+                <a href="#division-comics" class="flex items-center justify-between p-4 rounded-2xl bg-white/[0.03] hover:bg-electric/15 border border-white/10 hover:border-cyanGlow/40 transition-all group">
+                  <div>
+                    <div class="font-mono text-[10px] text-cyanGlow">DISCIPLINE 04</div>
+                    <div class="font-display font-semibold text-white group-hover:text-cyanGlow transition-colors">Comic Writing and Creation</div>
+                  </div>
+                  <span class="font-mono text-xs text-silver group-hover:text-white">&rarr;</span>
+                </a>
+                <a href="#division-games" class="flex items-center justify-between p-4 rounded-2xl bg-white/[0.03] hover:bg-electric/15 border border-white/10 hover:border-cyanGlow/40 transition-all group">
+                  <div>
+                    <div class="font-mono text-[10px] text-cyanGlow">DISCIPLINE 05</div>
+                    <div class="font-display font-semibold text-white group-hover:text-cyanGlow transition-colors">Game Development</div>
+                  </div>
+                  <span class="font-mono text-xs text-silver group-hover:text-white">&rarr;</span>
+                </a>
+                <a href="#division-websites" class="flex items-center justify-between p-4 rounded-2xl bg-white/[0.03] hover:bg-electric/15 border border-white/10 hover:border-cyanGlow/40 transition-all group">
+                  <div>
+                    <div class="font-mono text-[10px] text-cyanGlow">DISCIPLINE 06</div>
+                    <div class="font-display font-semibold text-white group-hover:text-cyanGlow transition-colors">Website Development</div>
+                  </div>
+                  <span class="font-mono text-xs text-silver group-hover:text-white">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5. OUR SERVICES — SIX DISTINCT CREATIVE DIVISIONS (NO ORDER CTAs)
+         =================================================================== -->
+    <section id="services" class="relative py-24 lg:py-32 bg-charcoal border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-20 reveal-up">
+          <div class="inline-flex items-center gap-2 font-mono text-xs tracking-[0.22em] uppercase text-cyanGlow mb-4">
+            <span class="w-6 h-[1px] bg-cyanGlow"></span>
+            <span>OUR SIX CREATIVE DIVISIONS</span>
+            <span class="w-6 h-[1px] bg-cyanGlow"></span>
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight mb-5">
+            SIX WORLDS OF <span class="text-gradient-electric">CREATION.</span>
+          </h2>
+          <p class="text-silver text-base sm:text-lg leading-relaxed">
+            Every discipline at Shastry Group operates as a dedicated creative powerhouse, united under a singular commitment to excellence and originality.
+          </p>
+        </div>
+
+        <div class="space-y-12 lg:space-y-16">
+
+          <!-- DIVISION 01 — ANIMATION CREATION -->
+          <article id="division-animation" class="reveal-up rounded-3xl glass-panel glass-panel-hover p-6 sm:p-10 lg:p-12 border border-white/10 relative overflow-hidden">
+            <div class="absolute -top-28 -left-28 w-80 h-80 bg-cyanGlow/10 rounded-full blur-[110px] pointer-events-none"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              <div class="lg:col-span-6">
+                <div class="font-mono text-xs tracking-[0.2em] text-cyanGlow uppercase mb-2">
+                  DIVISION 01 &mdash; ANIMATION CREATION
+                </div>
+                <h3 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-5">
+                  IMAGINATION, <span class="text-gradient-electric">BROUGHT TO LIFE.</span>
+                </h3>
+                <p class="text-slate-300 text-base leading-relaxed">
+                  We create visually captivating animations that transform creative ideas into engaging visual experiences. From cinematic storytelling and futuristic adventures to promotional videos and character-driven stories, we bring imagination to life through animation. Our focus is on creating compelling visual experiences that entertain, communicate and leave a lasting impression.
+                </p>
+              </div>
+
+              <div class="lg:col-span-6 lg:border-l lg:border-white/10 lg:pl-10">
+                <div class="font-mono text-xs uppercase tracking-wider text-silver mb-4">Our Services</div>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Cinematic Animations</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>3D Animated Videos</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Science-Fiction Animations</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Story-Based Animations</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Promotional Animations</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Character-Based Animations</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Business Animations</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>YouTube Animations</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- DIVISION 02 — MUSIC AND SONG CREATION -->
+          <article id="division-music" class="reveal-up rounded-3xl bg-gradient-to-br from-[#0B1221] via-[#0D111C] to-[#070A12] p-6 sm:p-10 lg:p-12 border border-blue-500/25 relative overflow-hidden shadow-card-depth">
+            <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-electric/15 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              <div class="lg:col-span-6">
+                <div class="font-mono text-xs tracking-[0.2em] text-blue-400 uppercase mb-2">
+                  DIVISION 02 &mdash; MUSIC AND SONG CREATION
+                </div>
+                <h3 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-5">
+                  GIVING EVERY IDEA <span class="text-gradient-electric">A SOUND.</span>
+                </h3>
+                <p class="text-slate-300 text-base leading-relaxed mb-6">
+                  Music has the power to express emotions, communicate stories and create unforgettable experiences. We create original songs and music across different genres and creative concepts. From cinematic soundtracks and emotional compositions to motivational music and storytelling songs, we transform ideas into musical experiences.
+                </p>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="p-4 rounded-2xl bg-white/[0.04] border border-blue-400/20">
+                    <div class="font-display font-bold text-2xl sm:text-3xl text-white">200+</div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-blue-300 mt-0.5">Songs Created</div>
+                  </div>
+                  <div class="p-4 rounded-2xl bg-white/[0.04] border border-blue-400/20">
+                    <div class="font-display font-bold text-2xl sm:text-3xl text-cyanGlow">500K+</div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-blue-300 mt-0.5">Total Song Views</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-6 lg:border-l lg:border-white/10 lg:pl-10">
+                <div class="font-mono text-xs uppercase tracking-wider text-silver mb-4">Our Services</div>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Original Songs</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Cinematic Music</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Emotional Songs</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Motivational Music</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Science-Fiction Soundtracks</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Story-Based Songs</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Background Music</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Custom Music Projects</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- DIVISION 03 — BOOK AND NOVEL WRITING -->
+          <article id="division-books" class="reveal-up rounded-3xl glass-panel glass-panel-hover p-6 sm:p-10 lg:p-12 border border-white/10 relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-500/10 rounded-full blur-[130px] pointer-events-none"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              <div class="lg:col-span-6">
+                <div class="font-mono text-xs tracking-[0.2em] text-sky-400 uppercase mb-2">
+                  DIVISION 03 &mdash; BOOK AND NOVEL WRITING
+                </div>
+                <h3 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-5">
+                  EVERY STORY DESERVES <span class="text-gradient-silver">TO BE TOLD.</span>
+                </h3>
+                <p class="text-slate-300 text-base leading-relaxed mb-6">
+                  We transform ideas and imagination into engaging written stories. From science-fiction adventures and thrilling mysteries to emotional narratives and imaginative fictional worlds, we develop stories that capture readers' attention. Our goal is to turn creative concepts into complete and compelling literary experiences.
+                </p>
+
+                <div class="grid grid-cols-3 gap-3">
+                  <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10">
+                    <div class="font-display font-bold text-xl sm:text-2xl text-white">30+</div>
+                    <div class="text-[11px] font-mono uppercase tracking-wider text-sky-300 mt-0.5">Books Written</div>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10">
+                    <div class="font-display font-bold text-xl sm:text-2xl text-cyanGlow">60K+</div>
+                    <div class="text-[11px] font-mono uppercase tracking-wider text-sky-300 mt-0.5">Book Views</div>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10">
+                    <div class="font-display font-bold text-xl sm:text-2xl text-white">200+</div>
+                    <div class="text-[11px] font-mono uppercase tracking-wider text-sky-300 mt-0.5">Books Sold</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-6 lg:border-l lg:border-white/10 lg:pl-10">
+                <div class="font-mono text-xs uppercase tracking-wider text-silver mb-4">Our Services</div>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Novel Writing</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Science-Fiction Books</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Thriller and Mystery Novels</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Fiction Writing</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Story Development</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Character Development</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Book Concept Creation</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Creative Writing Projects</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- DIVISION 04 — COMIC WRITING AND CREATION -->
+          <article id="division-comics" class="reveal-up rounded-3xl bg-gradient-to-tr from-[#090D18] via-[#101728] to-[#080C14] p-6 sm:p-10 lg:p-12 border border-indigo-500/25 relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              <div class="lg:col-span-6">
+                <div class="font-mono text-xs tracking-[0.2em] text-indigo-400 uppercase mb-2">
+                  DIVISION 04 &mdash; COMIC WRITING AND CREATION
+                </div>
+                <h3 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-5">
+                  STORIES THAT <span class="text-gradient-electric">COME ALIVE.</span>
+                </h3>
+                <p class="text-slate-300 text-base leading-relaxed mb-6">
+                  We transform creative stories into engaging visual adventures through comics. From superheroes and science-fiction universes to mystery and thriller adventures, we develop compelling characters, storylines and illustrated experiences. Every comic is an opportunity to build a world that readers can explore.
+                </p>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="p-4 rounded-2xl bg-white/[0.04] border border-indigo-400/20">
+                    <div class="font-display font-bold text-2xl sm:text-3xl text-white">50+</div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-indigo-300 mt-0.5">Comics Created</div>
+                  </div>
+                  <div class="p-4 rounded-2xl bg-white/[0.04] border border-indigo-400/20">
+                    <div class="font-display font-bold text-2xl sm:text-3xl text-cyanGlow">100K+</div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-indigo-300 mt-0.5">Comic Views</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-6 lg:border-l lg:border-white/10 lg:pl-10">
+                <div class="font-mono text-xs uppercase tracking-wider text-silver mb-4">Our Services</div>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Comic Story Writing</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Comic Script Development</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Character Creation</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Superhero Comics</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Science-Fiction Comics</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Thriller and Mystery Comics</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Comic Story Development</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Complete Comic Projects</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- DIVISION 05 — GAME DEVELOPMENT -->
+          <article id="division-games" class="reveal-up rounded-3xl glass-panel glass-panel-hover p-6 sm:p-10 lg:p-12 border border-electric/25 relative overflow-hidden">
+            <div class="absolute -bottom-32 -left-20 w-96 h-96 bg-electric/15 rounded-full blur-[130px] pointer-events-none"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              <div class="lg:col-span-6">
+                <div class="font-mono text-xs tracking-[0.2em] text-cyanGlow uppercase mb-2">
+                  DIVISION 05 &mdash; GAME DEVELOPMENT
+                </div>
+                <h3 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-5">
+                  BUILD WORLDS. <span class="text-gradient-electric">CREATE EXPERIENCES.</span>
+                </h3>
+                <p class="text-slate-300 text-base leading-relaxed mb-6">
+                  We believe games are powerful interactive experiences where imagination meets technology. We create engaging games across different genres, combining creative concepts, interactive gameplay and immersive environments. From futuristic action adventures and strategy games to browser-based experiences, we transform ideas into playable worlds.
+                </p>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="p-4 rounded-2xl bg-white/[0.04] border border-electric/25">
+                    <div class="font-display font-bold text-2xl sm:text-3xl text-white">50+</div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-cyanGlow mt-0.5">Games Created</div>
+                  </div>
+                  <div class="p-4 rounded-2xl bg-white/[0.04] border border-electric/25">
+                    <div class="font-display font-bold text-2xl sm:text-3xl text-cyanGlow">30K+</div>
+                    <div class="text-xs font-mono uppercase tracking-wider text-cyanGlow mt-0.5">Total Game Views</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-6 lg:border-l lg:border-white/10 lg:pl-10">
+                <div class="font-mono text-xs uppercase tracking-wider text-silver mb-4">Our Services</div>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-electric"></span>3D Game Development</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-electric"></span>Browser-Based Games</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-electric"></span>Strategy Games</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-electric"></span>Action Games</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-electric"></span>Adventure Games</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-electric"></span>Interactive Experiences</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-electric"></span>Game Concept Development</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-electric"></span>Custom Game Projects</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- DIVISION 06 — WEBSITE DEVELOPMENT -->
+          <article id="division-websites" class="reveal-up rounded-3xl bg-gradient-to-br from-[#0E1525] via-[#0B101B] to-[#05070D] p-6 sm:p-10 lg:p-12 border border-slate-400/20 relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              <div class="lg:col-span-6">
+                <div class="font-mono text-xs tracking-[0.2em] text-silver uppercase mb-2">
+                  DIVISION 06 &mdash; WEBSITE DEVELOPMENT
+                </div>
+                <h3 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-5">
+                  BUILD YOUR <span class="text-gradient-silver">DIGITAL IDENTITY.</span>
+                </h3>
+                <p class="text-slate-300 text-base leading-relaxed mb-6">
+                  Your website is the digital identity of your business, brand or personal vision. We create modern, visually impressive and functional websites designed to make an impact. From company websites and personal portfolios to interactive digital experiences, we combine design, functionality and creativity to build meaningful digital platforms.
+                </p>
+
+                <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/15 flex items-center gap-4">
+                  <div class="font-display font-bold text-3xl sm:text-4xl text-cyanGlow">20+</div>
+                  <div class="text-xs sm:text-sm text-slate-200 font-medium">
+                    Websites Created for Different Companies and Personalities.
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-6 lg:border-l lg:border-white/10 lg:pl-10">
+                <div class="font-mono text-xs uppercase tracking-wider text-silver mb-4">Our Services</div>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-200">
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Business Websites</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Company Websites</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Personal Portfolio Websites</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Landing Pages</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Creative Websites</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Interactive Websites</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Gaming Websites</li>
+                  <li class="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.02] border border-white/5"><span class="w-1.5 h-1.5 rounded-full bg-cyanGlow"></span>Custom Website Development</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6. OUR ACHIEVEMENTS — ANIMATED STATISTICS GRID (ALL 12 EXACT METRICS)
+         =================================================================== -->
+    <section id="achievements" class="relative py-24 lg:py-32 bg-midnight border-t border-white/5 overflow-hidden">
+      <div class="absolute inset-0 cyber-grid opacity-40 pointer-events-none"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[360px] bg-electric/15 rounded-full blur-[160px] pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
+          <div class="inline-flex items-center gap-2 font-mono text-xs tracking-[0.22em] uppercase text-cyanGlow mb-4">
+            <span class="w-6 h-[1px] bg-cyanGlow"></span>
+            <span>MEASURABLE CREATIVE IMPACT</span>
+            <span class="w-6 h-[1px] bg-cyanGlow"></span>
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight mb-4">
+            OUR JOURNEY. <span class="text-gradient-electric">OUR CREATIONS.</span>
+          </h2>
+          <p class="text-silver text-base sm:text-lg">
+            A growing legacy of original productions, engaged audiences, and delivered creative milestones across six disciplines.
+          </p>
+        </div>
+
+        <div id="achievements-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-cyanGlow/80 mb-2">COMMUNITY</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-white tracking-tight mb-1">
+              <span class="stat-counter" data-target="15000" data-format="comma" data-suffix="+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Subscribers</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-cyanGlow/80 mb-2">VIDEO PRODUCTION</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-white tracking-tight mb-1">
+              <span class="stat-counter" data-target="1500" data-format="comma" data-suffix="+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Videos Created</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-blue-400 mb-2">MUSIC DIVISION</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-white tracking-tight mb-1">
+              <span class="stat-counter" data-target="200" data-format="plain" data-suffix="+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Songs Created</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-blue-400 mb-2">MUSIC REACH</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-gradient-electric tracking-tight mb-1">
+              <span class="stat-counter" data-target="500" data-format="plain" data-suffix="K+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Total Song Views</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-sky-400 mb-2">LITERATURE</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-white tracking-tight mb-1">
+              <span class="stat-counter" data-target="30" data-format="plain" data-suffix="+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Books Written</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-sky-400 mb-2">READERSHIP</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-gradient-electric tracking-tight mb-1">
+              <span class="stat-counter" data-target="60" data-format="plain" data-suffix="K+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Book Views</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-sky-400 mb-2">PUBLISHING</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-white tracking-tight mb-1">
+              <span class="stat-counter" data-target="200" data-format="plain" data-suffix="+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Books Sold</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-indigo-400 mb-2">COMIC UNIVERSE</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-white tracking-tight mb-1">
+              <span class="stat-counter" data-target="50" data-format="plain" data-suffix="+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Comics Created</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-indigo-400 mb-2">COMIC AUDIENCE</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-gradient-electric tracking-tight mb-1">
+              <span class="stat-counter" data-target="100" data-format="plain" data-suffix="K+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Comic Views</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-cyanGlow mb-2">INTERACTIVE WORLDS</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-white tracking-tight mb-1">
+              <span class="stat-counter" data-target="50" data-format="plain" data-suffix="+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Games Created</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-cyanGlow mb-2">PLAYER ENGAGEMENT</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-gradient-electric tracking-tight mb-1">
+              <span class="stat-counter" data-target="30" data-format="plain" data-suffix="K+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Game Views</div>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-6 relative overflow-hidden group">
+            <div class="font-mono text-[11px] text-silver mb-2">DIGITAL PLATFORMS</div>
+            <div class="font-display font-bold text-4xl sm:text-5xl text-white tracking-tight mb-1">
+              <span class="stat-counter" data-target="20" data-format="plain" data-suffix="+">0</span>
+            </div>
+            <div class="text-sm font-medium text-slate-300">Websites Created</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         7. WHY SHASTRY GROUP? — SIX STRATEGIC PILLAR CARDS
+         =================================================================== -->
+    <section class="relative py-24 lg:py-32 bg-charcoal border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
+          <div class="inline-flex items-center gap-2 font-mono text-xs tracking-[0.22em] uppercase text-cyanGlow mb-4">
+            <span class="w-6 h-[1px] bg-cyanGlow"></span>
+            <span>WHY SHASTRY GROUP?</span>
+            <span class="w-6 h-[1px] bg-cyanGlow"></span>
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">
+            ONE VISION. <span class="text-gradient-silver">MULTIPLE CREATIVE WORLDS.</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-8 reveal-up">
+            <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/30 flex items-center justify-center text-cyanGlow mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            </div>
+            <div class="font-mono text-xs text-cyanGlow mb-2">01</div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">MULTIDISCIPLINARY EXPERTISE</h3>
+            <p class="text-silver text-sm leading-relaxed">
+              We bring together multiple creative services under one company.
+            </p>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-8 reveal-up">
+            <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/30 flex items-center justify-center text-cyanGlow mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="font-mono text-xs text-cyanGlow mb-2">02</div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">PROVEN EXPERIENCE</h3>
+            <p class="text-silver text-sm leading-relaxed">
+              Our experience spans thousands of videos and hundreds of creative projects.
+            </p>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-8 reveal-up">
+            <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/30 flex items-center justify-center text-cyanGlow mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div class="font-mono text-xs text-cyanGlow mb-2">03</div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">CREATIVITY FIRST</h3>
+            <p class="text-silver text-sm leading-relaxed">
+              We believe every project deserves original thinking and a carefully developed creative approach.
+            </p>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-8 reveal-up">
+            <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/30 flex items-center justify-center text-cyanGlow mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <div class="font-mono text-xs text-cyanGlow mb-2">04</div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">IDEA TO EXECUTION</h3>
+            <p class="text-silver text-sm leading-relaxed">
+              We help transform concepts into complete creative products.
+            </p>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-8 reveal-up">
+            <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/30 flex items-center justify-center text-cyanGlow mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            </div>
+            <div class="font-mono text-xs text-cyanGlow mb-2">05</div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">DIVERSE CAPABILITIES</h3>
+            <p class="text-silver text-sm leading-relaxed">
+              From storytelling and entertainment to technology and digital experiences, our capabilities cover multiple industries.
+            </p>
+          </div>
+
+          <div class="tilt-card glass-panel glass-panel-hover rounded-2xl p-8 reveal-up">
+            <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/30 flex items-center justify-center text-cyanGlow mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div class="font-mono text-xs text-cyanGlow mb-2">06</div>
+            <h3 class="font-display font-bold text-xl text-white mb-3">CLIENT-FOCUSED APPROACH</h3>
+            <p class="text-silver text-sm leading-relaxed">
+              We focus on understanding each client's requirements and delivering work aligned with their vision.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         8. OUR CREATIVE PROCESS — FOUR-STAGE ANIMATED TIMELINE
+         =================================================================== -->
+    <section id="process" class="relative py-24 lg:py-32 bg-midnight border-t border-white/5 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-20 reveal-up">
+          <div class="inline-flex items-center gap-2 font-mono text-xs tracking-[0.22em] uppercase text-cyanGlow mb-4">
+            <span class="w-6 h-[1px] bg-cyanGlow"></span>
+            <span>HOW WE WORK</span>
+            <span class="w-6 h-[1px] bg-cyanGlow"></span>
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight">
+            FROM AN IDEA TO <span class="text-gradient-electric">SOMETHING EXTRAORDINARY.</span>
+          </h2>
+        </div>
+
+        <div class="relative">
+          <div class="hidden lg:block absolute top-12 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-electric/50 to-transparent"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="reveal-up relative group">
+              <div class="w-24 h-24 rounded-2xl glass-panel border border-electric/40 flex flex-col items-center justify-center mb-6 relative z-10 group-hover:scale-105 group-hover:border-cyanGlow transition-all shadow-glow-blue">
+                <span class="font-mono text-[10px] text-silver">STAGE</span>
+                <span class="font-display font-bold text-3xl text-cyanGlow">01</span>
+              </div>
+              <div class="glass-panel glass-panel-hover rounded-2xl p-6 h-[calc(100%-7.5rem)]">
+                <h3 class="font-display font-bold text-xl text-white tracking-wide mb-3">01 &mdash; DISCOVER</h3>
+                <p class="text-silver text-sm leading-relaxed">
+                  We understand your vision, requirements and objectives.
+                </p>
+              </div>
+            </div>
+
+            <div class="reveal-up relative group">
+              <div class="w-24 h-24 rounded-2xl glass-panel border border-electric/40 flex flex-col items-center justify-center mb-6 relative z-10 group-hover:scale-105 group-hover:border-cyanGlow transition-all shadow-glow-blue">
+                <span class="font-mono text-[10px] text-silver">STAGE</span>
+                <span class="font-display font-bold text-3xl text-cyanGlow">02</span>
+              </div>
+              <div class="glass-panel glass-panel-hover rounded-2xl p-6 h-[calc(100%-7.5rem)]">
+                <h3 class="font-display font-bold text-xl text-white tracking-wide mb-3">02 &mdash; CONCEPTUALISE</h3>
+                <p class="text-silver text-sm leading-relaxed">
+                  We develop creative concepts and determine the right direction for the project.
+                </p>
+              </div>
+            </div>
+
+            <div class="reveal-up relative group">
+              <div class="w-24 h-24 rounded-2xl glass-panel border border-electric/40 flex flex-col items-center justify-center mb-6 relative z-10 group-hover:scale-105 group-hover:border-cyanGlow transition-all shadow-glow-blue">
+                <span class="font-mono text-[10px] text-silver">STAGE</span>
+                <span class="font-display font-bold text-3xl text-cyanGlow">03</span>
+              </div>
+              <div class="glass-panel glass-panel-hover rounded-2xl p-6 h-[calc(100%-7.5rem)]">
+                <h3 class="font-display font-bold text-xl text-white tracking-wide mb-3">03 &mdash; CREATE</h3>
+                <p class="text-silver text-sm leading-relaxed">
+                  We transform the concept into a complete creative product.
+                </p>
+              </div>
+            </div>
+
+            <div class="reveal-up relative group">
+              <div class="w-24 h-24 rounded-2xl glass-panel border border-electric/40 flex flex-col items-center justify-center mb-6 relative z-10 group-hover:scale-105 group-hover:border-cyanGlow transition-all shadow-glow-blue">
+                <span class="font-mono text-[10px] text-silver">STAGE</span>
+                <span class="font-display font-bold text-3xl text-cyanGlow">04</span>
+              </div>
+              <div class="glass-panel glass-panel-hover rounded-2xl p-6 h-[calc(100%-7.5rem)]">
+                <h3 class="font-display font-bold text-xl text-white tracking-wide mb-3">04 &mdash; DELIVER</h3>
+                <p class="text-silver text-sm leading-relaxed">
+                  We present the completed work and bring your vision to life.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       9. CLEAN CORPORATE FOOTER (NO ORDER FORM, NO PROJECTS)
+       ===================================================================== -->
+  <footer class="bg-charcoal border-t border-white/10 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        <!-- Brand Column -->
+        <div class="lg:col-span-5">
+          <div class="font-cinzel font-bold text-2xl tracking-[0.14em] text-white">
+            SHASTRY <span class="text-gradient-electric">GROUP</span>
+          </div>
+          <p class="font-mono text-xs tracking-[0.2em] uppercase text-cyanGlow mt-2 mb-4">
+            &ldquo;CREATING BEYOND IMAGINATION.&rdquo;
+          </p>
+          <p class="text-silver text-sm leading-relaxed max-w-md">
+            A multidisciplinary creative company bringing together animation, original music, literature, comics, games, and digital web experiences under one roof.
+          </p>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="lg:col-span-3">
+          <h4 class="font-display font-semibold text-sm uppercase tracking-wider text-white mb-4">Quick Navigation</h4>
+          <ul class="space-y-2.5 text-sm text-silver">
+            <li><a href="#home" class="hover:text-cyanGlow transition-colors">Home</a></li>
+            <li><a href="#founder" class="hover:text-cyanGlow transition-colors">Founder</a></li>
+            <li><a href="#about" class="hover:text-cyanGlow transition-colors">About</a></li>
+            <li><a href="#services" class="hover:text-cyanGlow transition-colors">Services</a></li>
+            <li><a href="#achievements" class="hover:text-cyanGlow transition-colors">Achievements</a></li>
+            <li><a href="#process" class="hover:text-cyanGlow transition-colors">Process</a></li>
+          </ul>
+        </div>
+
+        <!-- Our Divisions -->
+        <div class="lg:col-span-4">
+          <h4 class="font-display font-semibold text-sm uppercase tracking-wider text-white mb-4">Our Divisions</h4>
+          <ul class="grid grid-cols-2 gap-2.5 text-sm text-silver">
+            <li><a href="#division-animation" class="hover:text-cyanGlow transition-colors">Animations</a></li>
+            <li><a href="#division-music" class="hover:text-cyanGlow transition-colors">Music</a></li>
+            <li><a href="#division-books" class="hover:text-cyanGlow transition-colors">Books</a></li>
+            <li><a href="#division-comics" class="hover:text-cyanGlow transition-colors">Comics</a></li>
+            <li><a href="#division-games" class="hover:text-cyanGlow transition-colors">Games</a></li>
+            <li><a href="#division-websites" class="hover:text-cyanGlow transition-colors">Websites</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-silver">
+        <div>&copy; 2026 Shastry Group. All Rights Reserved.</div>
+        <div class="font-mono">Founded by Keshav Shastry</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       APPLICATION JAVASCRIPT (NAVIGATION, COUNTERS, TILT & STARFIELD)
+       ===================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile navigation menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+
+      mobileMenuBtn?.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+        iconOpen.classList.toggle('hidden', !isHidden);
+        iconClose.classList.toggle('hidden', isHidden);
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+          iconOpen?.classList.remove('hidden');
+          iconClose?.classList.add('hidden');
+        });
+      });
+
+      // Smooth anchor scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // Animated Achievements Counters
+      const counters = document.querySelectorAll('.stat-counter');
+      let countersStarted = false;
+      const achievementsGrid = document.getElementById('achievements-grid');
+
+      function animateCounters() {
+        if (countersStarted) return;
+        countersStarted = true;
+        counters.forEach(counter => {
+          const target = parseInt(counter.dataset.target, 10) || 0;
+          const format = counter.dataset.format || 'plain';
+          const suffix = counter.dataset.suffix || '';
+          const duration = 1800;
+          const startTime = performance.now();
+
+          function update(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(target * eased);
+            counter.textContent = (format === 'comma' ? current.toLocaleString() : current) + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+        });
+      }
+
+      if (achievementsGrid) {
+        const counterObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounters();
+              counterObserver.disconnect();
+            }
+          });
+        }, { threshold: 0.2 });
+        counterObserver.observe(achievementsGrid);
+      }
+
+      // Subtle 3D Tilt Interaction on Cards
+      document.querySelectorAll('.tilt-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `perspective(1000px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+        });
+      });
+
+      // GSAP Scroll Reveal Animations
+      if (typeof gsap !== 'undefined') {
+        gsap.from('.hero-reveal', {
+          y: 26,
+          opacity: 0,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: 'power3.out'
+        });
+
+        if (typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+          document.querySelectorAll('.reveal-up').forEach(el => {
+            gsap.from(el, {
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 86%',
+                once: true
+              },
+              y: 30,
+              opacity: 0,
+              duration: 0.85,
+              ease: 'power3.out'
+            });
+          });
+        }
+      }
+
+      // Initialize subtle ambient starfield canvas for the Hero section
+      initHeroStarfield();
+    });
+
+    function initHeroStarfield() {
+      if (typeof THREE === 'undefined') return;
+      const container = document.getElementById('hero-canvas-container');
+      if (!container) return;
+
+      const scene = new THREE.Scene();
+      const width = container.clientWidth || window.innerWidth;
+      const height = container.clientHeight || window.innerHeight;
+
+      const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
+      camera.position.z = 12;
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      const starGeo = new THREE.BufferGeometry();
+      const starCount = 340;
+      const starPos = new Float32Array(starCount * 3);
+      for (let i = 0; i < starCount * 3; i++) {
+        starPos[i] = (Math.random() - 0.5) * 32;
+      }
+      starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+      const starMat = new THREE.PointsMaterial({
+        color: 0x38bdf8,
+        size: 0.065,
+        transparent: true,
+        opacity: 0.65
+      });
+      const stars = new THREE.Points(starGeo, starMat);
+      scene.add(stars);
+
+      const pointer = { x: 0, y: 0, targetX: 0, targetY: 0 };
+      window.addEventListener('mousemove', (e) => {
+        pointer.targetX = (e.clientX / window.innerWidth) * 2 - 1;
+        pointer.targetY = -(e.clientY / window.innerHeight) * 2 + 1;
+      }, { passive: true });
+
+      let isHeroVisible = true;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => { isHeroVisible = en.isIntersecting; });
+      }, { threshold: 0.05 });
+      io.observe(container);
+
+      window.addEventListener('resize', () => {
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+        if (w > 0 && h > 0) {
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+          renderer.setSize(w, h);
+        }
+      });
+
+      const clock = new THREE.Clock();
+      function animateStarfield() {
+        requestAnimationFrame(animateStarfield);
+        if (!isHeroVisible) return;
+        const t = clock.getElapsedTime();
+        pointer.x += (pointer.targetX - pointer.x) * 0.04;
+        pointer.y += (pointer.targetY - pointer.y) * 0.04;
+
+        stars.rotation.y = t * 0.025 + pointer.x * 0.12;
+        stars.rotation.x = t * 0.012 - pointer.y * 0.08;
+        renderer.render(scene, camera);
+      }
+      animateStarfield();
+    }
+  </script>
+</body>
+</html>
