@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SHASTRY GROUP | Creating Beyond Imagination</title>
-  <meta name="description" content="Shastry Group is a multidisciplinary creative company transforming ideas into animations, music, books, comics, games, and digital experiences." />
+  <meta name="description" content="Shastry Group is a founder-led multidisciplinary creative studio uniting Animation, Music, Literature, Comics, Gaming, and Digital Engineering under one roof." />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -62,7 +62,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -77,16 +76,15 @@
       background: #2563EB;
     }
 
-    /* Glassmorphism Utilities */
     .glass-nav {
-      background: rgba(5, 7, 13, 0.78);
+      background: rgba(5, 7, 13, 0.82);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(148, 163, 184, 0.12);
     }
 
     .glass-card {
-      background: linear-gradient(145deg, rgba(21, 27, 43, 0.72), rgba(14, 18, 29, 0.88));
+      background: linear-gradient(145deg, rgba(21, 27, 43, 0.76), rgba(14, 18, 29, 0.92));
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(148, 163, 184, 0.14);
@@ -96,10 +94,9 @@
 
     .glass-card:hover {
       border-color: rgba(56, 189, 248, 0.45);
-      box-shadow: 0 28px 60px -12px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 28px 60px -12px rgba(37, 99, 235, 0.24);
     }
 
-    /* Text Gradients */
     .text-gradient-blue {
       background: linear-gradient(135deg, #FFFFFF 0%, #93C5FD 48%, #38BDF8 100%);
       -webkit-background-clip: text;
@@ -112,15 +109,13 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Subtle Ambient Grid */
     .bg-grid-pattern {
       background-size: 48px 48px;
-      background-image: 
+      background-image:
         linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
     }
 
-    /* Animated Scroll Line */
     @keyframes scrollDrop {
       0% { transform: translateY(-100%); opacity: 0; }
       40% { opacity: 1; }
@@ -130,7 +125,6 @@
       animation: scrollDrop 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
     }
 
-    /* Ambient Glow Blobs */
     .ambient-orb {
       position: absolute;
       border-radius: 9999px;
@@ -139,31 +133,6 @@
       z-index: 0;
     }
 
-    /* 3D Tilt Card Helper */
-    .tilt-card {
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-
-    /* Clickable Service Sub-Heading Pill */
-    .service-pill {
-      background: rgba(15, 23, 42, 0.72);
-      border: 1px solid rgba(148, 163, 184, 0.16);
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-    .service-pill:hover {
-      background: rgba(37, 99, 235, 0.22);
-      border-color: rgba(56, 189, 248, 0.6);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px -8px rgba(37, 99, 235, 0.45);
-    }
-    .service-pill:hover .pill-arrow {
-      transform: translateX(3px);
-      color: #38BDF8;
-    }
-
-    /* Clean Full-Screen Welcome Video Splash Overlay */
     #welcome-intro-overlay {
       transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.85s ease;
     }
@@ -172,28 +141,42 @@
       visibility: hidden;
       pointer-events: none;
     }
+
+    .ecosystem-node {
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .ecosystem-node:hover,
+    .ecosystem-node.active {
+      border-color: #38BDF8;
+      background: rgba(37, 99, 235, 0.22);
+      transform: scale(1.04);
+      box-shadow: 0 0 32px rgba(56, 189, 248, 0.28);
+    }
   </style>
 </head>
 <body class="bg-midnight text-platinum selection:bg-electric selection:text-white overflow-hidden">
 
   <!-- =====================================================================
-       CONFIGURABLE BRAND SETTINGS
-       Repository Root Files Required:
+       CONFIGURABLE BRAND SETTINGS & REAL ARCHIVE DATA
+       Repository Root Files:
        1. index.html
-       2. welcome.mp4   (Plays with its own original lip-synced voice track)
-       3. founder.png   (Founder portrait displayed in the Founder section)
+       2. welcome.mp4   (Welcome video played on entry; tap Mute/Unmute to toggle sound)
+       3. founder.png   (Official portrait of Founder Keshav Shastry)
   ====================================================================== -->
   <script>
     const SITE_CONFIG = {
       companyName: "SHASTRY GROUP",
       founderName: "Keshav Shastry",
       welcomeVideo: "./welcome.mp4",
-      founderImage: "./founder.png"
+      founderImage: "./founder.png",
+      officialEmail: "keshavshastry90@gmail.com",
+      featuredCreatorYouTube: "https://www.youtube.com/@nishashastry",
+      trailerYouTube: "https://www.youtube.com/watch?v=5Pv2QmVWP3Y"
     };
   </script>
 
   <!-- =====================================================================
-       PURE FULL-SCREEN WELCOME VIDEO OVERLAY (USES YOUR VIDEO'S OWN VOICE)
+       FULL-SCREEN WELCOME VIDEO OVERLAY (AUTO-PLAYS + MUTE/UNMUTE BUTTON)
   ====================================================================== -->
   <div id="welcome-intro-overlay" class="fixed inset-0 z-[100] bg-midnight flex items-center justify-center overflow-hidden">
     <video
@@ -201,9 +184,27 @@
       class="w-full h-full object-contain sm:object-cover bg-midnight pointer-events-none select-none"
       src="./welcome.mp4"
       autoplay
+      muted
       playsinline
       preload="auto"
     ></video>
+
+    <button
+      id="welcome-audio-btn"
+      type="button"
+      onclick="toggleWelcomeAudio()"
+      class="fixed bottom-8 right-8 z-20 inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-midnight/85 hover:bg-electric/30 border border-slate-700 hover:border-electricGlow text-xs font-mono uppercase tracking-wider text-white backdrop-blur-md shadow-xl transition-all"
+      aria-label="Toggle Welcome Video Sound"
+    >
+      <svg id="audio-muted-icon" class="w-4 h-4 text-electricGlow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+      </svg>
+      <svg id="audio-unmuted-icon" class="w-4 h-4 text-electricGlow hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+      </svg>
+      <span id="welcome-audio-label">Unmute</span>
+    </button>
   </div>
 
   <!-- =====================================================================
@@ -213,7 +214,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         <!-- Custom SG Monogram Logo -->
-        <a href="#home" onclick="closeSubServicePage()" class="flex items-center gap-3.5 group focus:outline-none" aria-label="Shastry Group Home">
+        <a href="#home" onclick="returnToHomeView()" class="flex items-center gap-3.5 group focus:outline-none" aria-label="Shastry Group Home">
           <div class="relative w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-charcoalLight to-midnight border border-slate-700/70 group-hover:border-electricGlow/70 transition-all duration-300 shadow-lg shadow-electric/10">
             <svg class="w-7 h-7" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -239,18 +240,22 @@
         </a>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
-          <a href="#home" onclick="closeSubServicePage()" class="hover:text-white transition-colors">Home</a>
-          <a href="#founder" onclick="closeSubServicePage()" class="hover:text-white transition-colors">Founder</a>
-          <a href="#about" onclick="closeSubServicePage()" class="hover:text-white transition-colors">About</a>
-          <a href="#services" onclick="closeSubServicePage()" class="hover:text-white transition-colors">Services</a>
-          <a href="#achievements" onclick="closeSubServicePage()" class="hover:text-white transition-colors">Achievements</a>
-          <a href="#why-us" onclick="closeSubServicePage()" class="hover:text-white transition-colors">Why Us</a>
-          <a href="#process" onclick="closeSubServicePage()" class="hover:text-white transition-colors">Process</a>
+        <nav class="hidden xl:flex items-center gap-6 text-xs font-mono uppercase tracking-wider text-slate-300">
+          <a href="#featured" onclick="returnToHomeView()" class="hover:text-white transition-colors">Creations</a>
+          <a href="#about" onclick="returnToHomeView()" class="hover:text-white transition-colors">About</a>
+          <a href="#universe" onclick="returnToHomeView()" class="hover:text-white transition-colors">Universe</a>
+          <a href="#divisions" onclick="returnToHomeView()" class="hover:text-white transition-colors">Divisions</a>
+          <a href="#portfolio" onclick="returnToHomeView()" class="hover:text-white transition-colors">Portfolio</a>
+          <a href="#featured-creator" onclick="returnToHomeView()" class="hover:text-white transition-colors">Creator Spotlight</a>
+          <a href="#achievements" onclick="returnToHomeView()" class="hover:text-white transition-colors">Impact</a>
+          <a href="#founder" onclick="returnToHomeView()" class="hover:text-white transition-colors">Founder</a>
+          <a href="#contact" onclick="returnToHomeView()" class="px-4 py-2 rounded-lg bg-electric hover:bg-blue-500 text-white font-semibold transition-all">
+            Contact
+          </a>
         </nav>
 
         <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" type="button" class="lg:hidden p-2.5 rounded-lg bg-charcoalLight border border-slate-700/70 text-slate-200 hover:text-white focus:outline-none" aria-label="Toggle Menu" aria-expanded="false">
+        <button id="mobile-menu-btn" type="button" class="xl:hidden p-2.5 rounded-lg bg-charcoalLight border border-slate-700/70 text-slate-200 hover:text-white focus:outline-none" aria-label="Toggle Menu" aria-expanded="false">
           <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -262,70 +267,66 @@
     </div>
 
     <!-- Mobile Dropdown Navigation -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-midnight/95 backdrop-blur-xl border-b border-slate-800 px-6 pt-3 pb-6 space-y-3">
-      <a href="#home" onclick="closeSubServicePage()" class="mobile-nav-link block py-2 text-base font-medium text-slate-200 hover:text-electricGlow">Home</a>
-      <a href="#founder" onclick="closeSubServicePage()" class="mobile-nav-link block py-2 text-base font-medium text-slate-200 hover:text-electricGlow">Founder</a>
-      <a href="#about" onclick="closeSubServicePage()" class="mobile-nav-link block py-2 text-base font-medium text-slate-200 hover:text-electricGlow">About</a>
-      <a href="#services" onclick="closeSubServicePage()" class="mobile-nav-link block py-2 text-base font-medium text-slate-200 hover:text-electricGlow">Services</a>
-      <a href="#achievements" onclick="closeSubServicePage()" class="mobile-nav-link block py-2 text-base font-medium text-slate-200 hover:text-electricGlow">Achievements</a>
-      <a href="#why-us" onclick="closeSubServicePage()" class="mobile-nav-link block py-2 text-base font-medium text-slate-200 hover:text-electricGlow">Why Shastry Group</a>
-      <a href="#process" onclick="closeSubServicePage()" class="mobile-nav-link block py-2 text-base font-medium text-slate-200 hover:text-electricGlow">Creative Process</a>
+    <div id="mobile-menu" class="hidden xl:hidden bg-midnight/95 backdrop-blur-xl border-b border-slate-800 px-6 pt-3 pb-6 space-y-2.5 text-sm">
+      <a href="#featured" onclick="returnToHomeView()" class="mobile-nav-link block py-1.5 text-slate-200 hover:text-electricGlow">Featured Creations</a>
+      <a href="#about" onclick="returnToHomeView()" class="mobile-nav-link block py-1.5 text-slate-200 hover:text-electricGlow">About Shastry Group</a>
+      <a href="#universe" onclick="returnToHomeView()" class="mobile-nav-link block py-1.5 text-slate-200 hover:text-electricGlow">Creative Universe</a>
+      <a href="#divisions" onclick="returnToHomeView()" class="mobile-nav-link block py-1.5 text-slate-200 hover:text-electricGlow">Six Creative Divisions</a>
+      <a href="#portfolio" onclick="returnToHomeView()" class="mobile-nav-link block py-1.5 text-slate-200 hover:text-electricGlow">Our Portfolio</a>
+      <a href="#featured-creator" onclick="returnToHomeView()" class="mobile-nav-link block py-1.5 text-slate-200 hover:text-electricGlow">Creator Spotlight — Nisha Shastry</a>
+      <a href="#achievements" onclick="returnToHomeView()" class="mobile-nav-link block py-1.5 text-slate-200 hover:text-electricGlow">Impact &amp; Achievements</a>
+      <a href="#founder" onclick="returnToHomeView()" class="mobile-nav-link block py-1.5 text-slate-200 hover:text-electricGlow">Founder &amp; Leadership</a>
+      <a href="#behind-creation" onclick="returnToHomeView()" class="mobile-nav-link block py-1.5 text-slate-200 hover:text-electricGlow">Behind the Creation</a>
+      <a href="#updates" onclick="returnToHomeView()" class="mobile-nav-link block py-1.5 text-slate-200 hover:text-electricGlow">Latest Updates</a>
+      <a href="#contact" onclick="returnToHomeView()" class="mobile-nav-link block py-2 text-electricGlow font-semibold">Contact</a>
     </div>
   </header>
 
   <!-- =====================================================================
-       MAIN LANDING VIEW (REVEALED AUTOMATICALLY WHEN WELCOME VIDEO ENDS)
+       MAIN HOMEPAGE VIEW
   ====================================================================== -->
   <div id="main-landing-view">
     <main>
       <!-- =====================================================================
-           SECTION 1: HERO EXPERIENCE
+           01 · HERO EXPERIENCE (SEQUENCED ENTRANCE: LOGO -> 3D UNIVERSE -> HEADLINE -> CTAS)
       ====================================================================== -->
       <section id="home" class="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-20">
         <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-0"></canvas>
 
         <!-- Cinematic Vignette Overlays -->
-        <div class="absolute inset-0 bg-gradient-to-b from-midnight/70 via-midnight/40 to-midnight pointer-events-none z-10"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#05070D_92%)] pointer-events-none z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-midnight/65 via-midnight/35 to-midnight pointer-events-none z-10"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#05070D_90%)] pointer-events-none z-10"></div>
 
-        <!-- Hero Content -->
+        <!-- Sequenced Hero Content -->
         <div class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16">
-          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-charcoalLight/80 border border-electricGlow/30 backdrop-blur-md mb-8 hero-reveal">
+          <div class="hero-step-1 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-charcoalLight/85 border border-electricGlow/35 backdrop-blur-md mb-8">
             <span class="w-2 h-2 rounded-full bg-electricGlow animate-pulse"></span>
-            <span class="text-xs font-mono uppercase tracking-[0.25em] text-slate-200">
-              Multidisciplinary Creative Company
+            <span class="text-xs font-mono uppercase tracking-[0.26em] text-slate-200">
+              SHASTRY GROUP • FOUNDER-LED CREATIVE STUDIO
             </span>
           </div>
 
-          <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] tracking-tight leading-[1.06] mb-6 hero-reveal">
+          <h1 class="hero-step-2 font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] tracking-tight leading-[1.05] mb-6">
             <span class="block text-gradient-silver">CREATING BEYOND</span>
             <span class="block text-gradient-blue mt-1">IMAGINATION.</span>
           </h1>
 
-          <p class="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-slate-300 font-normal leading-relaxed mb-10 hero-reveal">
-            From captivating animations and original music to extraordinary stories, immersive games and digital experiences — we transform ideas into reality.
+          <p class="hero-step-3 max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-slate-300 font-normal leading-relaxed mb-10">
+            A world of creativity, innovation and extraordinary ideas — uniting Animation, Music, Literature, Comics, Gaming and Digital Engineering under one roof.
           </p>
 
-          <!-- Action Button -->
-          <div class="flex items-center justify-center hero-reveal">
-            <a href="#services" class="px-9 py-4 rounded-xl bg-electric hover:bg-blue-500 text-white font-display font-bold text-sm tracking-[0.14em] uppercase transition-all duration-300 shadow-xl shadow-electric/30 hover:shadow-electricGlow/40 hover:-translate-y-0.5 text-center">
-              EXPLORE OUR SERVICES
+          <div class="hero-step-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#universe" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-electric hover:bg-blue-500 text-white font-display font-bold text-sm tracking-[0.14em] uppercase transition-all duration-300 shadow-xl shadow-electric/30 hover:-translate-y-0.5 text-center">
+              EXPLORE OUR WORLD
             </a>
-          </div>
-
-          <!-- Six Creative Pillars Strip -->
-          <div class="mt-14 pt-8 border-t border-slate-800/70 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-xs font-mono tracking-wider text-slate-400 uppercase hero-reveal">
-            <a href="#service-animation" class="hover:text-electricGlow transition-colors">01 / Animation</a>
-            <a href="#service-music" class="hover:text-electricGlow transition-colors">02 / Music</a>
-            <a href="#service-books" class="hover:text-electricGlow transition-colors">03 / Books</a>
-            <a href="#service-comics" class="hover:text-electricGlow transition-colors">04 / Comics</a>
-            <a href="#service-games" class="hover:text-electricGlow transition-colors">05 / Games</a>
-            <a href="#service-websites" class="hover:text-electricGlow transition-colors">06 / Websites</a>
+            <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-charcoalLight/90 hover:bg-charcoalLight border border-slate-700 hover:border-electricGlow text-white font-display font-bold text-sm tracking-[0.14em] uppercase transition-all duration-300 hover:-translate-y-0.5 text-center">
+              VIEW OUR CREATIONS
+            </a>
           </div>
         </div>
 
-        <!-- Sophisticated Scroll Indicator -->
-        <a href="#founder" aria-label="Scroll to Founder" class="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 group">
+        <!-- Scroll Indicator -->
+        <a href="#featured" aria-label="Scroll to Featured Creations" class="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 group">
           <span class="text-[10px] font-mono tracking-[0.3em] text-slate-400 group-hover:text-electricGlow transition-colors uppercase">Scroll</span>
           <div class="w-[1px] h-10 bg-slate-800 overflow-hidden relative">
             <div class="w-full h-1/2 bg-gradient-to-b from-transparent via-electricGlow to-white scroll-indicator-bar"></div>
@@ -334,14 +335,435 @@
       </section>
 
       <!-- =====================================================================
-           SECTION 2: FOUNDER — KESHAV SHASTRY (PLACED AT THE START WITH FULL UNCROPPED IMAGE)
+           02 · FEATURED CREATIONS (HIGHLIGHTING REAL FLAGSHIP WORKS)
       ====================================================================== -->
-      <section id="founder" class="relative py-24 sm:py-32 bg-charcoal/50 border-t border-slate-800/70 overflow-hidden">
+      <section id="featured" class="relative py-24 sm:py-32 bg-charcoal/45 border-t border-slate-800/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-wrap items-end justify-between gap-6 mb-16 reveal-up">
+            <div>
+              <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-3">
+                <span class="w-8 h-[1px] bg-electricGlow"></span>
+                02 · Featured Creations
+              </div>
+              <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
+                FLAGSHIP <span class="text-gradient-blue">CREATIONS.</span>
+              </h2>
+            </div>
+            <a href="#portfolio" class="text-xs font-mono uppercase tracking-[0.2em] text-electricGlow hover:text-white transition-colors">
+              Explore Complete Archive →
+            </a>
+          </div>
+
+          <div id="featured-creations-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           03 · ABOUT SHASTRY GROUP & COMPANY TIMELINE
+      ====================================================================== -->
+      <section id="about" class="relative py-24 sm:py-32 bg-midnight bg-grid-pattern border-t border-slate-800/60 overflow-hidden">
+        <div class="ambient-orb w-96 h-96 bg-electric/15 -top-20 -right-20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-7 space-y-6 reveal-up">
+              <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow">
+                <span class="w-8 h-[1px] bg-electricGlow"></span>
+                03 · About Shastry Group
+              </div>
+
+              <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white leading-tight">
+                MORE THAN CREATION. <span class="text-gradient-blue">A UNIFIED STUDIO.</span>
+              </h2>
+
+              <div class="space-y-4 text-slate-300 text-base sm:text-lg leading-relaxed">
+                <p>
+                  Shastry Group was built on a clear conviction: great stories and bold ideas should never be confined to a single medium.
+                </p>
+                <p>
+                  As an independent, founder-led creative studio and digital production house, we operate six interconnected creative divisions—allowing a single original universe to live simultaneously as a cinematic animation, an original soundtrack, a full-length novel, a graphic novel series, a playable browser game, and a flagship web platform.
+                </p>
+                <p class="text-white font-medium">
+                  We combine disciplined creative direction with modern engineering to turn ambitious concepts into finished, audience-ready experiences.
+                </p>
+              </div>
+
+              <div class="p-6 rounded-2xl bg-charcoalLight/80 border-l-4 border-electric">
+                <p class="text-xs font-mono uppercase tracking-[0.22em] text-electricGlow mb-1.5">Our Core Philosophy</p>
+                <p class="text-white font-display font-semibold text-lg sm:text-xl">
+                  "Every great creation begins with an idea. We help transform that idea into reality."
+                </p>
+              </div>
+            </div>
+
+            <!-- Company Journey & Evolution Timeline -->
+            <div class="lg:col-span-5 glass-card rounded-3xl p-8 reveal-up">
+              <p class="text-xs font-mono uppercase tracking-[0.22em] text-electricGlow mb-6">Studio Evolution</p>
+              <div class="space-y-6 border-l border-slate-700/80 pl-6 ml-2">
+                <div class="relative">
+                  <span class="w-3 h-3 rounded-full bg-electricGlow absolute -left-[30px] top-1.5 shadow-lg shadow-electricGlow/50"></span>
+                  <span class="text-xs font-mono text-electricGlow">PHASE 01 — FOUNDATION</span>
+                  <h3 class="font-display font-bold text-lg text-white mt-0.5">Storytelling &amp; Digital Video Origins</h3>
+                  <p class="text-sm text-slate-400 mt-1">Launched original animated storytelling and digital video production, scaling to 1,500+ published videos and 15,000+ subscribers.</p>
+                </div>
+
+                <div class="relative">
+                  <span class="w-3 h-3 rounded-full bg-electric absolute -left-[30px] top-1.5"></span>
+                  <span class="text-xs font-mono text-electricGlow">PHASE 02 — EXPANSION</span>
+                  <h3 class="font-display font-bold text-lg text-white mt-0.5">Original Music, Books &amp; Comics</h3>
+                  <p class="text-sm text-slate-400 mt-1">Expanded into original music composition (200+ songs), published books (30+ titles), and superhero/sci-fi comics (50+ issues).</p>
+                </div>
+
+                <div class="relative">
+                  <span class="w-3 h-3 rounded-full bg-electric absolute -left-[30px] top-1.5"></span>
+                  <span class="text-xs font-mono text-electricGlow">PHASE 03 — INTERACTIVE &amp; WEB</span>
+                  <h3 class="font-display font-bold text-lg text-white mt-0.5">Gaming &amp; Web Architecture</h3>
+                  <p class="text-sm text-slate-400 mt-1">Built 50+ browser and strategy games alongside 20+ websites, interactive portals, and digital hubs.</p>
+                </div>
+
+                <div class="relative">
+                  <span class="w-3 h-3 rounded-full bg-white absolute -left-[30px] top-1.5"></span>
+                  <span class="text-xs font-mono text-electricGlow">PHASE 04 — SHASTRY GROUP</span>
+                  <h3 class="font-display font-bold text-lg text-white mt-0.5">Six Studios Under One Roof</h3>
+                  <p class="text-sm text-slate-400 mt-1">Unified all six creative studios under Shastry Group to bring stories, music, games, and digital platforms together.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           B. OUR CREATIVE UNIVERSE (INTERACTIVE ECOSYSTEM DIAGRAM)
+      ====================================================================== -->
+      <section id="universe" class="relative py-24 sm:py-32 bg-charcoal/50 border-t border-slate-800/70 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
+            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-3">
+              <span class="w-6 h-[1px] bg-electricGlow"></span>
+              Our Creative Universe
+              <span class="w-6 h-[1px] bg-electricGlow"></span>
+            </div>
+            <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white">
+              SIX STUDIOS. <span class="text-gradient-blue">ONE ECOSYSTEM.</span>
+            </h2>
+            <p class="text-slate-400 text-base sm:text-lg mt-4">
+              Select any studio node orbiting Shastry Group to see how each division connects and opens its dedicated studio experience.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-12 gap-8 items-center">
+            <!-- Interactive Orbital Hub -->
+            <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-10 relative">
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 items-center">
+                <button type="button" onclick="selectUniverseNode(0)" id="uni-node-0" class="ecosystem-node active rounded-2xl p-5 bg-midnight/90 border border-slate-700/80 text-left">
+                  <span class="text-[11px] font-mono text-electricGlow block">01</span>
+                  <span class="font-display font-bold text-white text-base mt-1 block">Animation Studio</span>
+                  <span class="text-xs text-slate-400 mt-1 block">Films &amp; Video</span>
+                </button>
+
+                <button type="button" onclick="selectUniverseNode(1)" id="uni-node-1" class="ecosystem-node rounded-2xl p-5 bg-midnight/90 border border-slate-700/80 text-left">
+                  <span class="text-[11px] font-mono text-electricGlow block">02</span>
+                  <span class="font-display font-bold text-white text-base mt-1 block">Music Studio</span>
+                  <span class="text-xs text-slate-400 mt-1 block">Songs &amp; Scores</span>
+                </button>
+
+                <button type="button" onclick="selectUniverseNode(2)" id="uni-node-2" class="ecosystem-node rounded-2xl p-5 bg-midnight/90 border border-slate-700/80 text-left">
+                  <span class="text-[11px] font-mono text-electricGlow block">03</span>
+                  <span class="font-display font-bold text-white text-base mt-1 block">Literature Studio</span>
+                  <span class="text-xs text-slate-400 mt-1 block">Books &amp; Novels</span>
+                </button>
+
+                <!-- Central Parent Core -->
+                <div class="col-span-2 sm:col-span-3 my-2 p-6 rounded-2xl bg-gradient-to-r from-electric/20 via-charcoalLight to-electric/20 border border-electricGlow/50 text-center shadow-lg shadow-electric/20">
+                  <span class="text-[10px] font-mono uppercase tracking-[0.28em] text-electricGlow block">Parent Organisation Core</span>
+                  <span class="font-display font-extrabold text-2xl sm:text-3xl tracking-[0.14em] text-white mt-1 block">SHASTRY GROUP</span>
+                  <span class="text-xs text-slate-300 mt-1 block">Shared Story Worlds • Unified Creative Direction • Cross-Media Production</span>
+                </div>
+
+                <button type="button" onclick="selectUniverseNode(3)" id="uni-node-3" class="ecosystem-node rounded-2xl p-5 bg-midnight/90 border border-slate-700/80 text-left">
+                  <span class="text-[11px] font-mono text-electricGlow block">04</span>
+                  <span class="font-display font-bold text-white text-base mt-1 block">Comics Studio</span>
+                  <span class="text-xs text-slate-400 mt-1 block">Graphic Novels</span>
+                </button>
+
+                <button type="button" onclick="selectUniverseNode(4)" id="uni-node-4" class="ecosystem-node rounded-2xl p-5 bg-midnight/90 border border-slate-700/80 text-left">
+                  <span class="text-[11px] font-mono text-electricGlow block">05</span>
+                  <span class="font-display font-bold text-white text-base mt-1 block">Gaming Studio</span>
+                  <span class="text-xs text-slate-400 mt-1 block">Playable Worlds</span>
+                </button>
+
+                <button type="button" onclick="selectUniverseNode(5)" id="uni-node-5" class="ecosystem-node rounded-2xl p-5 bg-midnight/90 border border-slate-700/80 text-left">
+                  <span class="text-[11px] font-mono text-electricGlow block">06</span>
+                  <span class="font-display font-bold text-white text-base mt-1 block">Digital Studio</span>
+                  <span class="text-xs text-slate-400 mt-1 block">Websites &amp; Apps</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Active Node Live Preview Card -->
+            <div class="lg:col-span-5 glass-card rounded-3xl p-8 sm:p-10 border border-slate-700/70">
+              <span id="uni-preview-code" class="text-xs font-mono uppercase tracking-[0.22em] text-electricGlow">01 · ANIMATION STUDIO</span>
+              <h3 id="uni-preview-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-2 mb-3">
+                Films, Videos &amp; Visual Storytelling
+              </h3>
+              <p id="uni-preview-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                End-to-end video generation, multi-scene narrative direction, precision video editing, and 4K cinematic mastering.
+              </p>
+              <div id="uni-preview-stat" class="inline-block px-4 py-1.5 rounded-full bg-midnight border border-slate-700 text-xs font-mono text-electricGlow mb-6">
+                1,500+ Videos Created
+              </div>
+              <div>
+                <button id="uni-preview-cta" type="button" onclick="openDivisionLandingPage('animation')" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-electric hover:bg-blue-500 text-white font-display font-bold text-xs uppercase tracking-[0.16em] transition-all">
+                  ENTER ANIMATION STUDIO →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           04 · SIX CREATIVE DIVISIONS (DISTINCT STUDIO IDENTITIES + DEDICATED PAGES)
+      ====================================================================== -->
+      <section id="divisions" class="relative py-24 sm:py-32 bg-midnight border-t border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl mb-16 reveal-up">
+            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-3">
+              <span class="w-8 h-[1px] bg-electricGlow"></span>
+              04 · Six Creative Divisions
+            </div>
+            <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
+              SIX DEDICATED <span class="text-gradient-blue">CREATIVE STUDIOS.</span>
+            </h2>
+            <p class="text-slate-400 text-base sm:text-lg mt-4">
+              Each studio operates with its own creative identity, dedicated landing page, completed works archive, and specialized capabilities.
+            </p>
+          </div>
+
+          <div id="studios-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"></div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           05 · OUR PORTFOLIO / OUR CREATIONS (FILTERABLE REAL WORKS ARCHIVE)
+      ====================================================================== -->
+      <section id="portfolio" class="relative py-24 sm:py-32 bg-charcoal/45 border-t border-slate-800/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 reveal-up">
+            <div>
+              <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-3">
+                <span class="w-8 h-[1px] bg-electricGlow"></span>
+                05 · Our Creations &amp; Portfolio
+              </div>
+              <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
+                EXPLORE OUR <span class="text-gradient-blue">WORLD OF CREATION.</span>
+              </h2>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div id="portfolio-filters" class="flex flex-wrap gap-2">
+              <button type="button" onclick="filterPortfolio('all')" data-filter="all" class="portfolio-filter-btn active px-4 py-2 rounded-lg bg-electric text-white text-xs font-mono uppercase tracking-wider transition-all">All</button>
+              <button type="button" onclick="filterPortfolio('animation')" data-filter="animation" class="portfolio-filter-btn px-4 py-2 rounded-lg bg-midnight border border-slate-700 text-slate-300 hover:text-white text-xs font-mono uppercase tracking-wider transition-all">Animations</button>
+              <button type="button" onclick="filterPortfolio('music')" data-filter="music" class="portfolio-filter-btn px-4 py-2 rounded-lg bg-midnight border border-slate-700 text-slate-300 hover:text-white text-xs font-mono uppercase tracking-wider transition-all">Music</button>
+              <button type="button" onclick="filterPortfolio('literature')" data-filter="literature" class="portfolio-filter-btn px-4 py-2 rounded-lg bg-midnight border border-slate-700 text-slate-300 hover:text-white text-xs font-mono uppercase tracking-wider transition-all">Books</button>
+              <button type="button" onclick="filterPortfolio('comics')" data-filter="comics" class="portfolio-filter-btn px-4 py-2 rounded-lg bg-midnight border border-slate-700 text-slate-300 hover:text-white text-xs font-mono uppercase tracking-wider transition-all">Comics</button>
+              <button type="button" onclick="filterPortfolio('gaming')" data-filter="gaming" class="portfolio-filter-btn px-4 py-2 rounded-lg bg-midnight border border-slate-700 text-slate-300 hover:text-white text-xs font-mono uppercase tracking-wider transition-all">Games</button>
+              <button type="button" onclick="filterPortfolio('digital')" data-filter="digital" class="portfolio-filter-btn px-4 py-2 rounded-lg bg-midnight border border-slate-700 text-slate-300 hover:text-white text-xs font-mono uppercase tracking-wider transition-all">Websites</button>
+            </div>
+          </div>
+
+          <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           CREATOR SPOTLIGHT — NISHA SHASTRY YOUTUBE CHANNEL SHOWCASE
+      ====================================================================== -->
+      <section id="featured-creator" class="relative py-24 sm:py-28 bg-midnight border-t border-slate-800/70 overflow-hidden">
+        <div class="ambient-orb w-[440px] h-[440px] bg-electric/15 top-1/2 right-0 -translate-y-1/2"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="glass-card rounded-3xl p-8 sm:p-12 lg:p-14 border border-electricGlow/35 reveal-up">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+              <div class="lg:col-span-7 space-y-5">
+                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-electric/15 border border-electricGlow/40 text-xs font-mono uppercase tracking-[0.22em] text-electricGlow">
+                  <span class="w-2 h-2 rounded-full bg-electricGlow animate-pulse"></span>
+                  <span>Featured Creator Impact</span>
+                </div>
+
+                <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white leading-tight">
+                  POWERING CREATIVE STORYTELLING FOR <span class="text-gradient-blue">NISHA SHASTRY.</span>
+                </h2>
+
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                  One of Shastry Group's proudest creative journeys is supporting author and audio storyteller <strong class="text-white">Nisha Shastry</strong> on YouTube—bringing captivating stories, dramatic visuals, original soundscapes, and serialized digital storytelling to a growing audience.
+                </p>
+
+                <div class="pt-2 flex flex-wrap items-center gap-4">
+                  <a
+                    href="https://www.youtube.com/@nishashastry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-3 px-7 py-4 rounded-xl bg-electric hover:bg-blue-500 text-white font-display font-bold text-xs sm:text-sm uppercase tracking-[0.14em] transition-all shadow-lg shadow-electric/30"
+                  >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span>Visit Nisha Shastry on YouTube ↗</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="lg:col-span-5">
+                <div class="rounded-2xl bg-midnight/95 border border-slate-800 p-7 space-y-5">
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div>
+                      <span class="text-[11px] font-mono uppercase tracking-widest text-electricGlow block">YouTube Channel</span>
+                      <span class="font-display font-bold text-xl text-white mt-0.5 block">Nisha Shastry</span>
+                    </div>
+                    <span class="px-3 py-1 rounded-full bg-electric/15 border border-electric/40 text-xs font-mono text-electricGlow">
+                      @nishashastry
+                    </span>
+                  </div>
+
+                  <div class="space-y-3 text-sm text-slate-300">
+                    <div class="flex items-start gap-2.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-electricGlow mt-2 shrink-0"></span>
+                      <span>Visual storytelling, animated sequences, and episode production</span>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-electricGlow mt-2 shrink-0"></span>
+                      <span>Atmospheric background scores and emotional audio storytelling</span>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-electricGlow mt-2 shrink-0"></span>
+                      <span>Consistent series presentation across digital releases</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           06 · IMPACT & ACHIEVEMENTS (12 EXACT METRICS)
+      ====================================================================== -->
+      <section id="achievements" class="relative py-24 sm:py-32 bg-charcoal/45 border-t border-slate-800/70 overflow-hidden">
+        <div class="ambient-orb w-[500px] h-[500px] bg-electric/15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
+            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-3">
+              <span class="w-6 h-[1px] bg-electricGlow"></span>
+              06 · Impact &amp; Achievements
+              <span class="w-6 h-[1px] bg-electricGlow"></span>
+            </div>
+            <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white">
+              OUR JOURNEY. <span class="text-gradient-blue">OUR CREATIONS.</span>
+            </h2>
+            <p class="text-slate-400 text-base mt-3">
+              Cumulative milestones across our digital channels, publications, interactive releases, and web platforms.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
+                <span class="stat-counter" data-target="15000" data-format="comma" data-suffix="+">15,000+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Subscribers</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                <span class="stat-counter" data-target="1500" data-format="comma" data-suffix="+">1,500+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Videos Created</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
+                <span class="stat-counter" data-target="200" data-format="plain" data-suffix="+">200+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Songs Created</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                <span class="stat-counter" data-target="500" data-format="plain" data-suffix="K+">500K+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Total Song Views</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                <span class="stat-counter" data-target="30" data-format="plain" data-suffix="+">30+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Books Written</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
+                <span class="stat-counter" data-target="60" data-format="plain" data-suffix="K+">60K+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Book Views</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                <span class="stat-counter" data-target="200" data-format="plain" data-suffix="+">200+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Books Sold</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
+                <span class="stat-counter" data-target="50" data-format="plain" data-suffix="+">50+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Comics Created</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
+                <span class="stat-counter" data-target="100" data-format="plain" data-suffix="K+">100K+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Comic Views</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                <span class="stat-counter" data-target="50" data-format="plain" data-suffix="+">50+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Games Created</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
+                <span class="stat-counter" data-target="30" data-format="plain" data-suffix="K+">30K+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Game Views</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-7 text-center">
+              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                <span class="stat-counter" data-target="20" data-format="plain" data-suffix="+">20+</span>
+              </div>
+              <p class="text-sm font-medium text-slate-300 mt-2">Websites Created</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           07 · FOUNDER & LEADERSHIP (CLEAN PORTRAIT WITH NO PLACEHOLDER INSTRUCTIONS)
+      ====================================================================== -->
+      <section id="founder" class="relative py-24 sm:py-32 bg-midnight border-t border-slate-800/70 overflow-hidden">
         <div class="ambient-orb w-[460px] h-[460px] bg-electric/15 top-10 -left-24"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div class="glass-card rounded-3xl p-6 sm:p-10 lg:p-14 border border-slate-700/60">
             <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-              <!-- Full Uncropped Founder Portrait (./founder.png) -->
+              <!-- Finished Founder Portrait (./founder.png) -->
               <div class="lg:col-span-6">
                 <div class="relative rounded-2xl overflow-hidden bg-midnight border border-slate-700/80 shadow-2xl shadow-electric/20">
                   <img
@@ -349,57 +771,60 @@
                     src="./founder.png"
                     alt="Keshav Shastry — Founder of Shastry Group"
                     class="block w-full h-auto"
-                    onerror="this.style.display='none'; document.getElementById('founder-photo-fallback').classList.remove('hidden');"
+                    onerror="this.closest('.lg\\:col-span-6').classList.add('hidden'); this.closest('.grid').querySelector('.lg\\:col-span-6:last-child').classList.replace('lg:col-span-6', 'lg:col-span-12');"
                   />
-                  <div id="founder-photo-fallback" class="hidden w-full py-20 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-charcoalLight to-midnight">
-                    <div class="w-24 h-24 rounded-full border-2 border-dashed border-electricGlow/50 flex items-center justify-center mb-4">
-                      <span class="font-display font-bold text-2xl text-electricGlow">KS</span>
-                    </div>
-                    <p class="font-display font-bold text-white text-lg">Keshav Shastry</p>
-                    <p class="text-xs font-mono text-slate-400 mt-1">Place <code class="text-electricGlow">founder.png</code> in root repository folder</p>
-                  </div>
                 </div>
               </div>
 
-              <!-- Founder Narrative -->
+              <!-- Founder Biography, Philosophy, Milestones & Future Message -->
               <div class="lg:col-span-6 space-y-6">
                 <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow">
                   <span class="w-8 h-[1px] bg-electricGlow"></span>
-                  Founder Profile
+                  07 · Founder &amp; Leadership
                 </div>
 
                 <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
                   THE VISION BEHIND SHASTRY GROUP.
                 </h2>
 
-                <div class="pt-1">
+                <div>
                   <h3 class="font-display font-bold text-2xl text-white tracking-wide">Keshav Shastry</h3>
-                  <p class="text-xs font-mono uppercase tracking-[0.22em] text-electricGlow mt-1">Founder of Shastry Group</p>
+                  <p class="text-xs font-mono uppercase tracking-[0.22em] text-electricGlow mt-1">Founder &amp; Creative Director, Shastry Group</p>
                 </div>
 
                 <div class="space-y-4 text-slate-300 text-base leading-relaxed">
                   <p>
-                    Keshav Shastry is the founder of Shastry Group, a creative entrepreneur driven by a passion for technology, storytelling, entertainment and innovation.
+                    Keshav Shastry is the founder of Shastry Group, a multidisciplinary creative entrepreneur, author, comic creator, and digital builder driven by a passion for storytelling, entertainment, and technology.
                   </p>
                   <p>
-                    With an interest in exploring different creative disciplines, he established Shastry Group with a vision of bringing multiple forms of creativity together under one organisation.
+                    Having authored published children's and sci-fi books, scripted superhero and fantasy comic series, produced over 1,500 digital videos, and built interactive web platforms, he founded Shastry Group to bring these creative disciplines together under one cohesive organisation.
                   </p>
-                  <p>
-                    His vision is to build a company where ideas are not restricted to one industry or medium, but can be transformed into animations, music, books, comics, games and digital experiences.
-                  </p>
-                  <p>
-                    He believes that every great creation begins with an idea, and the right combination of imagination, dedication and execution can turn that idea into something extraordinary.
+                  <p class="text-white font-medium">
+                    Looking ahead, his vision is to build original intellectual properties and digital experiences that turn bold ideas into enduring creative worlds.
                   </p>
                 </div>
 
-                <!-- Founder Quote -->
+                <div class="grid grid-cols-3 gap-3 pt-2">
+                  <div class="p-3.5 rounded-xl bg-midnight/85 border border-slate-800">
+                    <span class="font-display font-bold text-lg text-electricGlow block">6 Studios</span>
+                    <span class="text-xs text-slate-400">Unified Direction</span>
+                  </div>
+                  <div class="p-3.5 rounded-xl bg-midnight/85 border border-slate-800">
+                    <span class="font-display font-bold text-lg text-white block">30+ Books</span>
+                    <span class="text-xs text-slate-400">&amp; 50+ Comics</span>
+                  </div>
+                  <div class="p-3.5 rounded-xl bg-midnight/85 border border-slate-800">
+                    <span class="font-display font-bold text-lg text-electricGlow block">1,500+</span>
+                    <span class="text-xs text-slate-400">Videos Produced</span>
+                  </div>
+                </div>
+
                 <blockquote class="p-6 rounded-2xl bg-midnight/80 border-l-4 border-electricGlow">
                   <p class="text-lg sm:text-xl font-display font-semibold italic text-white leading-relaxed">
                     “Great ideas should never remain just ideas. They deserve to become something real.”
                   </p>
                 </blockquote>
 
-                <!-- Calligraphic Signature Treatment -->
                 <div class="pt-2 flex items-center justify-between border-t border-slate-800/80">
                   <div>
                     <p class="font-signature text-4xl text-electricGlow select-none">Keshav Shastry</p>
@@ -413,277 +838,14 @@
       </section>
 
       <!-- =====================================================================
-           SECTION 3: ABOUT SHASTRY GROUP
+           08 · OUR CREATIVE PROCESS & BEHIND THE CREATION
       ====================================================================== -->
-      <section id="about" class="relative py-24 sm:py-32 bg-midnight bg-grid-pattern border-t border-slate-800/60 overflow-hidden">
-        <div class="ambient-orb w-96 h-96 bg-electric/15 -top-20 -right-20"></div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div class="space-y-6 reveal-up">
-            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow">
-              <span class="w-8 h-[1px] bg-electricGlow"></span>
-              About Shastry Group
-            </div>
-
-            <h2 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white leading-tight">
-              MORE THAN CREATION. <span class="text-gradient-blue">A VISION.</span>
-            </h2>
-
-            <div class="space-y-5 text-slate-300 text-base sm:text-lg leading-relaxed pt-2">
-              <p>
-                At Shastry Group, we believe that creativity has no boundaries. We are driven by the idea that imagination can become something extraordinary when combined with vision, dedication and innovation.
-              </p>
-              <p>
-                Our work spans multiple creative disciplines, bringing together animation, music, literature, comics, gaming and digital development under one roof.
-              </p>
-              <p>
-                Whether it is creating a captivating visual story, composing original music, developing a novel, building an engaging game or designing a professional website, we approach every project with a commitment to creativity and quality.
-              </p>
-              <p class="text-white font-medium">
-                Our goal is to transform ideas into meaningful experiences that inspire, entertain and make an impact.
-              </p>
-            </div>
-
-            <div class="pt-6">
-              <div class="p-6 sm:p-8 rounded-2xl bg-charcoalLight/80 border-l-4 border-electric">
-                <p class="text-xs font-mono uppercase tracking-[0.22em] text-electricGlow mb-2">Our Core Philosophy</p>
-                <p class="text-white font-display font-semibold text-xl sm:text-2xl">
-                  "Every great creation begins with an idea. We help transform that idea into reality."
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =====================================================================
-           SECTION 4: OUR SERVICES (CLICKABLE SUB-HEADINGS OPENING DEDICATED DETAIL PAGES)
-      ====================================================================== -->
-      <section id="services" class="relative py-24 sm:py-32 bg-charcoal/40 border-t border-slate-800/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-3xl mb-20 reveal-up">
-            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-4">
-              <span class="w-8 h-[1px] bg-electricGlow"></span>
-              Creative Divisions
-            </div>
-            <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
-              SIX WORLDS OF <span class="text-gradient-blue">CREATIVITY.</span>
-            </h2>
-            <p class="text-slate-400 text-lg mt-4">
-              Select any specialized capability below to open a dedicated overview of our workflow, deliverables, and creative standards for that discipline.
-            </p>
-          </div>
-
-          <div id="divisions-container" class="space-y-16"></div>
-        </div>
-      </section>
-
-      <!-- =====================================================================
-           SECTION 5: OUR ACHIEVEMENTS (12 EXACT ANIMATED METRICS)
-      ====================================================================== -->
-      <section id="achievements" class="relative py-24 sm:py-32 bg-midnight border-t border-slate-800/70 overflow-hidden">
-        <div class="ambient-orb w-[500px] h-[500px] bg-electric/15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
-            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-4">
-              <span class="w-6 h-[1px] bg-electricGlow"></span>
-              Impact &amp; Reach
-              <span class="w-6 h-[1px] bg-electricGlow"></span>
-            </div>
-            <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white">
-              OUR JOURNEY. <span class="text-gradient-blue">OUR CREATIONS.</span>
-            </h2>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
-                <span class="stat-counter" data-target="15000" data-format="comma" data-suffix="+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Subscribers</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
-                <span class="stat-counter" data-target="1500" data-format="comma" data-suffix="+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Videos Created</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
-                <span class="stat-counter" data-target="200" data-format="plain" data-suffix="+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Songs Created</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
-                <span class="stat-counter" data-target="500" data-format="plain" data-suffix="K+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Total Song Views</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
-                <span class="stat-counter" data-target="30" data-format="plain" data-suffix="+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Books Written</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
-                <span class="stat-counter" data-target="60" data-format="plain" data-suffix="K+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Book Views</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
-                <span class="stat-counter" data-target="200" data-format="plain" data-suffix="+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Books Sold</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
-                <span class="stat-counter" data-target="50" data-format="plain" data-suffix="+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Comics Created</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
-                <span class="stat-counter" data-target="100" data-format="plain" data-suffix="K+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Comic Views</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
-                <span class="stat-counter" data-target="50" data-format="plain" data-suffix="+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Games Created</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-gradient-blue tracking-tight">
-                <span class="stat-counter" data-target="30" data-format="plain" data-suffix="K+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Game Views</p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-7 text-center reveal-up">
-              <div class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
-                <span class="stat-counter" data-target="20" data-format="plain" data-suffix="+">0</span>
-              </div>
-              <p class="text-sm font-medium text-slate-300 mt-2">Websites Created</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =====================================================================
-           SECTION 6: WHY SHASTRY GROUP? (6 STRATEGIC PILLARS)
-      ====================================================================== -->
-      <section id="why-us" class="relative py-24 sm:py-32 bg-charcoal/50 border-t border-slate-800/60">
+      <section id="behind-creation" class="relative py-24 sm:py-32 bg-charcoal/50 bg-grid-pattern border-t border-slate-800/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-3xl mx-auto mb-16 reveal-up">
-            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-4">
+            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-3">
               <span class="w-6 h-[1px] bg-electricGlow"></span>
-              Why Shastry Group
-              <span class="w-6 h-[1px] bg-electricGlow"></span>
-            </div>
-            <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white">
-              ONE VISION. <span class="text-gradient-blue">MULTIPLE CREATIVE WORLDS.</span>
-            </h2>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="glass-card tilt-card rounded-2xl p-8 reveal-up">
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center text-electricGlow font-mono font-bold text-sm mb-6">
-                01
-              </div>
-              <h3 class="font-display font-bold text-xl text-white tracking-wide mb-3">
-                MULTIDISCIPLINARY EXPERTISE
-              </h3>
-              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                We bring together multiple creative services under one company.
-              </p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-8 reveal-up">
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center text-electricGlow font-mono font-bold text-sm mb-6">
-                02
-              </div>
-              <h3 class="font-display font-bold text-xl text-white tracking-wide mb-3">
-                PROVEN EXPERIENCE
-              </h3>
-              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Our experience spans thousands of videos and hundreds of creative projects.
-              </p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-8 reveal-up">
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center text-electricGlow font-mono font-bold text-sm mb-6">
-                03
-              </div>
-              <h3 class="font-display font-bold text-xl text-white tracking-wide mb-3">
-                CREATIVITY FIRST
-              </h3>
-              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                We believe every project deserves original thinking and a carefully developed creative approach.
-              </p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-8 reveal-up">
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center text-electricGlow font-mono font-bold text-sm mb-6">
-                04
-              </div>
-              <h3 class="font-display font-bold text-xl text-white tracking-wide mb-3">
-                IDEA TO EXECUTION
-              </h3>
-              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                We help transform concepts into complete creative products.
-              </p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-8 reveal-up">
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center text-electricGlow font-mono font-bold text-sm mb-6">
-                05
-              </div>
-              <h3 class="font-display font-bold text-xl text-white tracking-wide mb-3">
-                DIVERSE CAPABILITIES
-              </h3>
-              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                From storytelling and entertainment to technology and digital experiences, our capabilities cover multiple industries.
-              </p>
-            </div>
-
-            <div class="glass-card tilt-card rounded-2xl p-8 reveal-up">
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center text-electricGlow font-mono font-bold text-sm mb-6">
-                06
-              </div>
-              <h3 class="font-display font-bold text-xl text-white tracking-wide mb-3">
-                CLIENT-FOCUSED APPROACH
-              </h3>
-              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                We focus on understanding each client's requirements and delivering work aligned with their vision.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =====================================================================
-           SECTION 7: OUR CREATIVE PROCESS (4-STAGE TIMELINE)
-      ====================================================================== -->
-      <section id="process" class="relative py-24 sm:py-32 bg-midnight bg-grid-pattern border-t border-slate-800/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center max-w-3xl mx-auto mb-20 reveal-up">
-            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-4">
-              <span class="w-6 h-[1px] bg-electricGlow"></span>
-              How We Work
+              08 · Creative Process &amp; Behind The Creation
               <span class="w-6 h-[1px] bg-electricGlow"></span>
             </div>
             <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white">
@@ -691,49 +853,161 @@
             </h2>
           </div>
 
-          <div class="relative">
-            <div class="hidden lg:block absolute top-12 left-10 right-10 h-[2px] bg-gradient-to-r from-electric/20 via-electricGlow to-electric/20"></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div class="glass-card rounded-2xl p-8 reveal-up">
+              <div class="w-12 h-12 rounded-xl bg-midnight border border-electricGlow flex items-center justify-center font-mono font-bold text-electricGlow text-base mb-5">01</div>
+              <h3 class="font-display font-bold text-xl text-white tracking-wider mb-2">DISCOVER</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">We define the core story, audience, creative goals, and technical scope of every project.</p>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-              <div class="glass-card rounded-2xl p-8 reveal-up">
-                <div class="w-14 h-14 rounded-2xl bg-midnight border-2 border-electricGlow flex items-center justify-center font-mono font-bold text-electricGlow text-lg mb-6 shadow-lg shadow-electric/25">
-                  01
-                </div>
-                <h3 class="font-display font-bold text-xl text-white tracking-wider mb-3">DISCOVER</h3>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                  We understand your vision, requirements and objectives.
+            <div class="glass-card rounded-2xl p-8 reveal-up">
+              <div class="w-12 h-12 rounded-xl bg-midnight border border-electricGlow flex items-center justify-center font-mono font-bold text-electricGlow text-base mb-5">02</div>
+              <h3 class="font-display font-bold text-xl text-white tracking-wider mb-2">CONCEPTUALISE</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">We build storyboards, character bibles, musical motifs, chapter outlines, and UI wireframes.</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-8 reveal-up">
+              <div class="w-12 h-12 rounded-xl bg-midnight border border-electricGlow flex items-center justify-center font-mono font-bold text-electricGlow text-base mb-5">03</div>
+              <h3 class="font-display font-bold text-xl text-white tracking-wider mb-2">CREATE</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">We execute full production across video editing, scoring, manuscript drafting, comic panels, or code.</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-8 reveal-up">
+              <div class="w-12 h-12 rounded-xl bg-midnight border border-electricGlow flex items-center justify-center font-mono font-bold text-electricGlow text-base mb-5">04</div>
+              <h3 class="font-display font-bold text-xl text-white tracking-wider mb-2">DELIVER</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">We polish, master, and publish finished releases ready for global audiences and platforms.</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-700/60">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+              <div>
+                <span class="text-xs font-mono uppercase tracking-[0.22em] text-electricGlow">Inside The Studio</span>
+                <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1">Behind The Creation</h3>
+              </div>
+              <span class="text-xs font-mono text-slate-400">How Ideas Evolve Across Mediums</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="p-6 rounded-2xl bg-midnight/90 border border-slate-800">
+                <span class="text-xs font-mono text-electricGlow uppercase">Stage A · World &amp; Character Architecture</span>
+                <h4 class="font-display font-bold text-lg text-white mt-2 mb-2">From Written Lore to Visual Canon</h4>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                  Every major Shastry Group series begins with a structured story bible—locking in character traits, visual silhouettes, and universe rules so books, comics, and animations stay seamlessly aligned.
                 </p>
               </div>
 
-              <div class="glass-card rounded-2xl p-8 reveal-up">
-                <div class="w-14 h-14 rounded-2xl bg-midnight border-2 border-electricGlow flex items-center justify-center font-mono font-bold text-electricGlow text-lg mb-6 shadow-lg shadow-electric/25">
-                  02
-                </div>
-                <h3 class="font-display font-bold text-xl text-white tracking-wider mb-3">CONCEPTUALISE</h3>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                  We develop creative concepts and determine the right direction for the project.
+              <div class="p-6 rounded-2xl bg-midnight/90 border border-slate-800">
+                <span class="text-xs font-mono text-electricGlow uppercase">Stage B · Multi-Scene &amp; Sonic Direction</span>
+                <h4 class="font-display font-bold text-lg text-white mt-2 mb-2">Rhythm, Pacing &amp; Original Scoring</h4>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                  In our Animation and Music studios, scenes are edited alongside custom-composed themes and sound effects so visual cuts and emotional musical peaks land together.
                 </p>
               </div>
 
-              <div class="glass-card rounded-2xl p-8 reveal-up">
-                <div class="w-14 h-14 rounded-2xl bg-midnight border-2 border-electricGlow flex items-center justify-center font-mono font-bold text-electricGlow text-lg mb-6 shadow-lg shadow-electric/25">
-                  03
-                </div>
-                <h3 class="font-display font-bold text-xl text-white tracking-wider mb-3">CREATE</h3>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                  We transform the concept into a complete creative product.
+              <div class="p-6 rounded-2xl bg-midnight/90 border border-slate-800">
+                <span class="text-xs font-mono text-electricGlow uppercase">Stage C · Interactive &amp; Web Deployment</span>
+                <h4 class="font-display font-bold text-lg text-white mt-2 mb-2">Playable Worlds &amp; Digital Portals</h4>
+                <p class="text-sm text-slate-300 leading-relaxed">
+                  Our Gaming and Digital studios turn stories and utilities into fast, browser-accessible experiences hosted cleanly for instant desktop and mobile access.
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div class="glass-card rounded-2xl p-8 reveal-up">
-                <div class="w-14 h-14 rounded-2xl bg-midnight border-2 border-electricGlow flex items-center justify-center font-mono font-bold text-electricGlow text-lg mb-6 shadow-lg shadow-electric/25">
-                  04
-                </div>
-                <h3 class="font-display font-bold text-xl text-white tracking-wider mb-3">DELIVER</h3>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                  We present the completed work and bring your vision to life.
-                </p>
+      <!-- =====================================================================
+           09 · LATEST UPDATES & NEWS
+      ====================================================================== -->
+      <section id="updates" class="relative py-24 sm:py-32 bg-midnight border-t border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-wrap items-end justify-between gap-4 mb-14 reveal-up">
+            <div>
+              <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-3">
+                <span class="w-8 h-[1px] bg-electricGlow"></span>
+                09 · Latest Updates
               </div>
+              <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white">
+                NEWS &amp; <span class="text-gradient-blue">RELEASES.</span>
+              </h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article class="glass-card rounded-2xl p-7 reveal-up">
+              <span class="text-xs font-mono text-electricGlow uppercase">Studio Announcement</span>
+              <h3 class="font-display font-bold text-xl text-white mt-2 mb-3">
+                Shastry Group Launches Unified Six-Studio Digital Platform
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Bringing Animation, Music, Literature, Comics, Gaming, and Digital Development together under one cohesive creative identity.
+              </p>
+            </article>
+
+            <article class="glass-card rounded-2xl p-7 reveal-up">
+              <span class="text-xs font-mono text-electricGlow uppercase">Publishing Milestone</span>
+              <h3 class="font-display font-bold text-xl text-white mt-2 mb-3">
+                Original Book &amp; Comic Universes Cross 160K+ Combined Views
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Continued reader growth across original fantasy, sci-fi, and superhero titles including the Knight Warriors, Cosmic Warrior, and APEX series.
+              </p>
+            </article>
+
+            <article class="glass-card rounded-2xl p-7 reveal-up">
+              <span class="text-xs font-mono text-electricGlow uppercase">YouTube &amp; Interactive</span>
+              <h3 class="font-display font-bold text-xl text-white mt-2 mb-3">
+                Expanding Storytelling on Nisha Shastry YouTube &amp; Gaming Portals
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                New animated story sequences, original soundtracks, and interactive browser games are actively in production across our studios.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           10 · CONTACT TAB (DIRECT EMAIL DISPLAY ONLY — NO COLLABORATE OR ORDER FORM)
+      ====================================================================== -->
+      <section id="contact" class="relative py-24 sm:py-32 bg-charcoal/55 border-t border-slate-800/70 overflow-hidden">
+        <div class="ambient-orb w-[460px] h-[460px] bg-electric/15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div class="glass-card rounded-3xl p-8 sm:p-14 border border-slate-700/70 reveal-up">
+            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-electricGlow mb-4">
+              <span class="w-6 h-[1px] bg-electricGlow"></span>
+              10 · Contact
+              <span class="w-6 h-[1px] bg-electricGlow"></span>
+            </div>
+
+            <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white leading-tight mb-4">
+              GET IN <span class="text-gradient-blue">TOUCH.</span>
+            </h2>
+
+            <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+              For official communication with Shastry Group, reach out directly via email below.
+            </p>
+
+            <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-5 sm:px-8 sm:py-5 rounded-2xl bg-midnight border border-slate-700/80 shadow-xl">
+              <div class="text-left">
+                <span class="text-[11px] font-mono uppercase tracking-[0.22em] text-electricGlow block">Official Email</span>
+                <a
+                  id="official-email-link"
+                  href="mailto:keshavshastry90@gmail.com"
+                  class="font-display font-bold text-lg sm:text-2xl text-white hover:text-electricGlow transition-colors break-all"
+                >
+                  keshavshastry90@gmail.com
+                </a>
+              </div>
+              <button
+                type="button"
+                onclick="copyOfficialEmail()"
+                id="copy-email-btn"
+                class="px-5 py-2.5 rounded-xl bg-electric hover:bg-blue-500 text-white font-mono text-xs uppercase tracking-wider transition-all shrink-0"
+              >
+                Copy Email
+              </button>
             </div>
           </div>
         </div>
@@ -742,107 +1016,151 @@
   </div>
 
   <!-- =====================================================================
-       DEDICATED SUB-SERVICE DETAIL VIEW (OPENED WHEN CLICKING ANY SUB-HEADING)
+       DEDICATED STUDIO LANDING PAGE VIEW (FOR EACH OF THE 6 DIVISIONS)
   ====================================================================== -->
-  <section id="subservice-detail-view" class="hidden min-h-screen pt-28 pb-24 bg-midnight bg-grid-pattern relative overflow-hidden">
+  <section id="studio-detail-view" class="hidden min-h-screen pt-28 pb-24 bg-midnight bg-grid-pattern relative overflow-hidden">
     <div class="ambient-orb w-[520px] h-[520px] bg-electric/15 top-20 right-0"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="flex flex-wrap items-center justify-between gap-4 pb-8 mb-10 border-b border-slate-800/80">
         <button
-          id="subservice-back-btn"
           type="button"
-          onclick="closeSubServicePage()"
+          onclick="returnToHomeView()"
           class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-charcoalLight hover:bg-electric/20 border border-slate-700 hover:border-electricGlow text-sm font-display font-semibold text-white transition-all"
         >
           <svg class="w-4 h-4 text-electricGlow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          <span>Back to All Services</span>
+          <span>Back to Shastry Group</span>
         </button>
 
         <div class="text-xs font-mono uppercase tracking-[0.2em] text-slate-400">
           <span>SHASTRY GROUP</span>
           <span class="mx-2 text-slate-600">/</span>
-          <span id="detail-breadcrumb-division" class="text-electricGlow">DIVISION</span>
-          <span class="mx-2 text-slate-600">/</span>
-          <span id="detail-breadcrumb-title" class="text-white">CAPABILITY</span>
+          <span id="studio-breadcrumb-name" class="text-electricGlow">STUDIO</span>
         </div>
       </div>
 
-      <div class="glass-card rounded-3xl p-8 sm:p-12 lg:p-14 border border-slate-700/70 mb-10">
-        <div class="flex flex-wrap items-center gap-3 mb-5">
-          <span id="detail-division-badge" class="px-3.5 py-1.5 rounded-lg bg-electric/15 border border-electric/40 text-xs font-mono font-semibold text-electricGlow tracking-widest">
-            DIVISION 01 — ANIMATION CREATION
+      <div class="glass-card rounded-3xl p-8 sm:p-12 lg:p-14 border border-slate-700/70 mb-12">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-5">
+          <span id="studio-code-badge" class="px-3.5 py-1.5 rounded-lg bg-electric/15 border border-electric/40 text-xs font-mono font-semibold text-electricGlow tracking-widest">
+            01 · ANIMATION STUDIO
           </span>
-          <span id="detail-achievement-badge" class="px-3.5 py-1.5 rounded-full bg-midnight border border-slate-700 text-xs font-mono text-slate-300">
+          <span id="studio-stats-badge" class="px-3.5 py-1.5 rounded-full bg-midnight border border-slate-700 text-xs font-mono text-electricGlow">
             1,500+ Videos Created
           </span>
         </div>
 
-        <h1 id="detail-title" class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6">
-          Service Capability Title
+        <h1 id="studio-title" class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white leading-tight mb-4">
+          Animation Studio
         </h1>
 
-        <p id="detail-summary" class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-4xl">
-          Detailed explanation of this specialized creative capability at Shastry Group.
+        <p id="studio-tagline" class="text-xl sm:text-2xl font-display font-semibold text-gradient-blue mb-6">
+          Films, videos and visual storytelling
+        </p>
+
+        <p id="studio-intro" class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-4xl">
+          Studio introduction.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-        <div class="glass-card rounded-2xl p-8">
-          <div class="w-11 h-11 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center text-electricGlow font-mono font-bold text-sm mb-5">
-            01
+      <div id="studio-showcase-box" class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-700/60 mb-12">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6">
+            <span class="text-xs font-mono uppercase tracking-[0.22em] text-electricGlow">Studio Showcase</span>
+            <h2 id="studio-showcase-title" class="font-display font-bold text-2xl sm:text-3xl text-white mt-2 mb-3">
+              Featured Production Spotlight
+            </h2>
+            <p id="studio-showcase-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed mb-5">
+              Production spotlight details.
+            </p>
+            <div id="studio-showcase-action"></div>
           </div>
-          <h2 class="font-display font-bold text-xl text-white mb-4">What We Create</h2>
-          <p id="detail-scope" class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Comprehensive creative execution tailored to your vision.
-          </p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-8">
-          <div class="w-11 h-11 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center text-electricGlow font-mono font-bold text-sm mb-5">
-            02
+          <div class="lg:col-span-6">
+            <div id="studio-showcase-media" class="rounded-2xl overflow-hidden bg-midnight border border-slate-800 p-6"></div>
           </div>
-          <h2 class="font-display font-bold text-xl text-white mb-4">Our Production Approach</h2>
-          <ul id="detail-workflow-list" class="space-y-3 text-sm sm:text-base text-slate-300"></ul>
-        </div>
-
-        <div class="glass-card rounded-2xl p-8">
-          <div class="w-11 h-11 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center text-electricGlow font-mono font-bold text-sm mb-5">
-            03
-          </div>
-          <h2 class="font-display font-bold text-xl text-white mb-4">Key Deliverables</h2>
-          <ul id="detail-deliverables-list" class="space-y-3 text-sm sm:text-base text-slate-300"></ul>
         </div>
       </div>
 
-      <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-800/80">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-          <div>
-            <p class="text-xs font-mono uppercase tracking-[0.2em] text-electricGlow mb-1">Explore More In This Division</p>
-            <h3 id="detail-related-heading" class="font-display font-bold text-2xl text-white">Related Capabilities</h3>
-          </div>
-          <button
-            type="button"
-            onclick="closeSubServicePage()"
-            class="text-xs font-mono uppercase tracking-widest text-slate-300 hover:text-electricGlow underline underline-offset-4"
-          >
-            View All 6 Divisions →
-          </button>
-        </div>
-        <div id="detail-related-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm text-slate-200"></div>
+      <div class="glass-card rounded-3xl p-8 sm:p-10 border border-slate-700/60 mb-12">
+        <p class="text-xs font-mono uppercase tracking-[0.22em] text-electricGlow mb-2">Studio Capabilities</p>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mb-6">What We Produce In This Studio</h2>
+        <div id="studio-capabilities-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+
+      <div>
+        <p class="text-xs font-mono uppercase tracking-[0.22em] text-electricGlow mb-2">Completed Works</p>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mb-6">Portfolio From This Studio</h2>
+        <div id="studio-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
       </div>
     </div>
   </section>
 
   <!-- =====================================================================
-       SECTION 8: CORPORATE FOOTER
+       DEDICATED PROJECT DETAIL PAGE VIEW (OPENED WHEN CLICKING ANY CREATION)
+  ====================================================================== -->
+  <section id="project-detail-view" class="hidden min-h-screen pt-28 pb-24 bg-midnight bg-grid-pattern relative overflow-hidden">
+    <div class="ambient-orb w-[520px] h-[520px] bg-electric/15 top-20 left-0"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-8 mb-10 border-b border-slate-800/80">
+        <button
+          type="button"
+          onclick="returnToHomeView()"
+          class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-charcoalLight hover:bg-electric/20 border border-slate-700 hover:border-electricGlow text-sm font-display font-semibold text-white transition-all"
+        >
+          <svg class="w-4 h-4 text-electricGlow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span>Back to Portfolio</span>
+        </button>
+
+        <span id="proj-breadcrumb" class="text-xs font-mono uppercase tracking-[0.2em] text-electricGlow">
+          PORTFOLIO / PROJECT
+        </span>
+      </div>
+
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-700/70">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span id="proj-category-badge" class="px-3.5 py-1.5 rounded-lg bg-electric/15 border border-electric/40 text-xs font-mono font-semibold text-electricGlow uppercase">
+            Category
+          </span>
+          <span id="proj-format-badge" class="px-3.5 py-1.5 rounded-full bg-midnight border border-slate-700 text-xs font-mono text-slate-300">
+            Format
+          </span>
+        </div>
+
+        <h1 id="proj-title" class="font-display font-extrabold text-3xl sm:text-5xl text-white leading-tight mb-5">
+          Project Title
+        </h1>
+
+        <p id="proj-summary" class="text-slate-300 text-lg leading-relaxed mb-8">
+          Project overview.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="p-6 rounded-2xl bg-midnight/90 border border-slate-800">
+            <h2 class="font-display font-bold text-lg text-white mb-2">Creative Concept &amp; Story</h2>
+            <p id="proj-concept" class="text-sm text-slate-300 leading-relaxed"></p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-midnight/90 border border-slate-800">
+            <h2 class="font-display font-bold text-lg text-white mb-2">Production Highlights</h2>
+            <ul id="proj-highlights" class="space-y-2 text-sm text-slate-300"></ul>
+          </div>
+        </div>
+
+        <div id="proj-external-link-box" class="flex flex-wrap items-center gap-4 pt-6 border-t border-slate-800"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       11 · PREMIUM CORPORATE FOOTER
   ====================================================================== -->
   <footer class="bg-midnight border-t border-slate-800/80 pt-16 pb-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800/80">
         <div class="lg:col-span-5 space-y-4">
-          <a href="#home" onclick="closeSubServicePage()" class="inline-flex items-center gap-3">
+          <a href="#home" onclick="returnToHomeView()" class="inline-flex items-center gap-3">
             <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-charcoalLight border border-slate-700/80">
               <svg class="w-6 h-6" viewBox="0 0 64 64" fill="none">
                 <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" stroke="#38BDF8" stroke-width="2.5" />
@@ -860,32 +1178,36 @@
             </div>
           </a>
           <p class="text-slate-400 text-sm leading-relaxed max-w-md pt-2">
-            Shastry Group is a multidisciplinary creative company focused on transforming ideas into extraordinary creative experiences across animation, music, literature, comics, gaming and digital development.
+            An independent, founder-led creative company uniting Animation, Music, Literature, Comics, Gaming, and Digital Development under one roof.
+          </p>
+          <p class="text-xs font-mono text-slate-300 pt-1">
+            Email: <a href="mailto:keshavshastry90@gmail.com" class="text-electricGlow hover:underline">keshavshastry90@gmail.com</a>
           </p>
         </div>
 
         <div class="lg:col-span-3">
-          <h4 class="font-display font-bold text-xs uppercase tracking-[0.2em] text-white mb-4">Quick Navigation</h4>
+          <h4 class="font-display font-bold text-xs uppercase tracking-[0.2em] text-white mb-4">Navigation</h4>
           <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="#home" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Home</a></li>
-            <li><a href="#founder" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Founder</a></li>
-            <li><a href="#about" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">About</a></li>
-            <li><a href="#services" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Services</a></li>
-            <li><a href="#achievements" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Achievements</a></li>
-            <li><a href="#why-us" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Why Shastry Group</a></li>
-            <li><a href="#process" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Creative Process</a></li>
+            <li><a href="#home" onclick="returnToHomeView()" class="hover:text-electricGlow transition-colors">Home</a></li>
+            <li><a href="#featured" onclick="returnToHomeView()" class="hover:text-electricGlow transition-colors">Featured Creations</a></li>
+            <li><a href="#about" onclick="returnToHomeView()" class="hover:text-electricGlow transition-colors">About &amp; Timeline</a></li>
+            <li><a href="#portfolio" onclick="returnToHomeView()" class="hover:text-electricGlow transition-colors">Our Portfolio</a></li>
+            <li><a href="#featured-creator" onclick="returnToHomeView()" class="hover:text-electricGlow transition-colors">Nisha Shastry YouTube</a></li>
+            <li><a href="#achievements" onclick="returnToHomeView()" class="hover:text-electricGlow transition-colors">Impact &amp; Achievements</a></li>
+            <li><a href="#founder" onclick="returnToHomeView()" class="hover:text-electricGlow transition-colors">Founder &amp; Leadership</a></li>
+            <li><a href="#contact" onclick="returnToHomeView()" class="hover:text-electricGlow transition-colors">Contact</a></li>
           </ul>
         </div>
 
         <div class="lg:col-span-4">
-          <h4 class="font-display font-bold text-xs uppercase tracking-[0.2em] text-white mb-4">Our Divisions</h4>
+          <h4 class="font-display font-bold text-xs uppercase tracking-[0.2em] text-white mb-4">Six Creative Studios</h4>
           <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="#service-animation" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Animations &amp; Video Production</a></li>
-            <li><a href="#service-music" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Music &amp; Song Creation</a></li>
-            <li><a href="#service-books" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Books &amp; Novel Writing</a></li>
-            <li><a href="#service-comics" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Comics &amp; Graphic Novels</a></li>
-            <li><a href="#service-games" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Games &amp; Interactive Worlds</a></li>
-            <li><a href="#service-websites" onclick="closeSubServicePage()" class="hover:text-electricGlow transition-colors">Websites &amp; Digital Platforms</a></li>
+            <li><button type="button" onclick="openDivisionLandingPage('animation')" class="hover:text-electricGlow transition-colors">01 · Animation Studio</button></li>
+            <li><button type="button" onclick="openDivisionLandingPage('music')" class="hover:text-electricGlow transition-colors">02 · Music Studio</button></li>
+            <li><button type="button" onclick="openDivisionLandingPage('literature')" class="hover:text-electricGlow transition-colors">03 · Literature Studio</button></li>
+            <li><button type="button" onclick="openDivisionLandingPage('comics')" class="hover:text-electricGlow transition-colors">04 · Comics Studio</button></li>
+            <li><button type="button" onclick="openDivisionLandingPage('gaming')" class="hover:text-electricGlow transition-colors">05 · Gaming Studio</button></li>
+            <li><button type="button" onclick="openDivisionLandingPage('digital')" class="hover:text-electricGlow transition-colors">06 · Digital Studio</button></li>
           </ul>
         </div>
       </div>
@@ -898,22 +1220,631 @@
   </footer>
 
   <!-- =====================================================================
-       JAVASCRIPT: NATIVE VIDEO AUDIO PLAYBACK, DIVISION DATA & ROUTER
+       JAVASCRIPT: DATA ARCHIVE, STUDIO PAGES, PROJECT PAGES & 3D HERO
   ====================================================================== -->
   <script>
-    let heroRevealTriggered = false;
+    // =========================================================================
+    // 1. SIX DISTINCT STUDIO DEFINITIONS (WITH DEDICATED LANDING PAGES)
+    // =========================================================================
+    const STUDIOS_DATA = [
+      {
+        id: "animation",
+        number: "01",
+        name: "Animation Studio",
+        tagline: "Films, videos and visual storytelling",
+        stat: "1,500+ Videos Created",
+        accent: "from-blue-600/25 to-cyan-500/10",
+        intro: "Our Animation Studio transforms original scripts and storyboards into cinematic visual sequences—combining multi-scene video generation, precision timeline editing, character continuity, dynamic camera choreography, and 4K mastering.",
+        showcaseTitle: "Cinematic Studio Showreel & Nisha Shastry YouTube Productions",
+        showcaseDesc: "From high-impact trailers to serialized storytelling for Nisha Shastry's YouTube channel, our animation pipeline delivers frame-accurate motion and dramatic lighting.",
+        showcaseLink: "https://www.youtube.com/watch?v=5Pv2QmVWP3Y",
+        showcaseLinkLabel: "Watch Studio Trailer on YouTube ↗",
+        capabilities: [
+          { title: "Cinematic Animations", desc: "Widescreen, film-grade animated sequences with volumetric lighting and emotional pacing." },
+          { title: "Custom Video Generation", desc: "Bespoke visual scene creation turning original scripts into vivid motion sequences." },
+          { title: "Professional Video Editing", desc: "Precision timeline assembly, rhythmic cuts, color grading, and narrative pacing." },
+          { title: "Multi-Scene Sequencing", desc: "Connected shot-by-shot storytelling maintaining continuous environment and lighting." },
+          { title: "Character Continuity", desc: "Consistent protagonist and cast identity across angles, expressions, and episodes." },
+          { title: "Promotional Trailers & Series", desc: "High-retention teasers, launch trailers, and serialized YouTube episodes." }
+        ]
+      },
+      {
+        id: "music",
+        number: "02",
+        name: "Music Studio",
+        tagline: "Original music and sound experiences",
+        stat: "200+ Songs Created • 500K+ Views",
+        accent: "from-sky-500/25 to-indigo-600/10",
+        intro: "Our Music Studio crafts original songs, emotional ballads, motivational anthems, and sweeping sci-fi soundtracks—handling lyric writing, vocal composition, orchestration, and studio mastering.",
+        showcaseTitle: "Sangeet Hub & Original Audio Releases",
+        showcaseDesc: "Explore our curated collection of original songs, cinematic themes, and story-driven musical compositions produced for digital listeners and visual media.",
+        showcaseLink: "https://keshavshastry90-cloud.github.io/-Sangeet-Hub-Audio/",
+        showcaseLinkLabel: "Open Sangeet Hub Audio Portal ↗",
+        capabilities: [
+          { title: "Original Songs & Singles", desc: "Complete vocal and instrumental songs crafted from concept to mastered release." },
+          { title: "Cinematic Film & Trailer Scores", desc: "Orchestral and hybrid soundtracks tailored to heighten on-screen drama." },
+          { title: "Science-Fiction Soundtracks", desc: "Futuristic synthscapes and cosmic atmospheres for sci-fi worlds and games." },
+          { title: "Original Lyric & Melody Writing", desc: "Poetic, memorable lyrics and distinctive vocal hooks across multiple moods." },
+          { title: "Theme Music & Brand Intros", desc: "Signature sonic logos and recurring character themes for channels and studios." },
+          { title: "Audio Mixing & Mastering", desc: "Balanced frequency clarity and commercial loudness across all playback devices." }
+        ]
+      },
+      {
+        id: "literature",
+        number: "03",
+        name: "Literature Studio",
+        tagline: "Novels, books and storytelling",
+        stat: "30+ Books Written • 60K+ Views • 200+ Sold",
+        accent: "from-indigo-500/25 to-blue-700/10",
+        intro: "Our Literature Studio develops complete novels, sci-fi adventures, thrilling mysteries, and imaginative youth fiction—from worldbuilding and character arcs to manuscript editing and publication formatting.",
+        showcaseTitle: "Published Books & Multi-Volume Series",
+        showcaseDesc: "Home to published titles including Cosmic Warrior, Knight Warriors, Rope Hero: Shadows of Pipli, and Mysterious Call—reaching over 60,000 readers.",
+        showcaseLink: "",
+        showcaseLinkLabel: "",
+        capabilities: [
+          { title: "Full-Length Novel Writing", desc: "End-to-end novel drafting with structured pacing, vivid prose, and rich dialogue." },
+          { title: "Science-Fiction & Fantasy Sagas", desc: "Imaginative worlds, cosmic adventures, and heroic multi-volume series." },
+          { title: "Thriller & Mystery Fiction", desc: "Suspense-driven plots engineered with clever clues and gripping twists." },
+          { title: "Worldbuilding & Story Bibles", desc: "Comprehensive universe histories, lore rules, and character profiles." },
+          { title: "Young Adult & Children's Books", desc: "Inspiring, accessible stories crafted to spark imagination in young readers." },
+          { title: "Editing & Publishing Formatting", desc: "Manuscript polish, cover blurbs, and print/digital layout preparation." }
+        ]
+      },
+      {
+        id: "comics",
+        number: "04",
+        name: "Comics Studio",
+        tagline: "Comics and graphic novels",
+        stat: "50+ Comics Created • 100K+ Views",
+        accent: "from-cyan-500/25 to-blue-600/10",
+        intro: "Our Comics Studio transforms original superhero, sci-fi, and fantasy universes into sequential visual adventures—combining panel-by-panel scriptwriting, dynamic layouts, consistent character art, and bold covers.",
+        showcaseTitle: "ComixHub Digital Comic Universe",
+        showcaseDesc: "Read and explore original illustrated series including APEX, Knight Warriors, Ritugn, and The Vanguard directly through our dedicated comic portal.",
+        showcaseLink: "https://keshavshastry90-cloud.github.io/ComixHub/",
+        showcaseLinkLabel: "Explore ComixHub Portal ↗",
+        capabilities: [
+          { title: "Comic Story & Panel Scripting", desc: "Action-paced episodic scripts specifying camera framing, visual beats, and dialogue." },
+          { title: "Superhero & Sci-Fi Universes", desc: "Interconnected hero rosters, origin arcs, and shared graphic novel worlds." },
+          { title: "Character & Costume Design", desc: "Iconic visual identities maintained consistently across every panel and issue." },
+          { title: "Dynamic Page & Panel Layouts", desc: "High-impact splash pages and sequential grids that control reading momentum." },
+          { title: "Dialogue Lettering & SFX", desc: "Clean speech balloon placement and stylized sound effects integrated into the art." },
+          { title: "Print & Digital Issue Assembly", desc: "Full-bleed 6x9 layouts and high-resolution digital comic editions." }
+        ]
+      },
+      {
+        id: "gaming",
+        number: "05",
+        name: "Gaming Studio",
+        tagline: "Games and interactive experiences",
+        stat: "50+ Games Created • 30K+ Views",
+        accent: "from-blue-500/25 to-sky-400/10",
+        intro: "Our Gaming Studio builds playable 3D and browser-based experiences—combining responsive gameplay mechanics, strategy systems, interactive simulations, and clean HUD interfaces.",
+        showcaseTitle: "Shastry Arcade Hub & Interactive Simulations",
+        showcaseDesc: "Play instant browser-based arcade titles, 3D Rubik's Cube speedcubing timers, and tactical chess training tools built in-house.",
+        showcaseLink: "https://keshavshastry90-cloud.github.io/Shastry-Arcade-Hub/",
+        showcaseLinkLabel: "Play on Shastry Arcade Hub ↗",
+        capabilities: [
+          { title: "3D & Browser-Based Games", desc: "Instant-play web games running smoothly across desktop and mobile browsers." },
+          { title: "Strategy & Tactical Titles", desc: "Resource management, board tactics, and skill-based competitive gameplay." },
+          { title: "Action & Arcade Challenges", desc: "Fast-paced reflex mechanics, progressive levels, and high-score loops." },
+          { title: "Interactive 3D Simulations", desc: "Rule-accurate 3D puzzles, WCA-compliant speedcubing timers, and trainers." },
+          { title: "Game HUD & UI Architecture", desc: "Sleek, intuitive menus, live timers, and responsive touch/keyboard controls." },
+          { title: "Performance Optimization", desc: "Lightweight rendering pipelines engineered for smooth frame rates." }
+        ]
+      },
+      {
+        id: "digital",
+        number: "06",
+        name: "Digital Studio",
+        tagline: "Websites and digital platforms",
+        stat: "20+ Websites Created",
+        accent: "from-sky-400/25 to-blue-600/10",
+        intro: "Our Digital Studio designs and engineers modern company websites, personal portfolios, media portals, and interactive web applications with distinctive typography, smooth motion, and clean maintainable code.",
+        showcaseTitle: "CreateForMe & Custom Web Platforms",
+        showcaseDesc: "From bespoke creative studio portals to interactive web utilities, we build fast, responsive digital identities tailored to each brand.",
+        showcaseLink: "https://createforme.in/",
+        showcaseLinkLabel: "Visit CreateForMe Platform ↗",
+        capabilities: [
+          { title: "Corporate & Studio Websites", desc: "Authoritative multi-section websites built with custom brand identity." },
+          { title: "Executive & Creator Portfolios", desc: "Distinguished personal websites showcasing leadership, works, and vision." },
+          { title: "Interactive Web & 3D Experiences", desc: "Smooth scroll choreography, subtle 3D visuals, and responsive micro-interactions." },
+          { title: "Media, Comic & Audio Portals", desc: "Dedicated web hubs with category filtering and fast content navigation." },
+          { title: "Mobile-First Responsive Design", desc: "Adaptive layouts tested across widescreen monitors, tablets, and phones." },
+          { title: "SEO & Speed Engineering", desc: "Semantic HTML structure, fast load times, and clean modular codebases." }
+        ]
+      }
+    ];
 
-    function triggerHeroEntrance() {
-      if (heroRevealTriggered) return;
-      heroRevealTriggered = true;
-      if (typeof gsap !== "undefined") {
-        gsap.from(".hero-reveal", {
-          y: 26,
-          opacity: 0,
-          duration: 0.9,
-          stagger: 0.12,
-          ease: "power3.out"
+    // =========================================================================
+    // 2. REAL PROJECTS & CREATIONS PORTFOLIO ARCHIVE
+    // =========================================================================
+    const PROJECTS_DATA = [
+      {
+        slug: "nisha-shastry-youtube-productions",
+        division: "animation",
+        divisionLabel: "Animation Studio",
+        format: "YouTube Storytelling & Visual Series",
+        featured: true,
+        title: "Nisha Shastry — YouTube Storytelling Series",
+        shortDesc: "End-to-end visual storytelling, animated sequences, and audio-visual production created for YouTuber and author Nisha Shastry.",
+        concept: "Built to bring Hindi sci-fi and dramatic audio stories to life on YouTube with compelling visuals, atmospheric pacing, and consistent episode presentation.",
+        highlights: [
+          "Flagship YouTube channel supported by Shastry Group",
+          "Custom animated scenes, visual pacing, and soundtrack integration",
+          "Engaging serialized storytelling for growing digital audiences"
+        ],
+        externalUrl: "https://www.youtube.com/@nishashastry",
+        externalLabel: "Visit Nisha Shastry on YouTube ↗"
+      },
+      {
+        slug: "shastry-studio-trailer",
+        division: "animation",
+        divisionLabel: "Animation Studio",
+        format: "Cinematic Promotional Trailer",
+        featured: true,
+        title: "Cinematic Studio Showcase Trailer",
+        shortDesc: "A multi-scene visual showcase uniting futuristic environments, dramatic lighting, and high-impact pacing.",
+        concept: "Designed to demonstrate Shastry Group's visual storytelling range across sci-fi worlds, heroic staging, and rhythmic trailer editing.",
+        highlights: [
+          "Multi-scene cinematic sequencing with cohesive color grading",
+          "Dynamic virtual camera movement and atmospheric lighting",
+          "Synchronized sound design and trailer pacing"
+        ],
+        externalUrl: "https://www.youtube.com/watch?v=5Pv2QmVWP3Y",
+        externalLabel: "Watch Video on YouTube ↗"
+      },
+      {
+        slug: "sangeet-hub-audio",
+        division: "music",
+        divisionLabel: "Music Studio",
+        format: "Original Music & Audio Portal",
+        featured: true,
+        title: "Sangeet Hub — Original Music Collection",
+        shortDesc: "A dedicated digital audio hub showcasing original songs, emotional compositions, and cinematic themes.",
+        concept: "Built to give listeners direct access to Shastry Group's growing catalog of 200+ original musical creations across genres.",
+        highlights: [
+          "Original lyric composition and vocal melody arrangement",
+          "Cinematic background scores and story-driven tracks",
+          "Part of 500K+ cumulative song views across platforms"
+        ],
+        externalUrl: "https://keshavshastry90-cloud.github.io/-Sangeet-Hub-Audio/",
+        externalLabel: "Listen on Sangeet Hub ↗"
+      },
+      {
+        slug: "apex-comic-universe",
+        division: "comics",
+        divisionLabel: "Comics Studio",
+        format: "Superhero Graphic Novel Series",
+        featured: true,
+        title: "APEX & ComixHub Graphic Novels",
+        shortDesc: "Original superhero and sci-fi comic issues featuring bold character designs, dynamic layouts, and high-stakes battles.",
+        concept: "Developed as a flagship comic universe hosted on ComixHub, combining tight scriptwriting with expressive sequential panel art.",
+        highlights: [
+          "Consistent hero and villain character design across issues",
+          "Full-bleed comic layouts and stylized dialogue lettering",
+          "Part of 50+ comics created with 100K+ total views"
+        ],
+        externalUrl: "https://keshavshastry90-cloud.github.io/ComixHub/",
+        externalLabel: "Read on ComixHub ↗"
+      },
+      {
+        slug: "knight-warriors-series",
+        division: "literature",
+        divisionLabel: "Literature Studio",
+        format: "Published Fantasy Adventure Series",
+        featured: false,
+        title: "Knight Warriors (Volumes 1 & 2)",
+        shortDesc: "An action-packed fantasy adventure series following young heroes defending their realm against rising darkness.",
+        concept: "Created to blend fast-paced heroic adventure with themes of courage, friendship, and strategic teamwork for young and teen readers.",
+        highlights: [
+          "Multi-volume story arc with rich worldbuilding and lore",
+          "Published on BriBooks with strong reader engagement",
+          "Adapted across both literary and illustrated comic formats"
+        ],
+        externalUrl: "",
+        externalLabel: ""
+      },
+      {
+        slug: "cosmic-warrior-saga",
+        division: "literature",
+        divisionLabel: "Literature Studio",
+        format: "Science-Fiction Book Series",
+        featured: false,
+        title: "Cosmic Warrior (Books 1 & 2)",
+        shortDesc: "Interstellar sci-fi adventure exploring cosmic guardians, futuristic technology, and heroic destiny.",
+        concept: "An imaginative space-adventure series crafted to introduce readers to expansive sci-fi worlds and memorable protagonists.",
+        highlights: [
+          "Two-part science-fiction narrative arc",
+          "Part of 30+ books written and 200+ copies sold",
+          "Original cover concept and universe lore"
+        ],
+        externalUrl: "",
+        externalLabel: ""
+      },
+      {
+        slug: "rope-hero-shadows-of-pipli",
+        division: "literature",
+        divisionLabel: "Literature Studio",
+        format: "Action Mystery Book",
+        featured: false,
+        title: "Rope Hero: Shadows of Pipli",
+        shortDesc: "A thrilling urban mystery and heroic adventure set against intriguing local shadows and hidden secrets.",
+        concept: "Combines mystery investigation with agile heroic action in a tightly paced narrative.",
+        highlights: [
+          "Mystery-driven chapter plotting and suspense",
+          "Published youth adventure title",
+          "Distinctive hero identity and setting"
+        ],
+        externalUrl: "",
+        externalLabel: ""
+      },
+      {
+        slug: "shastry-arcade-hub",
+        division: "gaming",
+        divisionLabel: "Gaming Studio",
+        format: "Browser-Based Arcade Portal",
+        featured: false,
+        title: "Shastry Arcade Hub",
+        shortDesc: "An interactive browser gaming portal featuring instant-play arcade challenges, action games, and skill titles.",
+        concept: "Engineered so players can jump straight into fast, responsive games directly from any desktop or mobile browser.",
+        highlights: [
+          "Zero-install instant browser gameplay",
+          "Responsive keyboard and touch controls",
+          "Part of 50+ games created and 30K+ total game views"
+        ],
+        externalUrl: "https://keshavshastry90-cloud.github.io/Shastry-Arcade-Hub/",
+        externalLabel: "Launch Shastry Arcade Hub ↗"
+      },
+      {
+        slug: "cubeclash-3d-timer",
+        division: "gaming",
+        divisionLabel: "Gaming Studio",
+        format: "3D Simulation & Speedcubing App",
+        featured: false,
+        title: "CubeClash — 3D Cube & WCA Ao5 Timer",
+        shortDesc: "Interactive 3D speedcubing simulation and competition timer built with authentic WCA inspection and Ao5 scoring.",
+        concept: "Created for competitive speedcubers and puzzle enthusiasts seeking accurate scramble generation, 3D visualization, and average-of-five tracking.",
+        highlights: [
+          "Real-time 3D cube visualization and scramble state tracking",
+          "Official WCA inspection countdown and Ao5 calculation",
+          "Clean, low-latency browser execution"
+        ],
+        externalUrl: "https://keshavshastry90-cloud.github.io/CubeClash/",
+        externalLabel: "Open CubeClash ↗"
+      },
+      {
+        slug: "chess-adapt-trainer",
+        division: "gaming",
+        divisionLabel: "Gaming Studio",
+        format: "Web-Based Chess Training Tool",
+        featured: false,
+        title: "Chess Adapt — Tactical Chess Platform",
+        shortDesc: "An interactive web-based chess training and tactical analysis application built for focused skill improvement.",
+        concept: "Inspired by competitive FIDE tournament preparation, offering clean board interaction and structured tactical practice.",
+        highlights: [
+          "Interactive chessboard interface with responsive move validation",
+          "Designed for structured calculation and endgame drills",
+          "Accessible across desktop and mobile browsers"
+        ],
+        externalUrl: "https://mycreateforme-dotcom.github.io/Chess-Adapt-/",
+        externalLabel: "Open Chess Adapt ↗"
+      },
+      {
+        slug: "createforme-platform",
+        division: "digital",
+        divisionLabel: "Digital Studio",
+        format: "Creative Digital Platform",
+        featured: false,
+        title: "CreateForMe.in — Digital Creative Hub",
+        shortDesc: "A modern web platform showcasing custom digital experiences, creative design, and interactive web engineering.",
+        concept: "Built to deliver clean visual hierarchy, fast load speeds, and intuitive navigation across devices.",
+        highlights: [
+          "Bespoke dark-mode UI/UX and responsive grid system",
+          "Structured service presentation and fast static hosting",
+          "Part of 20+ websites created across brands and creators"
+        ],
+        externalUrl: "https://createforme.in/",
+        externalLabel: "Visit CreateForMe.in ↗"
+      }
+    ];
+
+    // =========================================================================
+    // 3. RENDER FUNCTIONS FOR FEATURED, STUDIOS, PORTFOLIO & DETAIL VIEWS
+    // =========================================================================
+    let lastScrollY = 0;
+
+    function renderFeaturedCreations() {
+      const grid = document.getElementById("featured-creations-grid");
+      if (!grid) return;
+      const featured = PROJECTS_DATA.filter((p) => p.featured);
+      grid.innerHTML = featured.map((proj) => `
+        <article onclick="openProjectDetail('${proj.slug}')" class="glass-card rounded-2xl p-6 cursor-pointer flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="text-[11px] font-mono uppercase tracking-wider text-electricGlow">${proj.divisionLabel}</span>
+              <span class="text-xs text-slate-500 group-hover:text-electricGlow transition-colors">→</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white group-hover:text-electricGlow transition-colors mb-2.5">
+              ${proj.title}
+            </h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-5">
+              ${proj.shortDesc}
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400">
+            <span>${proj.format}</span>
+            <span class="text-white group-hover:underline">View Details</span>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderStudiosGrid() {
+      const grid = document.getElementById("studios-grid");
+      if (!grid) return;
+      grid.innerHTML = STUDIOS_DATA.map((studio) => `
+        <article class="glass-card rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-br ${studio.accent} opacity-40 pointer-events-none"></div>
+          <div class="relative z-10">
+            <div class="flex items-center justify-between gap-2 mb-5">
+              <span class="px-3 py-1 rounded-lg bg-midnight/90 border border-slate-700/80 text-xs font-mono text-electricGlow">
+                ${studio.number} · STUDIO
+              </span>
+              <span class="text-xs font-mono text-slate-400">${studio.stat}</span>
+            </div>
+            <h3 class="font-display font-extrabold text-2xl text-white mb-2">${studio.name}</h3>
+            <p class="text-sm font-medium text-electricGlow mb-4">${studio.tagline}</p>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">${studio.intro}</p>
+          </div>
+          <div class="relative z-10 pt-5 border-t border-slate-800/80 flex items-center justify-between">
+            <button
+              type="button"
+              onclick="openDivisionLandingPage('${studio.id}')"
+              class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.16em] text-white group-hover:text-electricGlow transition-colors font-semibold"
+            >
+              <span>Open Studio Page</span>
+              <span>→</span>
+            </button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    window.filterPortfolio = function(category) {
+      document.querySelectorAll(".portfolio-filter-btn").forEach((btn) => {
+        const isMatch = btn.dataset.filter === category;
+        btn.classList.toggle("bg-electric", isMatch);
+        btn.classList.toggle("text-white", isMatch);
+        btn.classList.toggle("bg-midnight", !isMatch);
+        btn.classList.toggle("border", !isMatch);
+        btn.classList.toggle("border-slate-700", !isMatch);
+        btn.classList.toggle("text-slate-300", !isMatch);
+      });
+
+      const grid = document.getElementById("portfolio-grid");
+      if (!grid) return;
+      const items = category === "all" ? PROJECTS_DATA : PROJECTS_DATA.filter((p) => p.division === category);
+
+      grid.innerHTML = items.map((proj) => `
+        <article onclick="openProjectDetail('${proj.slug}')" class="glass-card rounded-2xl p-7 cursor-pointer flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-md bg-electric/15 border border-electric/35 text-[11px] font-mono uppercase tracking-wider text-electricGlow">
+                ${proj.divisionLabel}
+              </span>
+              <span class="text-xs font-mono text-slate-400">${proj.format}</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white group-hover:text-electricGlow transition-colors mb-3">
+              ${proj.title}
+            </h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              ${proj.shortDesc}
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+            <span class="text-xs font-mono uppercase tracking-wider text-white group-hover:text-electricGlow transition-colors">
+              Open Project Case →
+            </span>
+          </div>
+        </article>
+      `).join("");
+    };
+
+    window.selectUniverseNode = function(index) {
+      const studio = STUDIOS_DATA[index];
+      if (!studio) return;
+
+      document.querySelectorAll(".ecosystem-node").forEach((node, idx) => {
+        node.classList.toggle("active", idx === index);
+      });
+
+      document.getElementById("uni-preview-code").textContent = `${studio.number} · ${studio.name.toUpperCase()}`;
+      document.getElementById("uni-preview-title").textContent = studio.tagline;
+      document.getElementById("uni-preview-desc").textContent = studio.intro;
+      document.getElementById("uni-preview-stat").textContent = studio.stat;
+
+      const cta = document.getElementById("uni-preview-cta");
+      cta.textContent = `ENTER ${studio.name.toUpperCase()} →`;
+      cta.onclick = () => openDivisionLandingPage(studio.id);
+    };
+
+    // Open Dedicated Landing Page for Any of the 6 Divisions
+    window.openDivisionLandingPage = function(divisionId, skipHistory) {
+      const studio = STUDIOS_DATA.find((s) => s.id === divisionId);
+      if (!studio) return;
+
+      lastScrollY = window.scrollY;
+
+      document.getElementById("studio-breadcrumb-name").textContent = studio.name;
+      document.getElementById("studio-code-badge").textContent = `${studio.number} · ${studio.name.toUpperCase()}`;
+      document.getElementById("studio-stats-badge").textContent = studio.stat;
+      document.getElementById("studio-title").textContent = studio.name;
+      document.getElementById("studio-tagline").textContent = studio.tagline;
+      document.getElementById("studio-intro").textContent = studio.intro;
+
+      document.getElementById("studio-showcase-title").textContent = studio.showcaseTitle;
+      document.getElementById("studio-showcase-desc").textContent = studio.showcaseDesc;
+
+      const actionEl = document.getElementById("studio-showcase-action");
+      const mediaEl = document.getElementById("studio-showcase-media");
+
+      if (studio.showcaseLink) {
+        actionEl.innerHTML = `
+          <a href="${studio.showcaseLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-charcoalLight hover:bg-electric/25 border border-electricGlow/50 text-xs font-mono uppercase tracking-wider text-white transition-all">
+            ${studio.showcaseLinkLabel}
+          </a>
+        `;
+      } else {
+        actionEl.innerHTML = `<span class="text-xs font-mono text-electricGlow uppercase tracking-wider">Available Across Digital &amp; Print Platforms</span>`;
+      }
+
+      mediaEl.innerHTML = `
+        <div class="space-y-3">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+            <span>STUDIO DIVISION</span>
+            <span class="text-electricGlow">${studio.number} / 06</span>
+          </div>
+          <div class="p-5 rounded-xl bg-charcoalLight/90 border border-slate-700/70">
+            <p class="font-display font-bold text-lg text-white">${studio.name}</p>
+            <p class="text-xs text-slate-400 mt-1">${studio.stat}</p>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">${studio.tagline} — directed by Keshav Shastry under Shastry Group.</p>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("studio-capabilities-grid").innerHTML = studio.capabilities.map((cap) => `
+        <div class="p-5 rounded-2xl bg-midnight/90 border border-slate-800 hover:border-electricGlow/50 transition-all">
+          <h3 class="font-display font-bold text-base text-white mb-2">${cap.title}</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">${cap.desc}</p>
+        </div>
+      `).join("");
+
+      const studioProjects = PROJECTS_DATA.filter((p) => p.division === studio.id);
+      document.getElementById("studio-projects-grid").innerHTML = studioProjects.map((proj) => `
+        <article onclick="openProjectDetail('${proj.slug}')" class="glass-card rounded-2xl p-6 cursor-pointer flex flex-col justify-between group">
+          <div>
+            <span class="text-xs font-mono text-electricGlow uppercase">${proj.format}</span>
+            <h3 class="font-display font-bold text-xl text-white group-hover:text-electricGlow transition-colors mt-2 mb-2.5">${proj.title}</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-5">${proj.shortDesc}</p>
+          </div>
+          <span class="text-xs font-mono uppercase tracking-wider text-white group-hover:text-electricGlow">Open Project Details →</span>
+        </article>
+      `).join("");
+
+      document.getElementById("main-landing-view").classList.add("hidden");
+      document.getElementById("project-detail-view").classList.add("hidden");
+      document.getElementById("studio-detail-view").classList.remove("hidden");
+
+      if (!skipHistory) {
+        history.pushState({ view: "studio", divisionId }, "", `#studio/${divisionId}`);
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    // Open Dedicated Project Detail Page
+    window.openProjectDetail = function(slug, skipHistory) {
+      const proj = PROJECTS_DATA.find((p) => p.slug === slug);
+      if (!proj) return;
+
+      lastScrollY = window.scrollY;
+
+      document.getElementById("proj-breadcrumb").textContent = `PORTFOLIO / ${proj.divisionLabel.toUpperCase()}`;
+      document.getElementById("proj-category-badge").textContent = proj.divisionLabel;
+      document.getElementById("proj-format-badge").textContent = proj.format;
+      document.getElementById("proj-title").textContent = proj.title;
+      document.getElementById("proj-summary").textContent = proj.shortDesc;
+      document.getElementById("proj-concept").textContent = proj.concept;
+
+      document.getElementById("proj-highlights").innerHTML = proj.highlights.map((h) => `
+        <li class="flex items-start gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-electricGlow mt-2 shrink-0"></span>
+          <span>${h}</span>
+        </li>
+      `).join("");
+
+      const linkBox = document.getElementById("proj-external-link-box");
+      linkBox.innerHTML = `
+        ${proj.externalUrl ? `
+          <a href="${proj.externalUrl}" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-electric hover:bg-blue-500 text-white font-display font-bold text-xs uppercase tracking-[0.15em] transition-all">
+            ${proj.externalLabel}
+          </a>
+        ` : ""}
+        <button type="button" onclick="openDivisionLandingPage('${proj.division}')" class="px-6 py-3.5 rounded-xl bg-charcoalLight hover:bg-electric/20 border border-slate-700 text-xs font-mono uppercase tracking-wider text-white transition-all">
+          Explore ${proj.divisionLabel} →
+        </button>
+      `;
+
+      document.getElementById("main-landing-view").classList.add("hidden");
+      document.getElementById("studio-detail-view").classList.add("hidden");
+      document.getElementById("project-detail-view").classList.remove("hidden");
+
+      if (!skipHistory) {
+        history.pushState({ view: "project", slug }, "", `#project/${slug}`);
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    window.returnToHomeView = function(skipHistory) {
+      const studioView = document.getElementById("studio-detail-view");
+      const projView = document.getElementById("project-detail-view");
+      const mainView = document.getElementById("main-landing-view");
+
+      if (studioView.classList.contains("hidden") && projView.classList.contains("hidden")) {
+        return;
+      }
+
+      studioView.classList.add("hidden");
+      projView.classList.add("hidden");
+      mainView.classList.remove("hidden");
+
+      if (!skipHistory) {
+        history.pushState(null, "", "#home");
+      }
+
+      if (typeof ScrollTrigger !== "undefined") {
+        ScrollTrigger.refresh();
+      }
+      window.scrollTo({ top: lastScrollY || 0, behavior: "auto" });
+    };
+
+    window.copyOfficialEmail = function() {
+      const btn = document.getElementById("copy-email-btn");
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(SITE_CONFIG.officialEmail).then(() => {
+          if (btn) {
+            btn.textContent = "Copied!";
+            setTimeout(() => {
+              btn.textContent = "Copy Email";
+            }, 2200);
+          }
         });
+      }
+    };
+
+    window.addEventListener("popstate", (event) => {
+      if (event.state && event.state.view === "studio") {
+        openDivisionLandingPage(event.state.divisionId, true);
+      } else if (event.state && event.state.view === "project") {
+        openProjectDetail(event.state.slug, true);
+      } else {
+        returnToHomeView(true);
+      }
+    });
+
+    // =========================================================================
+    // 4. WELCOME VIDEO SPLASH & MUTE/UNMUTE CONTROLLER
+    // =========================================================================
+    let heroSequenced = false;
+
+    function runSequencedHeroEntrance() {
+      if (heroSequenced) return;
+      heroSequenced = true;
+      if (typeof gsap !== "undefined") {
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl.from(".hero-step-1", { y: 18, opacity: 0, duration: 0.65 })
+          .from(".hero-step-2", { y: 26, opacity: 0, duration: 0.8 }, "-=0.25")
+          .from(".hero-step-3", { y: 20, opacity: 0, duration: 0.7 }, "-=0.35")
+          .from(".hero-step-4", { y: 18, opacity: 0, duration: 0.65 }, "-=0.3");
       }
     }
 
@@ -928,408 +1859,58 @@
       if (video && !video.paused) {
         video.pause();
       }
-
-      triggerHeroEntrance();
+      runSequencedHeroEntrance();
     }
 
-    // =========================================================================
-    // SIX CREATIVE DIVISIONS & CLICKABLE SUB-SERVICES DATA
-    // =========================================================================
-    const DIVISIONS_DATA = [
-      {
-        id: "service-animation",
-        code: "DIVISION 01 — ANIMATION CREATION",
-        shortName: "Animation Creation",
-        headline: "IMAGINATION, BROUGHT TO LIFE.",
-        achievementBadge: "1,500+ Videos Created • 4K Cinematic Mastering",
-        paragraphs: [
-          "We handle the entire visual production pipeline—from original video generation and multi-scene narrative direction to precision video editing, dynamic camera choreography, and final sound-synchronized mastering.",
-          "Whether crafting epic science-fiction adventures, consistent character-driven series, seamless start-to-end scene transitions, or high-impact promotional trailers, we transform concepts into unforgettable visual cinema."
-        ],
-        sectionLabel: "Complete Animation & Video Capabilities (Click Any Item for Full Details)",
-        focusArea: "cinematic visual storytelling, frame-accurate motion direction, and atmospheric lighting",
-        deliverables: [
-          "High-definition master video files ready for global distribution",
-          "Consistent visual styling and scene-to-scene narrative continuity",
-          "Synchronized sound design, voiceover alignment, and color polish"
-        ],
-        subServices: [
-          { slug: "cinematic-animations", title: "Cinematic Animations", summary: "Widescreen, film-grade animated sequences crafted with dramatic lighting, emotional pacing, and theatrical visual depth.", scope: "We direct and produce dramatic animated scenes featuring atmospheric depth, volumetric lighting, expressive character staging, and sweeping visual arcs built for trailers, short films, and flagship brand stories." },
-          { slug: "3d-animated-videos", title: "3D Animated Videos", summary: "Dimensional, depth-rich animated environments and character performances engineered with lifelike lighting and spatial realism.", scope: "We build immersive three-dimensional worlds, futuristic architecture, and dynamic character animations with realistic shadows, reflections, and smooth spatial movement." },
-          { slug: "custom-video-generation", title: "Custom Video Generation", summary: "Bespoke visual scene creation transforming original scripts, storyboards, and creative concepts into vivid motion sequences.", scope: "From single-concept visual shots to complete narrative sequences, we generate custom high-impact video scenes tailored precisely to your story's mood, palette, and artistic direction." },
-          { slug: "professional-video-editing", title: "Professional Video Editing", summary: "Precision timeline assembly, rhythmic pacing, seamless cuts, and narrative tightening that elevate raw scenes into cohesive cinema.", scope: "We structure, trim, pace, and assemble multi-clip productions into seamless visual stories—refining timing, emotional beats, transitions, and visual flow from opening frame to final credit." },
-          { slug: "multi-scene-sequencing", title: "Multi-Scene Sequencing", summary: "Structured shot-by-shot storytelling that connects individual scenes into continuous, long-form narrative episodes.", scope: "We plan and sequence consecutive shots so action, environment, lighting, and story progression flow naturally across multi-minute episodes and full narrative chapters." },
-          { slug: "character-continuity-design", title: "Character Continuity & Design", summary: "Distinctive original characters maintained with unwavering visual consistency across every angle, expression, and scene.", scope: "We design memorable heroes, protagonists, and casts—preserving facial identity, wardrobe details, proportions, and signature style throughout every shot of your series." },
-          { slug: "cinematic-camera-choreography", title: "Cinematic Camera Choreography", summary: "Intentional virtual camera movements including sweeping crane shots, orbital tracking, dynamic zooms, and dramatic reveals.", scope: "Every shot is framed like a live-action feature film—using smooth dolly tracking, aerial reveals, close-up emotional framing, and high-energy action camera motion." },
-          { slug: "start-to-end-frame-transitions", title: "Start-to-End Frame Transitions", summary: "Fluid visual bridges connecting exact opening poses and environments to dramatic closing compositions.", scope: "We craft seamless visual transformations between key story moments—ensuring smooth motion continuity, morphing environments, and unbroken visual momentum." },
-          { slug: "science-fiction-animations", title: "Science-Fiction Animations", summary: "Futuristic worlds, interstellar voyages, advanced technology, and high-concept sci-fi storytelling brought to visual life.", scope: "We specialize in speculative worlds—designing sleek spacecraft, holographic cities, cosmic battles, and futuristic civilizations with authentic sci-fi atmosphere." },
-          { slug: "story-based-animations", title: "Story-Based Animations", summary: "Narrative-driven animated episodes built around compelling plots, emotional turning points, and memorable worldbuilding.", scope: "We adapt original scripts, novels, and folklore into structured animated storytelling that captivates audiences through clear plot arcs and rich character interaction." },
-          { slug: "promotional-trailers-ads", title: "Promotional Trailers & Ads", summary: "High-energy teasers, product launches, and brand showcase videos designed to capture immediate viewer attention.", scope: "We create fast-paced, visually striking promotional trailers and commercial showcases engineered to highlight your brand, book, game, or launch with maximum impact." },
-          { slug: "youtube-series-animations", title: "YouTube & Series Animations", summary: "Engaging episodic animations formatted for high viewer retention, strong visual hooks, and recurring channel audiences.", scope: "Backed by experience across 1,500+ videos and 15,000+ subscribers, we produce episodic animated content tailored for digital audiences and serialized storytelling." },
-          { slug: "business-brand-explainers", title: "Business & Brand Explainers", summary: "Clear, authoritative visual presentations that communicate complex ideas, products, and corporate visions effortlessly.", scope: "We translate business concepts, workflows, and executive visions into polished visual narratives that inform stakeholders and elevate brand credibility." },
-          { slug: "visual-effects-color-grading", title: "Visual Effects & Color Grading", summary: "Atmospheric energy bursts, particle simulations, lighting enhancements, and unified cinema-grade color palettes.", scope: "We enrich scenes with glowing energy effects, atmospheric weather, lens depth, and cohesive color grading so every frame shares a unified signature look." },
-          { slug: "synchronized-voice-sfx", title: "Synchronized Voice & SFX", summary: "Frame-accurate alignment of dialogue, expressive voiceovers, ambient foley, and dramatic sound effects.", scope: "We pair visual motion with crisp character dialogue, environmental soundscapes, and impactful audio cues so every movement feels tangible and alive." },
-          { slug: "high-resolution-mastering", title: "High-Resolution Mastering", summary: "Crisp detail enhancement, aspect-ratio formatting, and final quality polishing for widescreen and vertical platforms.", scope: "Every finished production undergoes final clarity refinement, frame stabilization, and multi-format export optimization for widescreen cinema and digital displays." }
-        ]
-      },
-      {
-        id: "service-music",
-        code: "DIVISION 02 — MUSIC AND SONG CREATION",
-        shortName: "Music & Song Creation",
-        headline: "GIVING EVERY IDEA A SOUND.",
-        achievementBadge: "200+ Songs Created • 500K+ Total Song Views",
-        paragraphs: [
-          "Music has the power to express emotions, communicate stories and create unforgettable experiences. We manage complete musical production—from lyric writing, vocal composition and orchestral arrangement to studio mixing and audio mastering.",
-          "From sweeping science-fiction soundtracks and emotional ballads to high-energy motivational anthems and custom background scores, we transform creative concepts into signature audio experiences."
-        ],
-        sectionLabel: "Complete Music & Audio Production Services (Click Any Item for Full Details)",
-        focusArea: "emotional resonance, original lyrical storytelling, and studio-grade acoustic clarity",
-        deliverables: [
-          "Mastered stereo audio tracks in high-bitrate lossless and streaming formats",
-          "Complete lyric sheets, vocal arrangements, and instrumental stems",
-          "Custom-timed edits tailored for videos, trailers, games, or standalone release"
-        ],
-        subServices: [
-          { slug: "original-songs-singles", title: "Original Songs & Singles", summary: "Complete, release-ready original songs crafted from concept to final vocal and instrumental master.", scope: "We compose original melodies, write meaningful lyrics, arrange full instrumentation, and deliver polished songs tailored to your artistic vision and audience." },
-          { slug: "cinematic-film-scores", title: "Cinematic Film Scores", summary: "Sweeping orchestral and hybrid compositions engineered to heighten drama, tension, and spectacle on screen.", scope: "We score dramatic scenes, trailers, and visual narratives with dynamic strings, percussion, brass, and atmospheric textures that move in lockstep with the story." },
-          { slug: "emotional-soulful-songs", title: "Emotional & Soulful Songs", summary: "Heartfelt melodies and expressive vocal arrangements designed to evoke deep connection and lasting memory.", scope: "We craft intimate, emotionally resonant compositions centered on poignant lyrics, warm instrumentation, and expressive vocal delivery." },
-          { slug: "motivational-anthems", title: "Motivational Anthems", summary: "High-energy, uplifting tracks built to inspire ambition, determination, and triumphant momentum.", scope: "We produce powerful rhythmic anthems with soaring choruses and driving instrumentation ideal for sports, inspirational stories, and flagship launches." },
-          { slug: "science-fiction-soundtracks", title: "Science-Fiction Soundtracks", summary: "Futuristic synthscapes, cosmic atmospheres, and bold electronic-orchestral hybrids for sci-fi worlds.", scope: "We design otherworldly sonic identities combining deep analog textures, ethereal pads, and futuristic percussion for sci-fi series, books, and games." },
-          { slug: "story-based-musical-narratives", title: "Story-Based Musical Narratives", summary: "Songs that tell a complete story—blending character perspective, plot progression, and musical emotion.", scope: "We transform characters, legends, and fictional chapters into lyrical musical journeys where every verse advances the narrative." },
-          { slug: "original-lyric-writing", title: "Original Lyric Writing", summary: "Poetic, rhythmic, and memorable lyrics written to match your theme, language style, and musical genre.", scope: "We craft structured verses, hooks, and bridges with vivid imagery and natural musical cadence tailored to your story or message." },
-          { slug: "vocal-melody-composition", title: "Vocal Melody Composition", summary: "Distinctive, unforgettable vocal hooks and harmonic progressions designed to stand out from the first listen.", scope: "We develop expressive vocal lines and layered harmonies that anchor each song with strong melodic identity." },
-          { slug: "theme-music-intros", title: "Theme Music & Intros", summary: "Signature sonic logos, channel intros, and recurring character themes that build instant brand recognition.", scope: "We compose concise, memorable musical signatures that give your series, channel, or company an unmistakable audio identity." },
-          { slug: "game-trailer-soundtracks", title: "Game & Trailer Soundtracks", summary: "Dynamic, high-impact musical cues engineered for interactive gameplay loops and dramatic reveal trailers.", scope: "We create loop-ready exploration themes, intense battle tracks, and escalating trailer scores built for interactive and promotional media." },
-          { slug: "background-ambient-scores", title: "Background & Ambient Scores", summary: "Subtle, atmospheric instrumental beds that enhance storytelling, audiobooks, and presentations without overpowering dialogue.", scope: "We compose balanced ambient music that sets mood and emotional tone while leaving clean sonic space for narration and voiceover." },
-          { slug: "audio-mixing-mastering", title: "Audio Mixing & Mastering", summary: "Balanced frequency clarity, stereo depth, and commercial loudness optimization across every playback device.", scope: "We refine vocal presence, instrumental separation, and dynamic balance so your tracks sound crisp on headphones, studio monitors, and mobile speakers." }
-        ]
-      },
-      {
-        id: "service-books",
-        code: "DIVISION 03 — BOOK AND NOVEL WRITING",
-        shortName: "Book & Novel Writing",
-        headline: "EVERY STORY DESERVES TO BE TOLD.",
-        achievementBadge: "30+ Books Written • 60K+ Book Views • 200+ Books Sold",
-        paragraphs: [
-          "We transform ideas and imagination into complete, publication-ready literary works. Our literary division handles every stage of book creation—from deep worldbuilding, lore architecture, and character arcs to full manuscript drafting, structural editing, and cover concept design.",
-          "From expansive science-fiction universes and high-stakes mysteries to fantasy sagas and emotional fiction, we build captivating stories that immerse readers from the first page to the last."
-        ],
-        sectionLabel: "Complete Literary & Publishing Capabilities (Click Any Item for Full Details)",
-        focusArea: "compelling narrative structure, vivid worldbuilding, and reader-captivating prose",
-        deliverables: [
-          "Complete, structured manuscripts edited for pacing, clarity, and continuity",
-          "Detailed story bibles, character profiles, and chapter-by-chapter outlines",
-          "Publication-ready formatting for digital e-books and print editions"
-        ],
-        subServices: [
-          { slug: "full-length-novel-writing", title: "Full-Length Novel Writing", summary: "End-to-end novel development transforming your core premise into a richly detailed, complete literary work.", scope: "We develop three-act structure, multi-chapter pacing, engaging dialogue, and vivid prose to bring full-length original novels from concept to completion." },
-          { slug: "science-fiction-books", title: "Science-Fiction Books", summary: "Visionary sci-fi stories exploring futuristic technologies, space exploration, alternate realities, and human ambition.", scope: "We craft logically grounded, imaginative science-fiction novels complete with original technology rules, cosmic settings, and high-stakes dilemmas." },
-          { slug: "thriller-mystery-novels", title: "Thriller & Mystery Novels", summary: "Suspense-driven narratives engineered with clever clues, unexpected twists, and relentless page-turning momentum.", scope: "We construct intricate mysteries, investigative puzzles, and high-tension thrillers that keep readers guessing until the final revelation." },
-          { slug: "fantasy-adventure-sagas", title: "Fantasy & Adventure Sagas", summary: "Heroic quests, mythical realms, and epic conflicts brought to life with rich atmosphere and memorable companions.", scope: "We build immersive fantasy worlds with deep histories, unique factions, and sweeping heroic journeys crafted for readers of all ages." },
-          { slug: "worldbuilding-lore-design", title: "Worldbuilding & Lore Design", summary: "Comprehensive fictional universes complete with histories, geography, cultures, rules, and internal consistency.", scope: "We create detailed universe bibles that serve as the foundation for novels, comics, animations, and games—ensuring every detail feels authentic." },
-          { slug: "character-arc-architecture", title: "Character Arc Architecture", summary: "Multi-dimensional protagonists, mentors, and antagonists with clear motivations, flaws, and transformative growth.", scope: "We design unforgettable character rosters with distinct voices, backstories, and emotional arcs that drive the heart of your story." },
-          { slug: "multi-book-series-planning", title: "Multi-Book Series Planning", summary: "Overarching multi-volume story roadmaps balancing standalone book satisfaction with long-term series payoffs.", scope: "We architect multi-part book series—mapping long-term plot threads, evolving character relationships, and escalating stakes across volumes." },
-          { slug: "chapter-outlining-plotting", title: "Chapter Outlining & Plotting", summary: "Structured scene-by-scene blueprints ensuring tight narrative pacing, rising tension, and zero plot holes.", scope: "Before full drafting begins, we organize beats, turning points, and chapter hooks into a clear blueprint for smooth story execution." },
-          { slug: "young-adult-childrens-books", title: "Young Adult & Children's Books", summary: "Imaginative, inspiring stories crafted with age-appropriate voice, wonder, and positive themes.", scope: "Drawing from proven experience across published youth titles, we write engaging adventures that spark imagination in young and teen readers." },
-          { slug: "manuscript-editing-polish", title: "Manuscript Editing & Polish", summary: "Developmental restructuring, line-by-line prose refinement, and consistency checks for existing drafts.", scope: "We refine pacing, sharpen dialogue, eliminate narrative inconsistencies, and polish language to elevate manuscripts to professional standards." },
-          { slug: "book-cover-concept-blurbs", title: "Book Cover Concept & Blurbs", summary: "Compelling back-cover synopses, hook lines, and visual cover direction designed to attract readers immediately.", scope: "We write high-impact book descriptions and define front-cover visual concepts that capture the essence and genre of your book." },
-          { slug: "print-digital-formatting", title: "Print & Digital Formatting", summary: "Clean interior typography, chapter headers, and layout preparation for seamless digital and paperback publishing.", scope: "We structure manuscripts with clean chapter breaks, front/back matter, and properly proportioned page layouts ready for distribution." }
-        ]
-      },
-      {
-        id: "service-comics",
-        code: "DIVISION 04 — COMIC WRITING AND CREATION",
-        shortName: "Comic Writing & Creation",
-        headline: "STORIES THAT COME ALIVE.",
-        achievementBadge: "50+ Comics Created • 100K+ Comic Views",
-        paragraphs: [
-          "We transform creative stories into dynamic visual adventures through full-cycle comic and graphic novel production. Every issue combines sharp scriptwriting, dramatic panel composition, consistent character design, expressive dialogue lettering, and high-impact cover artwork.",
-          "From original superhero universes and futuristic sci-fi worlds to intense thriller and mystery serials, every comic we produce is built to pull readers straight into the action."
-        ],
-        sectionLabel: "Complete Comic & Graphic Novel Capabilities (Click Any Item for Full Details)",
-        focusArea: "dynamic sequential visual storytelling, expressive character art, and bold page choreography",
-        deliverables: [
-          "Complete illustrated comic issues and graphic novel chapters",
-          "Panel-by-panel scripts, character sheets, and cover art",
-          "High-resolution digital reading editions and print-ready layouts"
-        ],
-        subServices: [
-          { slug: "comic-story-plot-writing", title: "Comic Story & Plot Writing", summary: "High-concept episodic plots and dramatic issue arcs engineered specifically for visual sequential storytelling.", scope: "We develop gripping comic storylines structured around strong issue openings, mid-issue twists, and unforgettable cliffhanger endings." },
-          { slug: "panel-by-panel-scriptwriting", title: "Panel-by-Panel Scriptwriting", summary: "Detailed comic scripts specifying camera angles, visual action, panel transitions, and concise dialogue.", scope: "We write clear, production-ready comic scripts that guide visual composition, character expressions, and pacing on every single page." },
-          { slug: "original-hero-villain-design", title: "Original Hero & Villain Design", summary: "Iconic character silhouettes, costumes, powers, and visual identities built for instant reader recognition.", scope: "We design original heroes, anti-heroes, and villains with distinctive visual motifs, expressive poses, and consistent appearance across issues." },
-          { slug: "superhero-universe-creation", title: "Superhero Universe Creation", summary: "Interconnected hero rosters, origin stories, lore rules, and shared worlds built for ongoing comic series.", scope: "We build expansive superhero universes where characters, teams, and rivalries intersect across multiple storylines and spin-offs." },
-          { slug: "science-fiction-graphic-novels", title: "Science-Fiction Graphic Novels", summary: "Visually ambitious sci-fi comics featuring futuristic cities, cosmic phenomena, and high-tech action.", scope: "We combine visionary sci-fi worldbuilding with bold visual storytelling to create immersive futuristic graphic novels." },
-          { slug: "thriller-mystery-comics", title: "Thriller & Mystery Comics", summary: "Atmospheric noir shadows, tense interrogations, and visual clues woven directly into the artwork.", scope: "We craft suspenseful mystery and thriller comics using dramatic lighting, sharp framing, and taut narrative pacing." },
-          { slug: "dynamic-page-panel-layouts", title: "Dynamic Page & Panel Layouts", summary: "Strategic grid compositions, splash pages, and inset panels that control reading speed and dramatic impact.", scope: "We design varied page layouts that guide the reader's eye naturally while amplifying explosive double-page spreads and quiet emotional beats." },
-          { slug: "action-choreography-pacing", title: "Action Choreography & Pacing", summary: "Fluid fight sequences, kinetic motion lines, and clear spatial staging that make every action beat easy to follow.", scope: "We choreograph high-energy battle sequences and chase scenes with clear impact frames and thrilling visual momentum." },
-          { slug: "dialogue-lettering-sfx", title: "Dialogue Lettering & SFX", summary: "Clean speech balloon placement, expressive caption boxes, and custom stylized sound effects integrated into the art.", scope: "We arrange dialogue balloons so artwork remains unobstructed while sound effects enhance the energy and rhythm of each scene." },
-          { slug: "comic-cover-illustration", title: "Comic Cover Illustration", summary: "Bold, iconic cover compositions designed to capture the core conflict and visual drama of each issue.", scope: "We create striking front covers with dynamic character staging, dramatic lighting, and clean title integration." },
-          { slug: "multi-issue-series-arcs", title: "Multi-Issue Series Arcs", summary: "Cohesive multi-chapter comic sagas planned across complete story seasons and collected volumes.", scope: "We structure multi-issue narrative arcs so character growth, world stakes, and visual callbacks reward dedicated readers." },
-          { slug: "full-bleed-print-web-editions", title: "Full-Bleed Print & Web Editions", summary: "Properly formatted comic pages optimized for both crisp digital reading and full-bleed print production.", scope: "We prepare finalized comic pages with accurate trim margins, high-resolution artwork, and clean digital packaging." }
-        ]
-      },
-      {
-        id: "service-games",
-        code: "DIVISION 05 — GAME DEVELOPMENT",
-        shortName: "Game Development",
-        headline: "BUILD WORLDS. CREATE EXPERIENCES.",
-        achievementBadge: "50+ Games Created • 30K+ Total Game Views",
-        paragraphs: [
-          "We believe games are powerful interactive worlds where imagination meets engineering. Our game development team designs complete playable experiences—covering core gameplay mechanics, level architecture, responsive controls, HUD/UI systems, and smooth cross-device performance.",
-          "From 3D action adventures and tactical strategy titles to instant browser-based arcade games and interactive simulations, we turn bold concepts into engaging worlds players love to explore."
-        ],
-        sectionLabel: "Complete Game Design & Engineering Capabilities (Click Any Item for Full Details)",
-        focusArea: "responsive player controls, engaging progression loops, and immersive world architecture",
-        deliverables: [
-          "Complete, playable game builds tested for smooth frame rates and responsiveness",
-          "Intuitive user interfaces, scoring systems, and balanced difficulty progression",
-          "Web-ready deployment packages and modular game architecture"
-        ],
-        subServices: [
-          { slug: "3d-game-development", title: "3D Game Development", summary: "Interactive three-dimensional environments, spatial camera systems, and real-time 3D gameplay mechanics.", scope: "We engineer immersive 3D game worlds featuring dynamic lighting, responsive character or object movement, and engaging spatial challenges." },
-          { slug: "browser-based-web-games", title: "Browser-Based Web Games", summary: "Instant-play games running directly in modern desktop and mobile web browsers with zero installation required.", scope: "We build fast-loading, accessible web games optimized for instant play across laptops, tablets, and smartphones." },
-          { slug: "real-time-strategy-games", title: "Real-Time Strategy Games", summary: "Tactical decision-making, resource management, and strategic battlefield mechanics that reward smart planning.", scope: "We design strategy experiences with balanced unit mechanics, tactical map layouts, and engaging progression systems." },
-          { slug: "fast-paced-action-games", title: "Fast-Paced Action Games", summary: "High-responsiveness combat, reflex challenges, and dynamic enemy encounters built for thrilling gameplay.", scope: "We tune frame-accurate controls, collision feedback, and escalating waves of action to keep players deeply engaged." },
-          { slug: "story-driven-adventure-games", title: "Story-Driven Adventure Games", summary: "Exploration-focused worlds combining narrative discovery, environmental storytelling, and interactive quests.", scope: "We blend our storytelling expertise with interactive gameplay to build memorable worlds filled with missions, lore, and discovery." },
-          { slug: "level-design-worldbuilding", title: "Level Design & Worldbuilding", summary: "Thoughtfully paced stages, arenas, and environments structured to teach mechanics and reward exploration.", scope: "We design multi-stage progressions where each level introduces fresh challenges, visual landmarks, and satisfying payoffs." },
-          { slug: "gameplay-mechanics-physics", title: "Gameplay Mechanics & Physics", summary: "Core movement, collision detection, scoring rules, and interactive physics tuned for smooth game feel.", scope: "We engineer reliable game loops, responsive input handling, and satisfying tactile feedback across every interaction." },
-          { slug: "game-hud-interface-design", title: "Game HUD & Interface Design", summary: "Clean, futuristic heads-up displays, menus, scoreboards, and controls that keep players informed without clutter.", scope: "We design intuitive menus, live timers, health/score indicators, and touch/keyboard controls that enhance usability." },
-          { slug: "interactive-simulations", title: "Interactive Simulations", summary: "Real-time rule-based simulations, skill trainers, and interactive 3D sandboxes built for hands-on engagement.", scope: "We create accurate interactive environments—from puzzle and logic trainers to tactical and physics-based simulations." },
-          { slug: "arcade-puzzle-experiences", title: "Arcade & Puzzle Experiences", summary: "Addictive, replayable arcade challenges and brain-teasing puzzle games with crisp scoring and leaderboards.", scope: "We build snappy, high-replayability arcade and puzzle titles designed for quick sessions and competitive personal bests." },
-          { slug: "game-concept-prototyping", title: "Game Concept & Prototyping", summary: "Rapid playable prototypes that test core mechanics, fun factor, and visual direction before full production.", scope: "We turn raw game ideas into working playable demos so mechanics and user experience can be refined early." },
-          { slug: "performance-frame-optimization", title: "Performance & Frame Optimization", summary: "Lightweight asset architecture and clean code execution ensuring smooth, lag-free gameplay across devices.", scope: "We optimize rendering pipelines, memory usage, and responsive layouts so games run smoothly on both high-end and everyday devices." }
-        ]
-      },
-      {
-        id: "service-websites",
-        code: "DIVISION 06 — WEBSITE DEVELOPMENT",
-        shortName: "Website Development",
-        headline: "BUILD YOUR DIGITAL IDENTITY.",
-        achievementBadge: "20+ Websites Created for Different Companies and Personalities",
-        paragraphs: [
-          "Your website is the digital headquarters of your business, brand or personal vision. We architect high-performance, visually striking digital platforms from the ground up—blending bespoke UI/UX design, interactive motion choreography, responsive engineering, and search-engine optimization.",
-          "From flagship corporate websites and executive personal portfolios to interactive creative hubs and gaming platforms, we build fast, reliable digital experiences engineered to make a lasting impression."
-        ],
-        sectionLabel: "Complete Web Architecture & Digital Capabilities (Click Any Item for Full Details)",
-        focusArea: "distinctive brand identity, fluid responsive layouts, and high-speed modern web engineering",
-        deliverables: [
-          "Complete, production-ready website codebase structured for easy maintenance",
-          "Fully responsive layouts tested across desktop, tablet, and mobile screens",
-          "Semantic SEO structure, fast load optimization, and accessible navigation"
-        ],
-        subServices: [
-          { slug: "flagship-company-websites", title: "Flagship Company Websites", summary: "Authoritative corporate websites designed to establish brand prestige, clarity, and global credibility.", scope: "We build comprehensive multi-section corporate websites that communicate your company's vision, services, leadership, and achievements with executive polish." },
-          { slug: "business-brand-platforms", title: "Business & Brand Platforms", summary: "Tailored commercial websites engineered to showcase products, services, and brand identity with clarity.", scope: "We design structured, easy-to-navigate business websites that align visual aesthetics with your company's core strengths." },
-          { slug: "executive-personal-portfolios", title: "Executive Personal Portfolios", summary: "Distinguished personal brand websites for founders, authors, leaders, and creators.", scope: "We create refined digital profiles highlighting biography, milestones, creative works, and leadership vision in a memorable format." },
-          { slug: "high-conversion-landing-pages", title: "High-Conversion Landing Pages", summary: "Focused, high-impact single-page experiences built for launches, campaigns, and flagship announcements.", scope: "We structure clear visual hierarchy, compelling headlines, and seamless navigation to keep visitors engaged from top to bottom." },
-          { slug: "bespoke-ui-ux-visual-design", title: "Bespoke UI/UX Visual Design", summary: "Custom typography systems, color palettes, glassmorphism, and layout architecture—never generic templates.", scope: "Every interface is custom-designed around your brand identity, pairing clean spacing with elevated visual contrast and intuitive user journeys." },
-          { slug: "interactive-animated-web", title: "Interactive & Animated Web", summary: "Smooth scroll choreography, subtle hover depth, animated counters, and responsive motion micro-interactions.", scope: "We integrate hardware-accelerated animations and interactive transitions that make browsing feel fluid, modern, and alive." },
-          { slug: "gaming-media-hub-portals", title: "Gaming & Media Hub Portals", summary: "Dedicated digital portals built to host interactive games, comic readers, audio libraries, and media collections.", scope: "We architect specialized entertainment hubs with category filtering, clean media presentation, and fast navigation." },
-          { slug: "mobile-first-responsive-layouts", title: "Mobile-First Responsive Layouts", summary: "Adaptive grid systems that look equally extraordinary on ultra-wide monitors, laptops, tablets, and smartphones.", scope: "We engineer fluid breakpoints and touch-friendly navigation menus so every visitor enjoys a seamless experience on any screen." },
-          { slug: "custom-frontend-engineering", title: "Custom Frontend Engineering", summary: "Clean, modular, standards-compliant code built for reliability, scalability, and effortless future updates.", scope: "We write well-organized HTML, CSS, and JavaScript architectures with clear configuration blocks and zero unnecessary bloat." },
-          { slug: "seo-core-web-vitals-tuning", title: "SEO & Core Web Vitals Tuning", summary: "Semantic HTML structure, metadata optimization, and fast asset loading for strong search visibility and speed.", scope: "We structure headings, meta descriptions, accessible attributes, and lightweight scripts for rapid page load performance." },
-          { slug: "brand-identity-typography", title: "Brand Identity & Typography", summary: "Cohesive digital brand systems uniting custom SVG emblems, font pairings, and signature color tokens.", scope: "We establish unified visual guidelines across your website so every section reinforces a consistent corporate identity." },
-          { slug: "custom-web-applications", title: "Custom Web Applications", summary: "Interactive browser tools, dynamic dashboards, and functional web utilities tailored to specific workflows.", scope: "Beyond static pages, we develop interactive client-side tools, calculators, timers, and specialized digital utilities." }
-        ]
-      }
-    ];
+    window.toggleWelcomeAudio = function() {
+      const video = document.getElementById("welcome-video-player");
+      const mutedIcon = document.getElementById("audio-muted-icon");
+      const unmutedIcon = document.getElementById("audio-unmuted-icon");
+      const label = document.getElementById("welcome-audio-label");
+      if (!video) return;
 
-    function renderDivisions() {
-      const container = document.getElementById("divisions-container");
-      if (!container) return;
+      video.muted = !video.muted;
+      video.volume = 1.0;
 
-      container.innerHTML = DIVISIONS_DATA.map((div) => `
-        <article id="${div.id}" class="glass-card rounded-3xl p-8 sm:p-12 lg:p-14 reveal-up relative overflow-hidden">
-          <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <span class="px-3.5 py-1.5 rounded-lg bg-electric/15 border border-electric/40 text-xs font-mono font-semibold text-electricGlow tracking-widest">
-              ${div.code}
-            </span>
-            <span class="px-3.5 py-1.5 rounded-full bg-midnight/90 border border-slate-700/80 text-xs font-mono text-electricGlow font-semibold">
-              ${div.achievementBadge}
-            </span>
-          </div>
-
-          <h3 class="font-display font-extrabold text-3xl sm:text-5xl text-white leading-tight mb-5">
-            ${div.headline}
-          </h3>
-
-          <div class="space-y-4 text-slate-300 text-base sm:text-lg leading-relaxed max-w-4xl mb-8">
-            ${div.paragraphs.map((p) => `<p>${p}</p>`).join("")}
-          </div>
-
-          <div class="pt-6 border-t border-slate-800/80">
-            <p class="text-xs font-mono uppercase tracking-[0.2em] text-slate-400 mb-4">${div.sectionLabel}</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm text-slate-200">
-              ${div.subServices.map((sub) => `
-                <button
-                  type="button"
-                  onclick="openSubServicePage('${div.id}', '${sub.slug}')"
-                  class="service-pill group flex items-center justify-between gap-2.5 p-3.5 rounded-xl text-left w-full focus:outline-none focus:ring-2 focus:ring-electricGlow/60"
-                >
-                  <span class="flex items-center gap-2.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-electricGlow shrink-0"></span>
-                    <span class="font-medium text-slate-100 group-hover:text-white">${sub.title}</span>
-                  </span>
-                  <svg class="pill-arrow w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              `).join("")}
-            </div>
-          </div>
-        </article>
-      `).join("");
-    }
-
-    let lastScrollPosition = 0;
-
-    window.openSubServicePage = function(divisionId, subSlug, skipHistory) {
-      const division = DIVISIONS_DATA.find((d) => d.id === divisionId);
-      if (!division) return;
-      const sub = division.subServices.find((s) => s.slug === subSlug);
-      if (!sub) return;
-
-      lastScrollPosition = window.scrollY;
-
-      document.getElementById("detail-breadcrumb-division").textContent = division.shortName;
-      document.getElementById("detail-breadcrumb-title").textContent = sub.title;
-      document.getElementById("detail-division-badge").textContent = division.code;
-      document.getElementById("detail-achievement-badge").textContent = division.achievementBadge;
-      document.getElementById("detail-title").textContent = sub.title;
-      document.getElementById("detail-summary").textContent = sub.summary;
-      document.getElementById("detail-scope").textContent = sub.scope;
-
-      const workflowSteps = [
-        `Discovery & creative brief alignment tailored specifically for ${sub.title.toLowerCase()}.`,
-        `Concept architecture emphasizing ${division.focusArea}.`,
-        `Full-cycle production and iterative craft review led by Shastry Group's ${division.shortName.toLowerCase()} team.`,
-        `Final quality verification and polished delivery ready for immediate release.`
-      ];
-      document.getElementById("detail-workflow-list").innerHTML = workflowSteps
-        .map((step) => `
-          <li class="flex items-start gap-2.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-electricGlow mt-2 shrink-0"></span>
-            <span>${step}</span>
-          </li>
-        `)
-        .join("");
-
-      document.getElementById("detail-deliverables-list").innerHTML = division.deliverables
-        .map((item) => `
-          <li class="flex items-start gap-2.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-electricGlow mt-2 shrink-0"></span>
-            <span>${item}</span>
-          </li>
-        `)
-        .join("");
-
-      document.getElementById("detail-related-heading").textContent = `More in ${division.shortName}`;
-      const relatedItems = division.subServices.filter((item) => item.slug !== sub.slug);
-      document.getElementById("detail-related-grid").innerHTML = relatedItems
-        .map((rel) => `
-          <button
-            type="button"
-            onclick="openSubServicePage('${division.id}', '${rel.slug}')"
-            class="service-pill group flex items-center justify-between gap-2.5 p-3.5 rounded-xl text-left w-full"
-          >
-            <span class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-electricGlow shrink-0"></span>
-              <span class="font-medium text-slate-100 group-hover:text-white">${rel.title}</span>
-            </span>
-            <svg class="pill-arrow w-4 h-4 text-slate-500 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        `)
-        .join("");
-
-      document.getElementById("main-landing-view").classList.add("hidden");
-      const detailView = document.getElementById("subservice-detail-view");
-      detailView.classList.remove("hidden");
-
-      if (!skipHistory) {
-        history.pushState({ divisionId, subSlug }, "", `#detail/${divisionId}/${subSlug}`);
-      }
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    window.closeSubServicePage = function(skipHistory) {
-      const detailView = document.getElementById("subservice-detail-view");
-      const mainView = document.getElementById("main-landing-view");
-      if (detailView.classList.contains("hidden")) return;
-
-      detailView.classList.add("hidden");
-      mainView.classList.remove("hidden");
-
-      if (!skipHistory) {
-        history.pushState(null, "", "#services");
-      }
-
-      if (typeof ScrollTrigger !== "undefined") {
-        ScrollTrigger.refresh();
-      }
-      window.scrollTo({ top: lastScrollPosition || 0, behavior: "auto" });
-    };
-
-    window.addEventListener("popstate", (event) => {
-      if (event.state && event.state.divisionId && event.state.subSlug) {
-        openSubServicePage(event.state.divisionId, event.state.subSlug, true);
+      if (video.muted) {
+        mutedIcon.classList.remove("hidden");
+        unmutedIcon.classList.add("hidden");
+        label.textContent = "Unmute";
       } else {
-        closeSubServicePage(true);
+        mutedIcon.classList.add("hidden");
+        unmutedIcon.classList.remove("hidden");
+        label.textContent = "Mute";
       }
-    });
+    };
 
+    // =========================================================================
+    // 5. DOM INITIALIZATION, 3D UNIVERSE CANVAS & COUNTERS
+    // =========================================================================
     document.addEventListener("DOMContentLoaded", () => {
-      // 0. Play welcome.mp4 with its own built-in audio track
       const welcomeVideo = document.getElementById("welcome-video-player");
-
       if (welcomeVideo) {
-        welcomeVideo.addEventListener("ended", () => {
-          finishWelcomeIntro();
-        });
-
-        welcomeVideo.addEventListener("error", () => {
-          finishWelcomeIntro();
-        });
-
-        welcomeVideo.muted = false;
-        welcomeVideo.volume = 1.0;
-
+        welcomeVideo.addEventListener("ended", finishWelcomeIntro);
+        welcomeVideo.addEventListener("error", finishWelcomeIntro);
         const playPromise = welcomeVideo.play();
         if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            // If browser blocks unmuted autoplay on initial load, start muted and unmute on first user interaction
-            welcomeVideo.muted = true;
-            welcomeVideo.play().catch(() => finishWelcomeIntro());
-            const enableVideoSound = () => {
-              welcomeVideo.muted = false;
-              welcomeVideo.volume = 1.0;
-              document.removeEventListener("click", enableVideoSound);
-              document.removeEventListener("touchstart", enableVideoSound);
-              document.removeEventListener("keydown", enableVideoSound);
-            };
-            document.addEventListener("click", enableVideoSound);
-            document.addEventListener("touchstart", enableVideoSound);
-            document.addEventListener("keydown", enableVideoSound);
-          });
+          playPromise.catch(finishWelcomeIntro);
         }
       } else {
         finishWelcomeIntro();
       }
 
-      // Render all 6 clickable service divisions
-      renderDivisions();
+      renderFeaturedCreations();
+      renderStudiosGrid();
+      filterPortfolio("all");
 
-      if (window.location.hash.startsWith("#detail/")) {
-        const parts = window.location.hash.replace("#detail/", "").split("/");
-        if (parts.length === 2) {
-          finishWelcomeIntro();
-          openSubServicePage(parts[0], parts[1], true);
-        }
+      if (window.location.hash.startsWith("#studio/")) {
+        finishWelcomeIntro();
+        openDivisionLandingPage(window.location.hash.replace("#studio/", ""), true);
+      } else if (window.location.hash.startsWith("#project/")) {
+        finishWelcomeIntro();
+        openProjectDetail(window.location.hash.replace("#project/", ""), true);
       }
 
-      // 1. Mobile Navigation Toggle
       const mobileMenuBtn = document.getElementById("mobile-menu-btn");
       const mobileMenu = document.getElementById("mobile-menu");
       const iconOpen = document.getElementById("menu-icon-open");
@@ -1354,40 +1935,61 @@
         });
       }
 
-      // 2. Subtle Ambient Hero Starfield
       const heroCanvas = document.getElementById("hero-canvas");
       if (heroCanvas && typeof THREE !== "undefined") {
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
-        camera.position.set(0, 0, 12);
+        const camera = new THREE.PerspectiveCamera(48, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 14);
 
         const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        const particleCount = window.innerWidth < 768 ? 140 : 280;
+        const universeGroup = new THREE.Group();
+        scene.add(universeGroup);
+
+        const coreGeom = new THREE.IcosahedronGeometry(1.15, 2);
+        const coreMat = new THREE.MeshBasicMaterial({
+          color: 0x38bdf8,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.35
+        });
+        const coreMesh = new THREE.Mesh(coreGeom, coreMat);
+        universeGroup.add(coreMesh);
+
+        const ringSpecs = [
+          { radius: 3.2, tube: 0.018, rx: 1.15, ry: 0.35, color: 0x2563eb, opacity: 0.5 },
+          { radius: 4.3, tube: 0.015, rx: -0.95, ry: 0.55, color: 0x38bdf8, opacity: 0.38 },
+          { radius: 5.4, tube: 0.012, rx: 0.45, ry: -1.1, color: 0x94a3b8, opacity: 0.25 }
+        ];
+        const rings = ringSpecs.map((spec) => {
+          const g = new THREE.TorusGeometry(spec.radius, spec.tube, 16, 120);
+          const m = new THREE.MeshBasicMaterial({ color: spec.color, transparent: true, opacity: spec.opacity });
+          const mesh = new THREE.Mesh(g, m);
+          mesh.rotation.set(spec.rx, spec.ry, 0);
+          universeGroup.add(mesh);
+          return mesh;
+        });
+
+        const particleCount = window.innerWidth < 768 ? 140 : 260;
         const pGeom = new THREE.BufferGeometry();
         const pPos = new Float32Array(particleCount * 3);
         for (let i = 0; i < particleCount * 3; i += 3) {
-          pPos[i] = (Math.random() - 0.5) * 32;
-          pPos[i + 1] = (Math.random() - 0.5) * 20;
-          pPos[i + 2] = (Math.random() - 0.5) * 18 - 4;
+          pPos[i] = (Math.random() - 0.5) * 30;
+          pPos[i + 1] = (Math.random() - 0.5) * 18;
+          pPos[i + 2] = (Math.random() - 0.5) * 16 - 4;
         }
         pGeom.setAttribute("position", new THREE.BufferAttribute(pPos, 3));
-        const pMat = new THREE.PointsMaterial({
-          color: 0x38bdf8,
-          size: 0.045,
-          transparent: true,
-          opacity: 0.55
-        });
+        const pMat = new THREE.PointsMaterial({ color: 0x38bdf8, size: 0.04, transparent: true, opacity: 0.5 });
         const particles = new THREE.Points(pGeom, pMat);
         scene.add(particles);
 
         let mouseX = 0;
         let mouseY = 0;
         window.addEventListener("mousemove", (e) => {
-          mouseX = (e.clientX / window.innerWidth - 0.5) * 1.2;
-          mouseY = (e.clientY / window.innerHeight - 0.5) * 1.2;
+          mouseX = (e.clientX / window.innerWidth - 0.5) * 0.8;
+          mouseY = (e.clientY / window.innerHeight - 0.5) * 0.8;
         });
 
         window.addEventListener("resize", () => {
@@ -1400,14 +2002,19 @@
         function animate() {
           requestAnimationFrame(animate);
           const t = clock.getElapsedTime();
-          particles.rotation.y = t * 0.025 + mouseX * 0.12;
-          particles.rotation.x = t * 0.012 + mouseY * 0.08;
+          coreMesh.rotation.y = t * 0.18;
+          coreMesh.rotation.x = t * 0.1;
+          rings[0].rotation.z = t * 0.14;
+          rings[1].rotation.z = -t * 0.1;
+          rings[2].rotation.z = t * 0.07;
+          universeGroup.rotation.y = mouseX * 0.25;
+          universeGroup.rotation.x = mouseY * 0.2;
+          particles.rotation.y = t * 0.02;
           renderer.render(scene, camera);
         }
         animate();
       }
 
-      // 3. GSAP Scroll Animations & Animated Counters
       if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -1415,12 +2022,12 @@
           gsap.from(el, {
             scrollTrigger: {
               trigger: el,
-              start: "top 86%",
+              start: "top 88%",
               once: true
             },
-            y: 30,
+            y: 24,
             opacity: 0,
-            duration: 0.75,
+            duration: 0.7,
             ease: "power2.out"
           });
         });
@@ -1433,12 +2040,12 @@
 
           ScrollTrigger.create({
             trigger: counter,
-            start: "top 88%",
+            start: "top 92%",
             once: true,
             onEnter: () => {
               gsap.to(obj, {
                 val: target,
-                duration: 2,
+                duration: 1.8,
                 ease: "power2.out",
                 onUpdate: () => {
                   const rounded = Math.round(obj.val);
@@ -1447,21 +2054,6 @@
                 }
               });
             }
-          });
-        });
-      }
-
-      // 4. Subtle 3D Tilt Hover Effect on Cards (Desktop only)
-      if (window.matchMedia("(pointer: fine)").matches) {
-        document.querySelectorAll(".tilt-card").forEach((card) => {
-          card.addEventListener("mousemove", (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width - 0.5;
-            const y = (e.clientY - rect.top) / rect.height - 0.5;
-            card.style.transform = `perspective(900px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-4px)`;
-          });
-          card.addEventListener("mouseleave", () => {
-            card.style.transform = "perspective(900px) rotateY(0deg) rotateX(0deg) translateY(0px)";
           });
         });
       }
